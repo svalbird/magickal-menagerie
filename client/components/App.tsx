@@ -1,10 +1,17 @@
+import { Routes, Route } from 'react-router-dom'
+import Dashboard from './Dashboard'
+import MainLayout from './MainLayout'
+
 function App() {
   return (
     <>
-      <header className="header">
-        <h1>My Collection</h1>
-      </header>
-      <section className="main">{/* add your code here */}</section>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Dashboard />} />
+
+          {/* <Route path="/login" element={<LandingPage />} /> */}
+        </Route>
+      </Routes>
     </>
   )
 }
