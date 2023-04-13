@@ -28,7 +28,7 @@ router.put('/', async (req, res) => {
 
     await updatePetInfo(newPet)
     const pets = await getPetInfo(userId)
-    res.json({ pets })
+    res.json(pets)
   } catch (err) {
     console.error(err)
     res.status(500).send('Something went wrong feeding the pet')
@@ -41,7 +41,7 @@ router.delete('/:id', async (req, res) => {
     const id = Number(req.params.id)
     await deleteInventoryItem(id)
     const inventory = await getUserInventory(userId)
-    res.json( inventory )
+    res.json(inventory)
   } catch (err) {
     console.error(err)
     res.status(500).send('Something went wrong')
