@@ -1,3 +1,4 @@
+import { PetData } from '../../Model/pet'
 import connection from './connection'
 
 export function getPetInfo(userId: number, db = connection) {
@@ -39,9 +40,9 @@ export function getUserInventory(userId: number, db = connection) {
 
     .orderBy('inventory.id')
 }
-export function updatePetInfo(newPet, db = connection) {
+export function updatePetInfo(newPet: PetData, db = connection) {
   const pet = newPet // extract the pet object from the newPet parameter
-  return db('pets').where('id', pet.id).update(pet) // update the pet object
+  return db('pets').where('id', newPet.id).update(pet) // update the pet object
 }
 
 export function deleteInventoryItem(id: number, db = connection) {
