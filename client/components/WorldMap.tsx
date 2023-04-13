@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import WorldMapper from './Explore/WorldMapper'
-import { AreaEvent, CustomArea } from 'react-img-mapper/dist/types'
+import { CustomArea } from 'react-img-mapper/dist/types'
 
 function WorldMap() {
   const [hoveredLocation, setHoveredLocation] = useState('Select an area!')
