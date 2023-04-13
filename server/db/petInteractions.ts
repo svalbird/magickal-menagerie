@@ -16,7 +16,6 @@ export function getPetInfo(userId: number, db = connection) {
       'hunger_current as hungerCurrent',
       'level'
     )
-
     .orderBy('pets.id')
 }
 
@@ -39,6 +38,7 @@ export function getUserInventory(userId: number, db = connection) {
 
     .orderBy('inventory.id')
 }
+
 export function updatePetInfo(newPet, db = connection) {
   const pet = newPet // extract the pet object from the newPet parameter
   return db('pets').where('id', pet.id).update(pet) // update the pet object
