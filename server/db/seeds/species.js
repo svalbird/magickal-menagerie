@@ -13,7 +13,7 @@ exports.seed = async function (knex) {
       hunger_max: 100,
       fave_food: 'Ice Cream',
       description: 'A beautiful fluttery fairy',
-      image: '',
+      image: '/Images/creature.gif',
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ exports.seed = async function (knex) {
       hunger_max: 100,
       fave_food: 'Pizza',
       description: 'A fiery mischevious imp',
-      image: '',
+      image: '/Images/creature.gif',
     },
     {
       id: 3,
@@ -31,7 +31,7 @@ exports.seed = async function (knex) {
       hunger_max: 100,
       fave_food: 'Bread',
       description: 'A grumpy firey winged ogre',
-      image: '',
+      image: '/Images/creature.gif',
     },
   ])
 }
