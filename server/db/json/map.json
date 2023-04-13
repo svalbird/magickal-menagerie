@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Sandy Cove",
+    "shape": "circle",
+    "name": "1",
+    "fillColor": "rgba(0, 0, 0, 0)",
+    "strokeColor": "rgba(255, 255, 255, 1)",
+    "coords": [
+      752,
+      619,
+      94
+    ]
+  }
+]

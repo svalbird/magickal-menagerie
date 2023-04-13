@@ -67,3 +67,6 @@
 	60% {transform: translateY(-15px);}
 }
 
+.world-map {
+  height: 90vh
+}
