@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-// import stuff from './stuff'
+import speciesReducer from './speciesReducer'
 
 export default combineReducers({
-  // stuff
+  species: speciesReducer,
 })
