@@ -2,12 +2,12 @@ import express from 'express'
 import { addUser } from '../db/AddUserDb'
 
 const router = express.Router()
-//GET /api/v1/pet
+//GET /api/v1/adduser
 router.post('/', async (req, res) => {
   try {
     const displayName = req.body
     const auth0Id = '4'
-    await addUser(displayName, auth0Id)
+    await addUser(auth0Id, displayName)
     res.status(200)
   } catch (error) {
     console.error(error)
