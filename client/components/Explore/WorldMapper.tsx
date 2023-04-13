@@ -2,7 +2,12 @@ import ImageMapper from 'react-img-mapper'
 import mapData from '../../../server/db/json/map.json'
 import { useEffect, useState } from 'react'
 
-const WorldMapper = () => {
+interface Props {
+  onLocHover?: any
+  onLocLeave?: any
+}
+
+const WorldMapper = (props: Props) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const URL = '/Images/map.jpg'
 
@@ -10,6 +15,8 @@ const WorldMapper = () => {
     name: 'world-map',
     areas: mapData,
   }
+
+  const ratio = 0.55
 
   useEffect(() => {
     function handleResize() {
@@ -23,8 +30,10 @@ const WorldMapper = () => {
       <ImageMapper
         src={URL}
         map={MAP}
-        parentWidth={windowWidth}
+        parentWidth={windowWidth * ratio}
         responsive={true}
+        onMouseEnter={props.onLocHover}
+        onMouseLeave={props.onLocLeave}
       />
     </div>
   )

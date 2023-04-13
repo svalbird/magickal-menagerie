@@ -1,11 +1,31 @@
-import mapData from '../../server/db/json/map.json'
+import { useState } from 'react'
 import WorldMapper from './Explore/WorldMapper'
+import { AreaEvent, CustomArea } from 'react-img-mapper/dist/types'
 
 function WorldMap() {
-  console.log(mapData)
+  const [hoveredLocation, setHoveredLocation] = useState('Select an area!')
+
+  function onLocationHover(area: CustomArea) {
+    if (area.id) {
+      setHoveredLocation(area.id)
+    }
+  }
+
+  function onLocationStopHover() {
+    setHoveredLocation('Select an area!')
+  }
+
   return (
-    <div className="world-map">
-      <WorldMapper />
+    <div className="world-display">
+      <div className="location-desc">
+        <h1>{hoveredLocation}</h1>
+      </div>
+      <div className="world-map">
+        <WorldMapper
+          onLocHover={onLocationHover}
+          onLocLeave={onLocationStopHover}
+        />
+      </div>
     </div>
   )
 }
@@ -27,6 +47,4 @@ export default WorldMap
     <area target="" alt="Lavender Oasis" title="Lavender Oasis" href="/lavender-oasis" coords="1153,1190,87" shape="circle">
     <area target="" alt="Isle of Crimson" title="Isle of Crimson" href="/isle-of-crimson" coords="1405,584,194" shape="circle">
     <area target="" alt="Boreal Peaks" title="Boreal Peaks" href="/boreal-peaks" coords="484,306,893,461" shape="rect">
-    <img src="/Images/map.jpg" alt="" />
-    map={{ name: 'world-map', areas: mapData }}
 </map> */
