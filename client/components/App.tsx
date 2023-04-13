@@ -8,9 +8,9 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<PetCreation />} />
+          <Route index element={<Dashboard />} />
           {/* <Route path="/login" element={<LandingPage />} /> */}
-          {/* <Route path="/creation" element={<PetCreation />} /> */}
+          <Route path="/creation" element={<PetCreation />} />
         </Route>
       </Routes>
     </>
