@@ -7,6 +7,10 @@ export interface PetData {
   hpCurrent: number
   hungerCurrent: number
   level: number
+  hpMax: number
+  hungerMax: number
+  faveFood: string
+  image: string
 }
 
 export type NewPet = Omit<

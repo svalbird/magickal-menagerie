@@ -15,7 +15,12 @@ export function getPetInfo(userId: number, db = connection) {
       'xp_current as xpCurrent',
       'hp_current as hpCurrent',
       'hunger_current as hungerCurrent',
-      'level'
+      'level',
+      'hp_max as hpMax',
+      'hunger_max as hungerMax',
+      'fave_food as faveFood',
+      'image'
+
     )
 
     .orderBy('pets.id')
