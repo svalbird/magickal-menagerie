@@ -9,16 +9,31 @@ export async function getPetInteraction(): Promise<{
   pets: PetData[]
   inventory: Inventory[]
 }> {
-  const res = await request.get(`${rootUrl}/petInteraction`)
-  return res.body
+  try {
+    const res = await request.get(`${rootUrl}/petInteraction`)
+    return res.body
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
 }
 
-export async function updatePetInteraction(pet: PetData): Promise<PetData[]> {
-  const res = await request.put(`${rootUrl}/petInteraction`).send(pet)
-  return res.body
+export async function updatePet(pet: PetData): Promise<PetData[]> {
+  try {
+    const res = await request.put(`${rootUrl}/petInteraction`).send(pet)
+    return res.body
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
 }
 
 export async function deleteInventoryItem(id: number): Promise<PetData[]> {
-  const res = await request.delete(`${rootUrl}/petInteraction/${id}`)
-  return res.body
+  try {
+    const res = await request.delete(`${rootUrl}/petInteraction/${id}`)
+    return res.body
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
 }
