@@ -13,9 +13,12 @@ export async function checkUserData(token: string): Promise<boolean> {
   }
 }
 
-export async function addDisplayname(name: NewUser) {
+export async function addDisplayname(name: NewUser, token: string) {
   try {
-    await request.post('/api/v1/adduser').send({ ...name })
+    await request
+      .post('/api/v1/adduser')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ ...name })
   } catch (err) {
     console.error(err)
     throw err

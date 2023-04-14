@@ -21,6 +21,7 @@ import { addDisplayname } from '../apis/displayName'
 function PetCreation() {
   const navigate = useNavigate()
   const species = useAppSelector((state) => state.species)
+  const { accessToken } = useAppSelector((state) => state.token)
   const dispatch = useAppDispatch()
   const [pet, setPet] = useState<NewPet>({
     speciesId: 0,
@@ -38,13 +39,15 @@ function PetCreation() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (accessToken) {
+      addDisplayname(name, accessToken)
+      setName({ displayName: '' })
+      addPet({ ...pet, speciesId: selectedSpeciesId }, accessToken)
+      setPet({ speciesId: 0, name: '' })
 
-    addPet({ ...pet, speciesId: selectedSpeciesId })
-    setPet({ speciesId: 0, name: '' })
-    addDisplayname(name)
-    setName({ displayName: '' })
-    setSelectedSpeciesId(1)
-    navigate('/')
+      setSelectedSpeciesId(1)
+      navigate('/')
+    }
   }
 
   if (species.loading) {

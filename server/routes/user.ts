@@ -12,9 +12,9 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
       return res.status(401).send('Unauthorized')
     }
     const user = await getUserByID(userId)
-    
+
     const exists = Boolean(user)
-   
+
     res.json({ exists })
   } catch (error) {
     console.error(error)
@@ -23,10 +23,14 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
 })
 
 //POST /api/v1/adduser
-router.post('/', async (req, res) => {
+router.post('/', checkJwt, async (req: JwtRequest, res) => {
   try {
     const displayName = req.body
-    const auth0Id = '4'
+    const auth0Id = req.auth?.sub
+    if (!auth0Id) {
+      console.error('No userId')
+      return res.status(401).send('Unauthorized')
+    }
     await addUser(auth0Id, displayName)
     res.status(200)
   } catch (error) {

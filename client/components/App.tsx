@@ -1,14 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect, useState } from 'react'
-import {
-  Routes,
-  Route,
-  Navigate,
-  useNavigate,
-  useLocation,
-  Outlet,
-} from 'react-router-dom'
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import { setAccessToken } from '../actions/tokenActions'
 import { checkUserData } from '../apis/displayName'
+import { useAppDispatch } from '../hooks/hooks'
 import Dashboard from './Dashboard'
 import Login from './Login'
 import MainLayout from './MainLayout'
@@ -24,11 +19,13 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
   const location = useLocation()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     async function fetchData() {
       try {
         const token = await getAccessTokenSilently()
+        dispatch(setAccessToken(token))
         const exists = await checkUserData(token)
 
         if (!exists && !location.pathname.includes('/creation')) {
@@ -44,7 +41,7 @@ function App() {
     if (isAuthenticated) {
       fetchData()
     }
-  }, [isAuthenticated, location, navigate, getAccessTokenSilently])
+  }, [isAuthenticated, location, dispatch, navigate, getAccessTokenSilently])
 
   if (auth0isLoading) {
     return <div>Loading</div>

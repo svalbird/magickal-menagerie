@@ -62,7 +62,7 @@ export default function WithSubnavigation() {
             fontSize={'sm'}
             fontWeight={400}
             variant={'link'}
-            href={'#'}
+            href={'/'}
           >
             Home
           </Link>
@@ -80,7 +80,7 @@ export default function WithSubnavigation() {
             variant={'link'}
             fontSize={'sm'}
             fontWeight={600}
-            href={'#'}
+            href={'/profiles'}
           >
             Profiles
           </Link>
