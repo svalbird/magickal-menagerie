@@ -1,8 +1,28 @@
 import express from 'express'
-import { addUser } from '../db/AddUserDb'
+import { getUserByID, addUser } from '../db/AddUserDb'
+import checkJwt, { JwtRequest } from '../auth0'
 
 const router = express.Router()
-//GET /api/v1/adduser
+
+router.get('/', checkJwt, async (req: JwtRequest, res) => {
+  try {
+    const userId = req.auth?.sub
+    if (!userId) {
+      console.error('No userId')
+      return res.status(401).send('Unauthorized')
+    }
+    const user = await getUserByID(userId)
+    
+    const exists = Boolean(user)
+   
+    res.json({ exists })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Internal server error' })
+  }
+})
+
+//POST /api/v1/adduser
 router.post('/', async (req, res) => {
   try {
     const displayName = req.body
@@ -16,3 +36,8 @@ router.post('/', async (req, res) => {
 })
 
 export default router
+
+// if (!userId) {
+//   console.error('No userId')
+//   return res.status(401).send('Unauthorized')
+// }
