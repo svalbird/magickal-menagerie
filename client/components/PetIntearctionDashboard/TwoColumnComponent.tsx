@@ -74,7 +74,7 @@ function TwoColumnComponent() {
               </Box>
             ))}
           </SimpleGrid>
-          <Box align="center" mt={4}>
+          <Box textAlign="center" mt={4}>
             <Button colorScheme="green">Feed your pet</Button>
           </Box>
         </Stack>
