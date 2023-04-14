@@ -35,7 +35,6 @@ export function getUserInventory(userId: number, db = connection) {
       'hp_fill as hpFill',
       'image'
     )
-
     .orderBy('inventory.id')
 }
 
