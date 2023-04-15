@@ -13,7 +13,7 @@ exports.seed = async function (knex) {
       name: 'Flit',
       xp_current: 0,
       hp_current: 100,
-      hunger_current: 100,
+      hunger_current: 80,
       level: 1,
     },
     {
@@ -23,7 +23,7 @@ exports.seed = async function (knex) {
       name: 'Grump',
       xp_current: 0,
       hp_current: 100,
-      hunger_current: 100,
+      hunger_current: 80,
       level: 1,
     },
     {

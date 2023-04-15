@@ -1,3 +1,4 @@
+import { PetIntData } from '../../Model/petInt'
 import connection from './connection'
 
 export function getPetInfo(userId: number, db = connection) {
@@ -14,7 +15,11 @@ export function getPetInfo(userId: number, db = connection) {
       'xp_current as xpCurrent',
       'hp_current as hpCurrent',
       'hunger_current as hungerCurrent',
-      'level'
+      'level',
+      'hp_max as hpMax',
+      'hunger_max as hungerMax',
+      'fave_food as faveFood',
+      'species.image'
     )
     .orderBy('pets.id')
 }
@@ -38,11 +43,15 @@ export function getUserInventory(userId: number, db = connection) {
     .orderBy('inventory.id')
 }
 
-export function updatePetInfo(newPet, db = connection) {
+export function updatePetInfo(newPet: PetIntData, db = connection) {
   const pet = newPet // extract the pet object from the newPet parameter
-  return db('pets').where('id', pet.id).update(pet) // update the pet object
+  console.log(pet)
+  return db('pets')
+    .where('id', newPet.id)
+    .update({ hunger_current: pet.hungerCurrent }) // update the pet object
 }
 
 export function deleteInventoryItem(id: number, db = connection) {
+  console.log(id)
   return db('inventory').where('id', id).delete()
 }
