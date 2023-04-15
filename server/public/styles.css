@@ -67,3 +67,19 @@
 	60% {transform: translateY(-15px);}
 }
 
+.world-map {
+  display:flex;
+  justify-content: center;
+}
+
+.location-desc {
+  display:flex;
+  justify-content: center;
+  width: 400px;
+}
+
+.world-display {
+  display:flex;
+  flex-direction:row;
+  
+}
