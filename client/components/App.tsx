@@ -7,8 +7,14 @@ import { useAppDispatch } from '../hooks/hooks'
 import Dashboard from './Dashboard'
 import Login from './Login'
 import MainLayout from './MainLayout'
+
+import WorldMap from './WorldMap'
+
 import PetCreation from './PetCreation'
+
 import Profiles from './Profiles'
+
+import PetInteractionDashboard from './PetIntearctionDashboard'
 
 function App() {
   const {
@@ -61,6 +67,12 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/creation" element={<PetCreation />} />
+          {/* <Route path="/login" element={<LandingPage />} /> */}
+          <Route path="/explore" element={<WorldMap />} />
+          <Route path="/creation" element={<PetCreation />} />
+          <Route path="/profiles" element={<Profiles />} />
+
+          <Route path="/petInteraction" element={<PetInteractionDashboard />} />
         </Route>
       </Routes>
     </>

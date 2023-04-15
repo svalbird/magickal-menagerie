@@ -7,12 +7,13 @@ export interface PetData {
   hpCurrent: number
   hungerCurrent: number
   level: number
-}
+  }
 
 export type NewPet = Omit<
   PetData,
   'id' | 'userId' | 'xpCurrent' | 'hpCurrent' | 'hungerCurrent' | 'level'
 >
+
 
 export interface AllPets {
   id: number
@@ -29,3 +30,4 @@ export interface AllPets {
   hungerMax: number
   hpMax: number
 }
+

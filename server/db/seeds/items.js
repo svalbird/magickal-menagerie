@@ -11,7 +11,8 @@ exports.seed = async function (knex) {
       name: 'Ice Cream',
       type: 'food',
       description: 'A swirl of vanilla soft-serve in a crunchy cone.',
-      image: '',
+      image:
+        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Strawberry.png',
       hunger_fill: 50,
     },
     {
@@ -20,7 +21,8 @@ exports.seed = async function (knex) {
       type: 'misc',
       description:
         'A rusty old bottle cap. It looks like the label has been scratched off.',
-      image: '',
+      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Apple.png',
+      hunger_fill: 10,
     },
     {
       id: 3,
@@ -28,7 +30,8 @@ exports.seed = async function (knex) {
       type: 'toy',
       description:
         'A colorful and floaty beach ball, perfect for a day in the sun.',
-      image: '',
+      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Beer.png',
+      hunger_fill: 12,
     },
     {
       id: 4,
@@ -36,8 +39,9 @@ exports.seed = async function (knex) {
       type: 'medicine',
       description:
         'A foul-smelling gel fills this container. It help soothe cuts and burns.',
-      image: '',
-      hp_fill: 50,
+      image:
+        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Cherry.png',
+      hunger_fill: 69,
     },
   ])
 }
