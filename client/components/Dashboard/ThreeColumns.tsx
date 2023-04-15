@@ -1,13 +1,21 @@
-import { ReactElement } from 'react';
-import { Box, SimpleGrid, Icon, Text, Stack, Flex } from '@chakra-ui/react';
-import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
+import { ReactElement } from 'react'
+import {
+  Box,
+  SimpleGrid,
+  Icon,
+  Text,
+  Stack,
+  Flex,
+  Button,
+} from '@chakra-ui/react'
+import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc'
+import { useNavigate } from 'react-router-dom'
 
 interface FeatureProps {
-  title: string;
-  text: string;
-  icon: ReactElement;
+  title: string
+  text: string
+  icon: ReactElement
 }
-
 
 const Feature = ({ title, text, icon }: FeatureProps) => {
   return (
@@ -20,19 +28,26 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
         color={'white'}
         rounded={'full'}
         bg={'gray.100'}
-        mb={1}>
+        mb={1}
+      >
         {icon}
       </Flex>
       <Text fontWeight={600}>{title}</Text>
       <Text color={'gray.600'}>{text}</Text>
     </Stack>
-  );
-};
+  )
+}
 
 export default function SimpleThreeColumns() {
+  const navigate = useNavigate()
+
+  function handleClick() {
+    navigate('/petInteraction')
+  }
   return (
     <Box p={4}>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+        <Button onClick={handleClick}>Pet Interaction</Button>
         <Feature
           icon={<Icon as={FcAssistant} w={10} h={10} />}
           title={'Lifetime Support'}
@@ -56,5 +71,5 @@ export default function SimpleThreeColumns() {
         />
       </SimpleGrid>
     </Box>
-  );
+  )
 }
