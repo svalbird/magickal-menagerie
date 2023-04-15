@@ -2,7 +2,11 @@ import { Routes, Route } from 'react-router-dom'
 import Dashboard from './Dashboard'
 import MainLayout from './MainLayout'
 import PetCreation from './PetCreation'
+
+import Profiles from './Profiles'
+
 import PetInteractionDashboard from './PetIntearctionDashboard'
+
 
 function App() {
   return (
@@ -12,7 +16,11 @@ function App() {
           <Route index element={<Dashboard />} />
           {/* <Route path="/login" element={<LandingPage />} /> */}
           <Route path="/creation" element={<PetCreation />} />
+
+          <Route path="/profiles" element={<Profiles />} />
+
           <Route path="/petInteraction" element={<PetInteractionDashboard />} />
+
         </Route>
       </Routes>
     </>

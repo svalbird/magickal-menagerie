@@ -21,7 +21,6 @@ export function getPetInfo(userId: number, db = connection) {
       'fave_food as faveFood',
       'species.image'
     )
-
     .orderBy('pets.id')
 }
 
@@ -41,9 +40,9 @@ export function getUserInventory(userId: number, db = connection) {
       'hp_fill as hpFill',
       'image'
     )
-
     .orderBy('inventory.id')
 }
+
 export function updatePetInfo(newPet: PetIntData, db = connection) {
   const pet = newPet // extract the pet object from the newPet parameter
   console.log(pet)
