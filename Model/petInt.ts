@@ -1,4 +1,4 @@
-export interface PetData {
+export interface PetIntData {
   id: number
   userId: number | string
   speciesId: number
@@ -7,10 +7,8 @@ export interface PetData {
   hpCurrent: number
   hungerCurrent: number
   level: number
-  }
-
-export type NewPet = Omit<
-  PetData,
-  'id' | 'userId' | 'xpCurrent' | 'hpCurrent' | 'hungerCurrent' | 'level'
->
-
+  hpMax: number
+  hungerMax: number
+  faveFood: string
+  image: string
+}

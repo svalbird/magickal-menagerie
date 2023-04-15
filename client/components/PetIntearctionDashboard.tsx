@@ -1,5 +1,9 @@
-import TwoColumnComponent from "./PetIntearctionDashboard/TwoColumnComponent";
+import TwoColumnComponent from './PetIntearctionDashboard/TwoColumnComponent'
 
 export default function PetInteractionDashboard() {
-return <TwoColumnComponent/>
+  return (
+    <>
+      <TwoColumnComponent />
+    </>
+  )
 }

@@ -12,7 +12,7 @@ function App() {
           <Route index element={<Dashboard />} />
           {/* <Route path="/login" element={<LandingPage />} /> */}
           <Route path="/creation" element={<PetCreation />} />
-          <Route path ="/petIntractions" element={<PetInteractionDashboard />}/>
+          <Route path="/petInteraction" element={<PetInteractionDashboard />} />
         </Route>
       </Routes>
     </>
