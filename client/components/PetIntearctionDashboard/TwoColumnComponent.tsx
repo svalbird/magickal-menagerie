@@ -15,7 +15,6 @@ import {
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { useEffect, useState } from 'react'
 import WaitIndicator from '../WaitIndicator'
-import { PetIntData } from '../../../Model/petInt'
 
 function TwoColumnComponent() {
   const { loading, error, data } = useAppSelector(

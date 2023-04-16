@@ -4,7 +4,11 @@ const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
-export function addPetDB(newPet: NewPet, userId: number, db = connection) {
+export function addPetDB(
+  newPet: NewPet,
+  userId: number | string,
+  db = connection
+) {
   return db('pets').insert({
     user_id: userId,
     species_id: newPet.speciesId,
