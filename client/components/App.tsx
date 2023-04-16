@@ -9,8 +9,7 @@ import PetCreation from './PetCreation'
 import Profiles from './Profiles'
 
 import PetInteractionDashboard from './PetIntearctionDashboard'
-
-
+import SandyCove from './Explore/SandyCove'
 
 function App() {
   return (
@@ -22,13 +21,13 @@ function App() {
 
           <Route path="/explore" element={<WorldMap />} />
 
+          <Route path="/sandy-cove" element={<SandyCove />} />
+
           <Route path="/creation" element={<PetCreation />} />
 
           <Route path="/profiles" element={<Profiles />} />
 
           <Route path="/petInteraction" element={<PetInteractionDashboard />} />
-
-
         </Route>
       </Routes>
     </>
