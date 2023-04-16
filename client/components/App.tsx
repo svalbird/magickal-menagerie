@@ -15,6 +15,7 @@ import PetCreation from './PetCreation'
 import Profiles from './Profiles'
 
 import PetInteractionDashboard from './PetIntearctionDashboard'
+import SandyCove from './Explore/SandyCove'
 
 function App() {
   const {
@@ -33,6 +34,7 @@ function App() {
         const token = await getAccessTokenSilently()
         dispatch(setAccessToken(token))
         const exists = await checkUserData(token)
+
 
         if (!exists && !location.pathname.includes('/creation')) {
           return navigate('/creation')
@@ -69,6 +71,10 @@ function App() {
           <Route path="/creation" element={<PetCreation />} />
           {/* <Route path="/login" element={<LandingPage />} /> */}
           <Route path="/explore" element={<WorldMap />} />
+
+          <Route path="/sandy-cove" element={<SandyCove />} />
+
+
           <Route path="/creation" element={<PetCreation />} />
           <Route path="/profiles" element={<Profiles />} />
 

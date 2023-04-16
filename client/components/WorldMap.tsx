@@ -1,6 +1,25 @@
 import { useState } from 'react'
 import WorldMapper from './Explore/WorldMapper'
 import { CustomArea } from 'react-img-mapper/dist/types'
+import { useNavigate } from 'react-router-dom'
+
+type LocationKey = {
+  [key: string]: string
+}
+
+const locationKey: LocationKey = {
+  'Sandy Cove': 'sandy-cove',
+  'Everdew Woods': 'everdew-forest',
+  'Umbral Marshes': 'umbral-marshes',
+  Bellston: 'bellston',
+  'Echoing Caves': 'echoing-caves',
+  'Port Wunder': 'port-wunder',
+  'The Fair Mistral': 'the-fair-mistral',
+  'Freefolk Foothills': 'freefolk-foothills',
+  'Lavender Oasis': 'lavender-oasis',
+  'Isle of Crimson': 'isle-of-crimson',
+  'Boreal Peaks': 'boreal-peaks',
+}
 
 function WorldMap() {
   const [hoveredLocation, setHoveredLocation] = useState('Select an area!')
@@ -15,6 +34,14 @@ function WorldMap() {
     setHoveredLocation('Select an area!')
   }
 
+  const navigate = useNavigate()
+  const routeChange = (area: CustomArea) => {
+    if (area.id) {
+      const path = locationKey[area.id]
+      navigate(`/${path}`)
+    }
+  }
+
   return (
     <div className="world-display">
       <div className="location-desc">
@@ -24,6 +51,7 @@ function WorldMap() {
         <WorldMapper
           onLocHover={onLocationHover}
           onLocLeave={onLocationStopHover}
+          onLocClick={routeChange}
         />
       </div>
     </div>

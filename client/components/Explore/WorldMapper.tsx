@@ -3,8 +3,9 @@ import mapData from '../../../server/db/json/map.json'
 import { useEffect, useState } from 'react'
 
 interface Props {
-  onLocHover?: any
-  onLocLeave?: any
+  onLocHover: any
+  onLocLeave: any
+  onLocClick: any
 }
 
 const WorldMapper = (props: Props) => {
@@ -34,6 +35,7 @@ const WorldMapper = (props: Props) => {
         responsive={true}
         onMouseEnter={props.onLocHover}
         onMouseLeave={props.onLocLeave}
+        onClick={props.onLocClick}
       />
     </div>
   )
