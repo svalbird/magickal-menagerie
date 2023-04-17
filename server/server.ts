@@ -20,10 +20,7 @@ server.use('/api/v1/species', speciesRoutes)
 server.use('/api/v1/pet', petRoutes)
 server.use('/api/v1/adduser', userRoutes)
 server.use('/api/v1/profiles', profilesRoutes)
-<<<<<<< HEAD
-=======
 server.use('/api/v1/wallet', walletRoutes)
->>>>>>> wallet-api
 
 server.get('*', (req, res) => {
   res.sendFile(join(__dirname, 'public', 'index.html'))
