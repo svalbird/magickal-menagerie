@@ -42,7 +42,7 @@ function SandyCove() {
         }
         break
       case 2:
-        if (user.data) {
+        if (user.data && user.data.money > 0) {
           const updatedUser = {
             id: user.data.id,
             auth0_id: user.data.auth0_id,
@@ -51,6 +51,8 @@ function SandyCove() {
           }
           dispatch(updateUser(updatedUser))
           setOption(3)
+        } else {
+          setOption(6)
         }
         break
       case 3:
@@ -136,7 +138,12 @@ function SandyCove() {
         <Image
           src={'Images/creature.gif'}
           alt={''}
-          style={{ position: 'absolute', bottom: '  0', width: '200px' }}
+          style={{
+            position: 'absolute',
+            left: '10%',
+            bottom: '40px',
+            width: '200px',
+          }}
         />
       </div>
     )
@@ -209,7 +216,12 @@ function SandyCove() {
         <Image
           src={'Images/creature.gif'}
           alt={''}
-          style={{ position: 'absolute', bottom: '  0', width: '200px' }}
+          style={{
+            position: 'absolute',
+            left: '10%',
+            bottom: '40px',
+            width: '200px',
+          }}
         />
       </div>
     )
@@ -285,7 +297,90 @@ function SandyCove() {
         <Image
           src={'Images/creature.gif'}
           alt={''}
-          style={{ position: 'absolute', bottom: '  0', width: '200px' }}
+          style={{
+            position: 'absolute',
+            left: '10%',
+            bottom: '40px',
+            width: '200px',
+          }}
+        />
+      </div>
+    )
+  }
+
+  //OUTPUT 6: NO MONEY FOR ICE CREAM
+  if (option === 6) {
+    return (
+      <div
+        style={{
+          backgroundImage: 'url(/Images/sandycove.jpg)',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'bottom',
+          backgroundSize: 'cover',
+          width: '100%',
+          height: '80vh',
+        }}
+      >
+        <Box
+          border="1px solid #E2E8F0"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+          p="4"
+          borderRadius="md"
+          width={200}
+          style={{
+            textAlign: 'center',
+            fontSize: 'large',
+            backgroundColor: 'rgba(255,255,255, 0.6)',
+          }}
+        >
+          <strong>Sandy Cove</strong>
+        </Box>
+        <Center>
+          <Flex direction="column" align="center">
+            <Box
+              border="1px solid #E2E8F0"
+              boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+              p="4"
+              borderRadius="md"
+              width={800}
+              style={{
+                textAlign: 'center',
+                fontSize: 'medium',
+                backgroundColor: 'rgba(255,255,255, 0.6)',
+              }}
+            >
+              {`Wandering up to a ramshackle hut on the edge of the sand, you hear a loud voice. "ICE CREAM? WANNA ICE CREAM?". There seems to be no-one there, but when you peer over the edge of the shop window, a tiny Fluttery with comically oversized spectacles grins up at you. "ICE CREAM?" he yells, not changing his volume despite being right in front of you. You look in your wallet, but there's no money inside. The man raises an eyebrow, then yells "NO MONEY NO ICE-CREAM!". You sadly wander back to the beach, ice-creamless.`}
+            </Box>
+            <Box
+              border="1px solid #E2E8F0"
+              boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+              p="4"
+              borderRadius="md"
+              width={800}
+              style={{
+                textAlign: 'center',
+                fontSize: 'medium',
+                backgroundColor: 'rgba(255,255,255, 0.6)',
+                marginTop: '10px',
+                fontStyle: 'italic',
+                fontWeight: 'bold',
+              }}
+              onClick={() => handleClick(0)}
+            >
+              {`Back`}
+            </Box>
+          </Flex>
+        </Center>
+
+        <Image
+          src={'Images/creature.gif'}
+          alt={''}
+          style={{
+            position: 'absolute',
+            left: '10%',
+            bottom: '40px',
+            width: '200px',
+          }}
         />
       </div>
     )
@@ -362,7 +457,12 @@ function SandyCove() {
         <Image
           src={'Images/creature.gif'}
           alt={''}
-          style={{ position: 'absolute', bottom: '  0', width: '200px' }}
+          style={{
+            position: 'absolute',
+            left: '10%',
+            bottom: '40px',
+            width: '200px',
+          }}
         />
       </div>
     )
@@ -435,7 +535,12 @@ function SandyCove() {
         <Image
           src={'Images/creature.gif'}
           alt={''}
-          style={{ position: 'absolute', bottom: '  0', width: '200px' }}
+          style={{
+            position: 'absolute',
+            left: '10%',
+            bottom: '40px',
+            width: '200px',
+          }}
         />
       </div>
     )
@@ -483,7 +588,7 @@ function SandyCove() {
           }}
         >
           {' '}
-          Current Money: ${user?.data?.money}{' '}
+          ${user?.data?.money}{' '}
         </Box>
       </Flex>
       <Center>
