@@ -15,7 +15,7 @@ import PetCreation from './PetCreation'
 import Profiles from './Profiles'
 
 import PetInteractionDashboard from './PetIntearctionDashboard'
-import SandyCove from './Explore/RefSandyCove'
+import SandyCove from './Explore/SandyCove'
 
 function App() {
   const {
