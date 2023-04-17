@@ -27,7 +27,7 @@ function SandyCove() {
         break
       case 1:
         if (rollChance(40)) {
-          if (user.data) {
+          if (user.data && user.data.money < 200) {
             const updatedUser = {
               id: user.data.id,
               auth0_id: user.data.auth0_id,
