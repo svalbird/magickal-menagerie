@@ -43,5 +43,25 @@ exports.seed = async function (knex) {
         '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Cherry.png',
       hunger_fill: 69,
     },
+    {
+      id: 5,
+      name: 'Temple Fruit',
+      type: 'food',
+      description:
+        'A delicious a mysterious fruit you found in some ruins on Sandy Cove.',
+      image:
+        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Cherry.png',
+      hunger_fill: 69,
+    },
+    {
+      id: 6,
+      name: 'Honey Bun',
+      type: 'food',
+      description:
+        'A warm and sweet-smelling bun, freshly baked from Honeybun Bakery in Bellston',
+      image:
+        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Cherry.png',
+      hunger_fill: 40,
+    },
   ])
 }
