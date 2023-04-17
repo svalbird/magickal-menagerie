@@ -35,7 +35,6 @@ function App() {
         dispatch(setAccessToken(token))
         const exists = await checkUserData(token)
 
-
         if (!exists && !location.pathname.includes('/creation')) {
           return navigate('/creation')
         }
@@ -73,7 +72,6 @@ function App() {
           <Route path="/explore" element={<WorldMap />} />
 
           <Route path="/sandy-cove" element={<SandyCove />} />
-
 
           <Route path="/creation" element={<PetCreation />} />
           <Route path="/profiles" element={<Profiles />} />

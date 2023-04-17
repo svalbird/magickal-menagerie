@@ -1,16 +1,32 @@
 // how do i create api routes to match the actions in petInteractions.ts in the database folder?
 import request from 'superagent'
 import { PetIntData } from '../../Model/petInt'
-import { Inventory } from '../../Model/inventory'
+import { Inventory, NewInventoryItem } from '../../Model/inventory'
 
 const rootUrl = '/api/v1'
 
-export async function getPetInteraction(): Promise<{
-  pets: PetIntData[]
-  inventory: Inventory[]
-}> {
+export async function getPetData(): Promise<PetIntData[]> {
   try {
-    const res = await request.get(`${rootUrl}/petInteraction`)
+    const res = await request.get(`${rootUrl}/petInteraction/pet`)
+    return res.body
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
+}
+
+export async function addInventoryItem(
+  item: NewInventoryItem
+): Promise<Inventory[]> {
+  const res = await request
+    .post(`${rootUrl}/petInteraction/addInventoryItem`)
+    .send({ item })
+  return res.body.inventory
+}
+
+export async function getInventoryData(): Promise<Inventory[]> {
+  try {
+    const res = await request.get(`${rootUrl}/petInteraction/inv`)
     return res.body
   } catch (err) {
     console.error(err)

@@ -8,6 +8,7 @@ import speciesRoutes from './routes/species'
 import petRoutes from './routes/pet'
 import userRoutes from './routes/user'
 import profilesRoutes from './routes/profiles'
+import walletRoutes from './routes/wallet'
 
 const server = express()
 
@@ -19,6 +20,8 @@ server.use('/api/v1/species', speciesRoutes)
 server.use('/api/v1/pet', petRoutes)
 server.use('/api/v1/adduser', userRoutes)
 server.use('/api/v1/profiles', profilesRoutes)
+server.use('/api/v1/wallet', walletRoutes)
+
 
 server.get('*', (req, res) => {
   res.sendFile(join(__dirname, 'public', 'index.html'))
