@@ -41,7 +41,4 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
 
 export default router
 
-// if (!userId) {
-//   console.error('No userId')
-//   return res.status(401).send('Unauthorized')
-// }
+

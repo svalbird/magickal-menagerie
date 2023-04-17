@@ -43,8 +43,6 @@ export function fetchInventory(token: string): ThunkAction {
       dispatch(setInventoryPending())
       const inventory = await getInventoryData(token)
       dispatch(setInventorySuccess(inventory))
-      // Handle success case
-      console.log('Inventory data retrieved successfully!')
     } catch (error) {
       if (error instanceof Error) {
         dispatch(setError(error.message))
@@ -63,7 +61,6 @@ export function addNewItem(item: NewInventoryItem, token: string): ThunkAction {
       const inventory = await getInventoryData(token)
       dispatch(setInventorySuccess(inventory))
       // Handle success case
-      console.log('New inventory item added successfully!')
     } catch (error) {
       if (error instanceof Error) {
         dispatch(setError(error.message))
@@ -83,7 +80,6 @@ export function spendInventoryItem(itemId: number, token: string): ThunkAction {
       // only fetch pet data
       dispatch(setInventorySuccess(inventory))
       // Handle success case
-      console.log('Inventory item deleted successfully!')
     } catch (error) {
       if (error instanceof Error) {
         dispatch(setError(error.message))

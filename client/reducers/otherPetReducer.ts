@@ -1,35 +1,35 @@
+import { PetIntData } from '../../Model/petInt'
 import {
-  ALLPETS_PENDING,
-  ALLPETS_SUCCESS,
+  OTHER_PET_PENDING,
+  OTHER_PET_SUCCESS,
   SET_ERROR,
-  AllPetsAction,
-} from '../actions/allpetActions'
-import { AllPets } from '../../Model/pet'
+  OtherPetAction,
+} from '../actions/otherPetActions'
 
-interface AllPetsState {
+interface OtherPetState {
   loading: boolean
   error: string | null
-  data: AllPets[] | null
+  data: PetIntData | null
 }
 
-const initialState: AllPetsState = {
+const initialState: OtherPetState = {
   loading: false,
   error: null,
   data: null,
 }
 
-const allPetsReducer = (
+const otherPetReducer = (
   state = initialState,
-  action: AllPetsAction
-): AllPetsState => {
+  action: OtherPetAction
+): OtherPetState => {
   switch (action.type) {
-    case ALLPETS_PENDING:
+    case OTHER_PET_PENDING:
       return {
         loading: true,
         error: null,
         data: null,
       }
-    case ALLPETS_SUCCESS:
+    case OTHER_PET_SUCCESS:
       return {
         loading: false,
         error: null,
@@ -46,4 +46,4 @@ const allPetsReducer = (
   }
 }
 
-export default allPetsReducer
+export default otherPetReducer

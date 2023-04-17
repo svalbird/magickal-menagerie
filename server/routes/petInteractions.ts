@@ -59,7 +59,6 @@ router.put('/', async (req, res) => {
 router.post('/addInventoryItem', async (req, res) => {
   try {
     const newItem: NewInventoryItem = req.body
-    console.log(newItem)
     await addANewItem(newItem)
     const pets = await getUserInventory(newItem.auth0Id)
     res.status(200).json(pets)

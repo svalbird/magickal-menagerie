@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom'
+
 import {
   Box,
   SimpleGrid,
@@ -8,36 +10,32 @@ import {
   Progress,
   Button,
 } from '@chakra-ui/react'
-import {
-  fetchPetData,
-  updatePetInteraction,
-} from '../../actions/petInteractions'
-import {
-  addNewItem,
-  fetchInventory,
-  spendInventoryItem,
-} from '../../actions/inventory'
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
+import { fetchInventory, spendInventoryItem } from '../actions/inventory'
+import { useAppDispatch, useAppSelector } from '../hooks/hooks'
 import { useEffect, useState } from 'react'
-import WaitIndicator from '../WaitIndicator'
+import WaitIndicator from './WaitIndicator'
+import { fetchOtherPetData, updatePet } from '../actions/otherPetActions'
 
-function TwoColumnComponent() {
+function OtherPetInteraction() {
   const inventory = useAppSelector((state) => state.inventory)
-  const petInteractions = useAppSelector((state) => state.petInteractions)
+  const otherPet = useAppSelector((state) => state.otherPet)
   const { accessToken } = useAppSelector((state) => state.token)
   const [selectItem, setSelectItem] = useState<number>(1)
   const dispatch = useAppDispatch()
+
+  const { petId } = useParams<{ petId: string }>()
+
   useEffect(() => {
-    if (accessToken) {
+    if (petId && accessToken) {
+      dispatch(fetchOtherPetData(parseInt(petId)))
       dispatch(fetchInventory(accessToken))
-      dispatch(fetchPetData(accessToken))
     }
-  }, [dispatch, accessToken])
+  }, [dispatch, petId, accessToken])
 
   function handleSubmit() {
     const itemId = selectItem
     if (
-      petInteractions.data &&
+      otherPet.data &&
       inventory.data &&
       inventory.data.length > 0 &&
       accessToken
@@ -45,37 +43,26 @@ function TwoColumnComponent() {
       const item = inventory.data.find((item) => item.id === itemId)
       const hungerFill = item ? item.hungerFill : 0
       const updatedHunger =
-        petInteractions.data[0].hungerCurrent + hungerFill > 100
+        otherPet.data.hungerCurrent + hungerFill > 100
           ? 100
-          : petInteractions.data[0].hungerCurrent + hungerFill
+          : otherPet.data.hungerCurrent + hungerFill
       const updatedPet = {
-        ...petInteractions.data[0],
+        ...otherPet.data,
         hungerCurrent: updatedHunger,
       }
 
-      dispatch(updatePetInteraction(updatedPet, accessToken))
+      dispatch(updatePet(updatedPet))
       dispatch(spendInventoryItem(itemId, accessToken))
     }
   }
 
-  function handleSubmit2() {
-    if (petInteractions.data && accessToken) {
-      const newItem = {
-        auth0Id: petInteractions.data[0].auth0Id,
-        itemId: 1,
-      }
-
-      dispatch(addNewItem(newItem, accessToken))
-    }
-  }
-
-  return (
+    return (
     <div>
-      {(petInteractions.loading || inventory.loading) && <WaitIndicator />}
-      {petInteractions.error && <p>{petInteractions.error}</p>}
-      {inventory.error && <p>{inventory.error}</p>}
+      {(otherPet.loading || inventory.loading) && <WaitIndicator />}
+      {otherPet.error && <></>}
+      {inventory.error && <></>}
 
-      {petInteractions.data && inventory.data ? (
+      {otherPet.data && inventory.data ? (
         <Box p={4} maxW="1200px" mx="auto">
           <SimpleGrid
             columns={{ base: 1, md: 2 }}
@@ -93,7 +80,7 @@ function TwoColumnComponent() {
             >
               <Box w="100%" h="60%">
                 <Image
-                  src={petInteractions.data[0].image}
+                  src={otherPet.data.image}
                   alt="gif"
                   w="100%"
                   h="100%"
@@ -109,31 +96,26 @@ function TwoColumnComponent() {
                   h="100%"
                 >
                   <Box>
-                    <Text fontWeight={600}>
-                      Level: {petInteractions.data[0].level}
-                    </Text>
+                    <Text fontWeight={600}>Level: {otherPet.data.level}</Text>
                     <Progress
-                      value={petInteractions.data[0].level}
+                      value={otherPet.data.level}
                       size="xs"
                       colorScheme="green"
                     />
                   </Box>
                   <Box>
                     <Text color={'gray.600'}>
-                      Exp: {`${petInteractions.data[0].xpCurrent} / 100`}
+                      Exp: {`${otherPet.data.xpCurrent} / 100`}
                     </Text>
-                    <Progress
-                      value={petInteractions.data[0].xpCurrent}
-                      size="xs"
-                    />
+                    <Progress value={otherPet.data.xpCurrent} size="xs" />
                   </Box>
                   <Box>
                     <Text fontWeight={600}>
                       Health:
-                      {`${petInteractions.data[0].hpCurrent} / ${petInteractions.data[0].hpMax}`}
+                      {`${otherPet.data.hpCurrent} / ${otherPet.data.hpMax}`}
                     </Text>
                     <Progress
-                      value={petInteractions.data[0].hpCurrent}
+                      value={otherPet.data.hpCurrent}
                       size="xs"
                       colorScheme="red"
                     />
@@ -141,10 +123,10 @@ function TwoColumnComponent() {
                   <Box>
                     <Text color={'gray.600'}>
                       Hunger:
-                      {`${petInteractions.data[0].hungerCurrent} / ${petInteractions.data[0].hungerMax}`}
+                      {`${otherPet.data.hungerCurrent} / ${otherPet.data.hungerMax}`}
                     </Text>
                     <Progress
-                      value={petInteractions.data[0].hungerCurrent}
+                      value={otherPet.data.hungerCurrent}
                       size="xs"
                       colorScheme="orange"
                     />
@@ -186,13 +168,6 @@ function TwoColumnComponent() {
                 <Button colorScheme="blue" type="submit" onClick={handleSubmit}>
                   Feed your pet
                 </Button>
-                <Button
-                  colorScheme="blue"
-                  type="submit"
-                  onClick={handleSubmit2}
-                >
-                  Add inventory
-                </Button>
               </Box>
             </Stack>
           </SimpleGrid>
@@ -214,4 +189,4 @@ function TwoColumnComponent() {
   )
 }
 
-export default TwoColumnComponent
+export default OtherPetInteraction
