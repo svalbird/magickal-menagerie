@@ -2,8 +2,7 @@ import request from 'superagent'
 import { PetIntData } from '../../Model/petInt'
 
 export async function getPetByID(petId: number): Promise<PetIntData> {
-  const response = await request.get(`/api/v1/otherPet/${petId}`)
-  console.log(response.body)
+  const response = await request.get(`/api/v1/otherPet/${petId}`)  
   return response.body
 }
 

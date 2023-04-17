@@ -30,7 +30,6 @@ const otherPetReducer = (
         data: null,
       }
     case OTHER_PET_SUCCESS:
-      console.log(action.payload)
       return {
         loading: false,
         error: null,

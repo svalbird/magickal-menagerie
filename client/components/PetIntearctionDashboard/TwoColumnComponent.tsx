@@ -33,8 +33,6 @@ function TwoColumnComponent() {
       dispatch(fetchPetData(accessToken))
     }
   }, [dispatch, accessToken])
-  console.log(petInteractions.data)
-  console.log(inventory.data)
 
   function handleSubmit() {
     const itemId = selectItem
@@ -54,7 +52,7 @@ function TwoColumnComponent() {
         ...petInteractions.data[0],
         hungerCurrent: updatedHunger,
       }
-      console.log(updatedPet)
+
       dispatch(updatePetInteraction(updatedPet, accessToken))
       dispatch(spendInventoryItem(itemId, accessToken))
     }
@@ -66,7 +64,7 @@ function TwoColumnComponent() {
         auth0Id: petInteractions.data[0].auth0Id,
         itemId: 1,
       }
-      console.log('new item', newItem)
+
       dispatch(addNewItem(newItem, accessToken))
     }
   }

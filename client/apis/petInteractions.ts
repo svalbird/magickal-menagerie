@@ -1,4 +1,3 @@
-// how do i create api routes to match the actions in petInteractions.ts in the database folder?
 import request from 'superagent'
 import { PetIntData } from '../../Model/petInt'
 import { Inventory, NewInventoryItem } from '../../Model/inventory'

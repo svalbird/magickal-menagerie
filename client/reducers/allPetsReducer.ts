@@ -9,13 +9,13 @@ import { AllPets } from '../../Model/pet'
 interface AllPetsState {
   loading: boolean
   error: string | null
-  data: AllPets[] | []
+  data: AllPets[] | null
 }
 
 const initialState: AllPetsState = {
   loading: false,
   error: null,
-  data: [],
+  data: null,
 }
 
 const allPetsReducer = (
@@ -27,7 +27,7 @@ const allPetsReducer = (
       return {
         loading: true,
         error: null,
-        data: [],
+        data: null,
       }
     case ALLPETS_SUCCESS:
       return {
@@ -39,7 +39,7 @@ const allPetsReducer = (
       return {
         loading: false,
         error: action.payload,
-        data: [],
+        data: null,
       }
     default:
       return state

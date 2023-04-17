@@ -56,9 +56,7 @@ function OtherPetInteraction() {
     }
   }
 
-  console.log(inventory.data)
-
-  return (
+    return (
     <div>
       {(otherPet.loading || inventory.loading) && <WaitIndicator />}
       {otherPet.error && <></>}
