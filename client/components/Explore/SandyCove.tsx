@@ -1,7 +1,7 @@
 import Location from './Location'
 
 function SandyCove() {
-  const sandyCoveInfo = {
+  const info = {
     bgImage: 'sandycove.jpg',
     locationName: 'Sandy Cove',
     locationText: `As you arrive in Sandy Cove, you can smell the sea and feel the hot
@@ -48,10 +48,10 @@ function SandyCove() {
   return (
     <div>
       <Location
-        bgImage={sandyCoveInfo.bgImage}
-        locationName={sandyCoveInfo.locationName}
-        locationText={sandyCoveInfo.locationText}
-        events={sandyCoveInfo.events}
+        bgImage={info.bgImage}
+        locationName={info.locationName}
+        locationText={info.locationText}
+        events={info.events}
       />
     </div>
   )
