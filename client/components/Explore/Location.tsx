@@ -2,16 +2,15 @@ import { Flex, Center, Box, Image } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { fetchUser, updateUser } from '../../actions/walletActions'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
+import { addNewItem } from '../../actions/inventory'
+import { updatePetInteraction } from '../../actions/petInteractions'
+import { useNavigate } from 'react-router-dom'
 
 interface Outcome {
   outcomeText: string
   changeMoney?: number
-  changeHP?: number
-  changeXP?: number
   changeHunger?: number
   addItem?: number
-  checkItem?: number
-  removeItem?: number
 }
 
 export interface Event {
@@ -32,6 +31,8 @@ function Location(props: Props) {
   const dispatch = useAppDispatch()
   const { accessToken } = useAppSelector((state) => state.token)
   const user = useAppSelector((state) => state.user)
+  const pet = useAppSelector((state) => state.petInteractions)
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (accessToken) dispatch(fetchUser(accessToken))
@@ -61,6 +62,32 @@ function Location(props: Props) {
                 }
                 dispatch(updateUser(updatedUser))
               }
+              if (eventSet.outcomes[0].addItem && accessToken) {
+                const newItem = {
+                  auth0Id: user.data.auth0_id,
+                  itemId: eventSet.outcomes[0].addItem,
+                }
+                dispatch(addNewItem(newItem, accessToken))
+              }
+              if (
+                accessToken &&
+                pet.data &&
+                eventSet.outcomes[0].changeHunger
+              ) {
+                const updatedHunger =
+                  pet.data[0].hungerCurrent +
+                    eventSet.outcomes[0].changeHunger >
+                  100
+                    ? 100
+                    : pet.data[0].hungerCurrent +
+                      eventSet.outcomes[0].changeHunger
+                const newPetData = {
+                  ...pet.data[0],
+                  hungerCurrent: updatedHunger,
+                }
+                dispatch(updatePetInteraction(newPetData, accessToken))
+              }
+
               setOption([index, 0])
             } else if (user.data) {
               if (eventSet.outcomes[1].changeMoney) {
@@ -71,6 +98,31 @@ function Location(props: Props) {
                   money: user.data.money + eventSet.outcomes[1].changeMoney,
                 }
                 dispatch(updateUser(updatedUser))
+              }
+              if (eventSet.outcomes[1].addItem && accessToken) {
+                const newItem = {
+                  auth0Id: user.data.auth0_id as string,
+                  itemId: eventSet.outcomes[0].addItem as number,
+                }
+                dispatch(addNewItem(newItem, accessToken))
+              }
+              if (
+                accessToken &&
+                pet.data &&
+                eventSet.outcomes[0].changeHunger
+              ) {
+                const updatedHunger =
+                  pet.data[0].hungerCurrent +
+                    eventSet.outcomes[0].changeHunger >
+                  100
+                    ? 100
+                    : pet.data[0].hungerCurrent +
+                      eventSet.outcomes[0].changeHunger
+                const newPetData = {
+                  ...pet.data[0],
+                  hungerCurrent: updatedHunger,
+                }
+                dispatch(updatePetInteraction(newPetData, accessToken))
               }
               setOption([index, 1])
             }
@@ -89,6 +141,31 @@ function Location(props: Props) {
                   money: user.data.money + eventSet.outcomes[0].changeMoney,
                 }
                 dispatch(updateUser(updatedUser))
+                if (eventSet.outcomes[0].addItem && accessToken) {
+                  const newItem = {
+                    auth0Id: user.data.auth0_id,
+                    itemId: eventSet.outcomes[0].addItem,
+                  }
+                  dispatch(addNewItem(newItem, accessToken))
+                }
+                if (
+                  accessToken &&
+                  pet.data &&
+                  eventSet.outcomes[0].changeHunger
+                ) {
+                  const updatedHunger =
+                    pet.data[0].hungerCurrent +
+                      eventSet.outcomes[0].changeHunger >
+                    100
+                      ? 100
+                      : pet.data[0].hungerCurrent +
+                        eventSet.outcomes[0].changeHunger
+                  const newPetData = {
+                    ...pet.data[0],
+                    hungerCurrent: updatedHunger,
+                  }
+                  dispatch(updatePetInteraction(newPetData, accessToken))
+                }
                 setOption([index, 0])
               }
             } else {
@@ -259,6 +336,24 @@ function Location(props: Props) {
                 </Box>
               )
             })}
+            <Box
+              border="1px solid #E2E8F0"
+              boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+              p="4"
+              borderRadius="md"
+              width={800}
+              style={{
+                textAlign: 'center',
+                fontSize: 'medium',
+                backgroundColor: 'rgba(255,255,255, 0.6)',
+                marginTop: '10px',
+                fontStyle: 'italic',
+                fontWeight: 'bold',
+              }}
+              onClick={() => navigate(`/explore`)}
+            >
+              Return to the map
+            </Box>
           </Flex>
         </Center>
 

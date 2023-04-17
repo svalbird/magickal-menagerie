@@ -12,6 +12,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchPetData } from '../../actions/petInteractions'
 import { useNavigate } from 'react-router-dom'
+import Playground from '../Playground'
 
 export default function SimpleThreeColumns() {
   const petInteractions = useAppSelector((state) => state.petInteractions)
@@ -166,6 +167,8 @@ export default function SimpleThreeColumns() {
           spacing={4}
           maxW="500px"
         ></Stack>
+        <Playground />
+
       </SimpleGrid>
     </Box>
   )
