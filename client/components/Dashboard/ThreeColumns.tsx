@@ -35,7 +35,7 @@ export default function SimpleThreeColumns() {
             boxShadow="lg"
             borderRadius="md"
             p={4}
-            maxW="500px"
+            maxW="750px"
           >
             <Box w="100%" h="60%">
               <Text align={'center'} fontWeight={600} fontSize="2xl">
@@ -102,9 +102,11 @@ export default function SimpleThreeColumns() {
                 <Button
                   colorScheme="blue"
                   mr={3}
-                  onClick={() =>
-                    navigate(`/petinteraction/${petInteractions.data[0].id}`)
-                  }
+                  onClick={() => {
+                    if (petInteractions.data) {
+                      navigate(`/petinteraction/${petInteractions.data[0].id}`)
+                    }
+                  }}
                 >
                   {`Play with ${petInteractions.data[0].petName}`}
                 </Button>
@@ -121,7 +123,7 @@ export default function SimpleThreeColumns() {
           borderRadius="md"
           p={4}
           spacing={4}
-          maxW="500px"
+          maxW="750px"
         >
           <Stack
             w="100%"
@@ -131,7 +133,7 @@ export default function SimpleThreeColumns() {
             borderRadius="md"
             p={4}
             spacing={4}
-            maxW="500px"
+            maxW="750px"
           >
             <Text fontWeight={600}>{`Magickland News`}</Text>
             <Text color={'gray.600'}>{`It's a sunny day!`}</Text>
@@ -148,7 +150,7 @@ export default function SimpleThreeColumns() {
             borderRadius="md"
             p={4}
             spacing={4}
-            maxW="500px"
+            maxW="750px"
           >
             <Text fontWeight={600}>{`Latest Activity`}</Text>
             <Text color={'gray.600'}>Billy joined Magick Menagerie!</Text>
@@ -165,10 +167,10 @@ export default function SimpleThreeColumns() {
           borderRadius="md"
           p={4}
           spacing={4}
-          maxW="500px"
-        ></Stack>
-        <Playground />
-
+          maxW="750px"
+        >
+          <Playground />
+        </Stack>
       </SimpleGrid>
     </Box>
   )
