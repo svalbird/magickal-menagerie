@@ -16,6 +16,7 @@ import Profiles from './Profiles'
 
 import PetInteractionDashboard from './PetIntearctionDashboard'
 import SandyCove from './Explore/SandyCove'
+import OtherPetInteraction from './OtherPetInteractions'
 
 function App() {
   const {
@@ -68,7 +69,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/creation" element={<PetCreation />} />
-          {/* <Route path="/login" element={<LandingPage />} /> */}
+
           <Route path="/explore" element={<WorldMap />} />
 
           <Route path="/sandy-cove" element={<SandyCove />} />
@@ -77,6 +78,10 @@ function App() {
           <Route path="/profiles" element={<Profiles />} />
 
           <Route path="/petInteraction" element={<PetInteractionDashboard />} />
+          <Route
+            path="/petinteraction/:petId"
+            element={<OtherPetInteraction />}
+          />
         </Route>
       </Routes>
     </>
