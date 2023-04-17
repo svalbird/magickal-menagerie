@@ -10,7 +10,7 @@ interface Outcome {
   changeXP: number
 }
 
-interface Event {
+export interface Event {
   choiceText: string
   outcomes: Outcome[]
   chance: number

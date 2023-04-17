@@ -15,8 +15,8 @@ import PetCreation from './PetCreation'
 import Profiles from './Profiles'
 
 import PetInteractionDashboard from './PetIntearctionDashboard'
-import SandyCove from './Explore/SandyCove'
-import TestSandyCove from './Explore/TestSandyCove'
+import SandyCove from './Explore/RefSandyCove'
+import TestSandyCove from './Explore/SandyCove'
 
 function App() {
   const {
@@ -72,7 +72,7 @@ function App() {
           {/* <Route path="/login" element={<LandingPage />} /> */}
           <Route path="/explore" element={<WorldMap />} />
 
-          <Route path="/sandy-cove" element={<TestSandyCove />} />
+          <Route path="/sandy-cove" element={<SandyCove />} />
 
           <Route path="/creation" element={<PetCreation />} />
           <Route path="/profiles" element={<Profiles />} />
