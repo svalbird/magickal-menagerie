@@ -9,3 +9,8 @@ export interface Inventory {
   hpFill: number
   image: string
 }
+
+export interface NewInventoryItem {
+  userId: number | string
+  itemId: number
+}

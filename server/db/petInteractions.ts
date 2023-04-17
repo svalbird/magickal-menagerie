@@ -1,7 +1,8 @@
 import { PetIntData } from '../../Model/petInt'
 import connection from './connection'
+import { NewInventoryItem } from '../../Model/inventory'
 
-export function getPetInfo(userId: number, db = connection) {
+export function getPetInfo(userId: number | string, db = connection) {
   return db('pets')
     .join('user', 'pets.user_id', 'user.id')
     .join('species', 'pets.species_id', 'species.id')
@@ -24,7 +25,7 @@ export function getPetInfo(userId: number, db = connection) {
     .orderBy('pets.id')
 }
 
-export function getUserInventory(userId: number, db = connection) {
+export function getUserInventory(userId: number | string, db = connection) {
   return db('inventory')
     .join('user', 'inventory.user_id', 'user.id')
     .join('items', 'inventory.item_id', 'items.id')
@@ -45,13 +46,18 @@ export function getUserInventory(userId: number, db = connection) {
 
 export function updatePetInfo(newPet: PetIntData, db = connection) {
   const pet = newPet // extract the pet object from the newPet parameter
-  console.log(pet)
   return db('pets')
     .where('id', newPet.id)
     .update({ hunger_current: pet.hungerCurrent }) // update the pet object
 }
 
+export function addANewItem(addItem: NewInventoryItem, db = connection) {
+  return db('inventory').insert({
+    user_id: addItem.userId,
+    item_id: addItem.itemId,
+  })
+}
+
 export function deleteInventoryItem(id: number, db = connection) {
-  console.log(id)
   return db('inventory').where('id', id).delete()
 }

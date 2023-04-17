@@ -9,39 +9,43 @@ import {
   Button,
 } from '@chakra-ui/react'
 import {
-  fetchPetInteraction,
-  updatePetInteractionAndDeleteInventoryItem,
+  fetchPetData,
+  updatePetInteraction,
 } from '../../actions/petInteractions'
+import { fetchInventory, spendInventoryItem } from '../../actions/inventory'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { useEffect, useState } from 'react'
 import WaitIndicator from '../WaitIndicator'
 
 function TwoColumnComponent() {
-  const { loading, error, data } = useAppSelector(
-    (state) => state.petInteractions
-  )
+  const inventory = useAppSelector((state) => state.inventory)
+  const petInteractions = useAppSelector((state) => state.petInteractions)
   const [selectItem, setSelectItem] = useState<number>(1)
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(fetchPetInteraction())
+    dispatch(fetchInventory())
+    dispatch(fetchPetData())
   }, [dispatch])
+  console.log(petInteractions.data)
+  console.log(inventory.data)
 
   function handleSubmit() {
     const itemId = selectItem
     console.log('item', itemId)
-    if (data && data.inventory && data.inventory.length > 0) {
-      const item = data.inventory.find((item) => item.id === itemId)
+    if (petInteractions.data && inventory.data && inventory.data.length > 0) {
+      const item = inventory.data.find((item) => item.id === itemId)
       const hungerFill = item ? item.hungerFill : 0
       const updatedHunger =
-        data.pets[0].hungerCurrent + hungerFill > 100
+        petInteractions.data[0].hungerCurrent + hungerFill > 100
           ? 100
-          : data.pets[0].hungerCurrent + hungerFill
+          : petInteractions.data[0].hungerCurrent + hungerFill
       const updatedPet = {
-        ...data.pets[0],
+        ...petInteractions.data[0],
         hungerCurrent: updatedHunger,
       }
       console.log(updatedPet)
-      dispatch(updatePetInteractionAndDeleteInventoryItem(updatedPet, itemId))
+      dispatch(updatePetInteraction(updatedPet))
+      dispatch(spendInventoryItem(itemId))
     }
   }
 
@@ -52,10 +56,11 @@ function TwoColumnComponent() {
 
   return (
     <div>
-      {loading && <WaitIndicator />}
-      {error && <p>{error}</p>}
+      {(petInteractions.loading || inventory.loading) && <WaitIndicator />}
+      {petInteractions.error && <p>{petInteractions.error}</p>}
+      {inventory.error && <p>{inventory.error}</p>}
 
-      {data ? (
+      {petInteractions.data && inventory.data ? (
         <Box p={4} maxW="1200px" mx="auto">
           <SimpleGrid
             columns={{ base: 1, md: 2 }}
@@ -73,7 +78,7 @@ function TwoColumnComponent() {
             >
               <Box w="100%" h="60%">
                 <Image
-                  src={data?.pets[0].image}
+                  src={petInteractions.data[0].image}
                   alt="gif"
                   w="100%"
                   h="100%"
@@ -89,26 +94,31 @@ function TwoColumnComponent() {
                   h="100%"
                 >
                   <Box>
-                    <Text fontWeight={600}>Level: {data?.pets[0].level}</Text>
+                    <Text fontWeight={600}>
+                      Level: {petInteractions.data[0].level}
+                    </Text>
                     <Progress
-                      value={data?.pets[0].level}
+                      value={petInteractions.data[0].level}
                       size="xs"
                       colorScheme="green"
                     />
                   </Box>
                   <Box>
                     <Text color={'gray.600'}>
-                      Exp: {`${data?.pets[0].xpCurrent} / 100`}
+                      Exp: {`${petInteractions.data[0].xpCurrent} / 100`}
                     </Text>
-                    <Progress value={data?.pets[0].xpCurrent} size="xs" />
+                    <Progress
+                      value={petInteractions.data[0].xpCurrent}
+                      size="xs"
+                    />
                   </Box>
                   <Box>
                     <Text fontWeight={600}>
                       Health:
-                      {`${data?.pets[0].hpCurrent} / ${data?.pets[0].hpMax}`}
+                      {`${petInteractions.data[0].hpCurrent} / ${petInteractions.data[0].hpMax}`}
                     </Text>
                     <Progress
-                      value={data?.pets[0].hpCurrent}
+                      value={petInteractions.data[0].hpCurrent}
                       size="xs"
                       colorScheme="red"
                     />
@@ -116,10 +126,10 @@ function TwoColumnComponent() {
                   <Box>
                     <Text color={'gray.600'}>
                       Hunger:
-                      {`${data?.pets[0].hungerCurrent} / ${data?.pets[0].hungerMax}`}
+                      {`${petInteractions.data[0].hungerCurrent} / ${petInteractions.data[0].hungerMax}`}
                     </Text>
                     <Progress
-                      value={data?.pets[0].hungerCurrent}
+                      value={petInteractions.data[0].hungerCurrent}
                       size="xs"
                       colorScheme="orange"
                     />
@@ -137,7 +147,7 @@ function TwoColumnComponent() {
               maxW="500px"
             >
               <SimpleGrid columns={3} spacing={4} w="100%" h="100%">
-                {data?.inventory.map((elem) => (
+                {inventory.data.map((elem) => (
                   <Box
                     key={elem.id}
                     w="125px"
