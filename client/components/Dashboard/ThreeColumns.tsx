@@ -1,3 +1,4 @@
+
 import { ReactElement, useEffect } from 'react'
 import {
   Box,
@@ -12,6 +13,7 @@ import {
 import { FcDonate, FcInTransit } from 'react-icons/fc'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchPetData } from '../../actions/petInteractions'
+
 
 interface FeatureProps {
   title: string
@@ -41,6 +43,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
 }
 
 export default function SimpleThreeColumns() {
+
   const petInteractions = useAppSelector((state) => state.petInteractions)
   const dispatch = useAppDispatch()
   useEffect(() => {
@@ -121,6 +124,7 @@ export default function SimpleThreeColumns() {
             </Box>
           </Stack>
         )}
+
         <Feature
           icon={<Icon as={FcDonate} w={10} h={10} />}
           title={'Unlimited Donations'}
