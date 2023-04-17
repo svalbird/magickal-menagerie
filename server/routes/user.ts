@@ -15,7 +15,7 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
 
     const exists = Boolean(user)
 
-    res.json({ exists })
+    res.status(200).json({ exists })
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Internal server error' })
