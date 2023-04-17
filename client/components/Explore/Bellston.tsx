@@ -13,6 +13,7 @@ function Bellston() {
           {
             outcomeText: `You wander into Honeybun Bakery, and the waft of fresh bread is overwhelming and delicious. There's quite a queue to the register, but despite the number of customers, the baker takes your order earnestly, and hands you a still-warm honey bun. You gain a honeybun!`,
             changeMoney: -50,
+            addItem: 6,
           },
         ],
       },
