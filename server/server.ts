@@ -22,6 +22,7 @@ server.use('/api/v1/adduser', userRoutes)
 server.use('/api/v1/profiles', profilesRoutes)
 server.use('/api/v1/wallet', walletRoutes)
 
+
 server.get('*', (req, res) => {
   res.sendFile(join(__dirname, 'public', 'index.html'))
 })
