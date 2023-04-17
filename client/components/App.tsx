@@ -16,6 +16,7 @@ import Profiles from './Profiles'
 
 import PetInteractionDashboard from './PetIntearctionDashboard'
 import SandyCove from './Explore/SandyCove'
+import Bellston from './Explore/Bellston'
 
 function App() {
   const {
@@ -72,6 +73,7 @@ function App() {
           <Route path="/explore" element={<WorldMap />} />
 
           <Route path="/sandy-cove" element={<SandyCove />} />
+          <Route path="/bellston" element={<Bellston />} />
 
           <Route path="/creation" element={<PetCreation />} />
           <Route path="/profiles" element={<Profiles />} />

@@ -74,19 +74,26 @@ function Location(props: Props) {
               }
               setOption([index, 1])
             }
-          } else if (user.data && user.data.money <= 0) {
-            setOption([-2, 0])
           } else if (user.data) {
             if (eventSet.outcomes[0].changeMoney) {
-              const updatedUser = {
-                id: user.data.id,
-                auth0_id: user.data.auth0_id,
-                display_name: user.data.display_name,
-                money: user.data.money + eventSet.outcomes[0].changeMoney,
+              if (
+                eventSet.outcomes[0].changeMoney < 0 &&
+                user.data.money < Math.abs(eventSet.outcomes[0].changeMoney)
+              ) {
+                setOption([-2, 0])
+              } else {
+                const updatedUser = {
+                  id: user.data.id,
+                  auth0_id: user.data.auth0_id,
+                  display_name: user.data.display_name,
+                  money: user.data.money + eventSet.outcomes[0].changeMoney,
+                }
+                dispatch(updateUser(updatedUser))
+                setOption([index, 0])
               }
-              dispatch(updateUser(updatedUser))
+            } else {
+              setOption([index, 0])
             }
-            setOption([index, 0])
           }
         }
       })
@@ -230,7 +237,6 @@ function Location(props: Props) {
               {`${props.locationText}`}
             </Box>
             {props.events.map((eventSet, index) => {
-              console.log(index)
               return (
                 <Box
                   key={index}
