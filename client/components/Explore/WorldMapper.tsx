@@ -10,9 +10,9 @@ interface Props {
 
 const WorldMapper = (props: Props) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-  const URL = '/Images/map.jpg'
+  const url = '/Images/map.jpg'
 
-  const MAP = {
+  const mapDataObj = {
     name: 'world-map',
     areas: mapData,
   }
@@ -29,8 +29,8 @@ const WorldMapper = (props: Props) => {
   return (
     <div>
       <ImageMapper
-        src={URL}
-        map={MAP}
+        src={url}
+        map={mapDataObj}
         parentWidth={windowWidth * ratio}
         responsive={true}
         onMouseEnter={props.onLocHover}
