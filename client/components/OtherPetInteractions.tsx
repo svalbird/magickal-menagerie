@@ -56,7 +56,7 @@ function OtherPetInteraction() {
     }
   }
 
-    return (
+  return (
     <div>
       {(otherPet.loading || inventory.loading) && <WaitIndicator />}
       {otherPet.error && <></>}
@@ -79,16 +79,20 @@ function OtherPetInteraction() {
               maxW="500px"
             >
               <Box w="100%" h="60%">
+                <Text align={'center'} fontWeight={600} fontSize="2xl">
+                  {otherPet.data.petName}
+                </Text>
                 <Image
                   src={otherPet.data.image}
                   alt="gif"
                   w="100%"
                   h="100%"
-                  objectFit="cover"
+                  objectFit="contain"
                   borderRadius="md"
+                  p={6}
                 />
               </Box>
-              <Box h="40%" mb={4}>
+              <Box h="40%" mb={4} position="relative">
                 <Flex
                   direction="column"
                   alignItems="center"

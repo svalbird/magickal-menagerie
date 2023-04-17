@@ -2,7 +2,7 @@ export interface PetIntData {
   id: number
   auth0Id: string
   speciesId: number
-  name: string
+  petName: string
   xpCurrent: number
   hpCurrent: number
   hungerCurrent: number
