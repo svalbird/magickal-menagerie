@@ -1,4 +1,5 @@
-import { ReactElement } from 'react'
+
+import { ReactElement, useEffect } from 'react'
 import {
   Box,
   SimpleGrid,
@@ -6,10 +7,13 @@ import {
   Text,
   Stack,
   Flex,
-  Button,
+  Image,
+  Progress,
 } from '@chakra-ui/react'
-import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc'
-import { useNavigate } from 'react-router-dom'
+import { FcDonate, FcInTransit } from 'react-icons/fc'
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
+import { fetchPetData } from '../../actions/petInteractions'
+
 
 interface FeatureProps {
   title: string
@@ -39,22 +43,88 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
 }
 
 export default function SimpleThreeColumns() {
-  const navigate = useNavigate()
 
-  function handleClick() {
-    navigate('/petInteraction')
-  }
+  const petInteractions = useAppSelector((state) => state.petInteractions)
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(fetchPetData())
+  }, [dispatch])
   return (
     <Box p={4}>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
-        <Button onClick={handleClick}>Pet Interaction</Button>
-        <Feature
-          icon={<Icon as={FcAssistant} w={10} h={10} />}
-          title={'Lifetime Support'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
-        />
+        {petInteractions.data && (
+          <Stack
+            w="100%"
+            h="100%"
+            bg="white"
+            boxShadow="lg"
+            borderRadius="md"
+            p={4}
+            maxW="500px"
+          >
+            <Box w="100%" h="60%">
+              <Image
+                src={petInteractions.data[0].image}
+                alt="gif"
+                w="100%"
+                h="100%"
+                objectFit="cover"
+                borderRadius="md"
+              />
+            </Box>
+            <Box h="40%" mb={4}>
+              <Flex
+                direction="column"
+                alignItems="center"
+                justifyContent="space-around"
+                h="100%"
+              >
+                <Box>
+                  <Text fontWeight={600}>
+                    Level: {petInteractions.data[0].level}
+                  </Text>
+                  <Progress
+                    value={petInteractions.data[0].level}
+                    size="xs"
+                    colorScheme="green"
+                  />
+                </Box>
+                <Box>
+                  <Text color={'gray.600'}>
+                    Exp: {`${petInteractions.data[0].xpCurrent} / 100`}
+                  </Text>
+                  <Progress
+                    value={petInteractions.data[0].xpCurrent}
+                    size="xs"
+                  />
+                </Box>
+                <Box>
+                  <Text fontWeight={600}>
+                    Health:
+                    {`${petInteractions.data[0].hpCurrent} / ${petInteractions.data[0].hpMax}`}
+                  </Text>
+                  <Progress
+                    value={petInteractions.data[0].hpCurrent}
+                    size="xs"
+                    colorScheme="red"
+                  />
+                </Box>
+                <Box>
+                  <Text color={'gray.600'}>
+                    Hunger:
+                    {`${petInteractions.data[0].hungerCurrent} / ${petInteractions.data[0].hungerMax}`}
+                  </Text>
+                  <Progress
+                    value={petInteractions.data[0].hungerCurrent}
+                    size="xs"
+                    colorScheme="orange"
+                  />
+                </Box>
+              </Flex>
+            </Box>
+          </Stack>
+        )}
+
         <Feature
           icon={<Icon as={FcDonate} w={10} h={10} />}
           title={'Unlimited Donations'}

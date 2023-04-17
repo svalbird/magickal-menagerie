@@ -1,8 +1,9 @@
+import { PetIntData } from '../../Model/petInt'
 import {
   PetInteractionAction,
   SET_PETINTERACTION_PENDING,
   SET_PETINTERACTION_SUCCESS,
-  SET_ERROR, PetInteractionData
+  SET_ERROR,
 } from '../../client/actions/petInteractions'
 
 const intialState: PetInteractionState = {
@@ -12,7 +13,7 @@ const intialState: PetInteractionState = {
 }
 
 type PetInteractionState = {
-  data: PetInteractionData | null
+  data: PetIntData[] | null
   loading: boolean
   error: string | null
 }
