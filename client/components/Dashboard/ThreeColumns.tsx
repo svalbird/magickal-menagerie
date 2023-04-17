@@ -1,55 +1,28 @@
-import { ReactElement, useEffect } from 'react'
+import { useEffect } from 'react'
 import {
   Box,
   SimpleGrid,
-  Icon,
   Text,
   Stack,
   Flex,
   Image,
   Progress,
+  Button,
 } from '@chakra-ui/react'
-import { FcDonate, FcInTransit } from 'react-icons/fc'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchPetData } from '../../actions/petInteractions'
-
-interface FeatureProps {
-  title: string
-  text: string
-  icon: ReactElement
-}
-
-const Feature = ({ title, text, icon }: FeatureProps) => {
-  return (
-    <Stack>
-      <Flex
-        w={16}
-        h={16}
-        align={'center'}
-        justify={'center'}
-        color={'white'}
-        rounded={'full'}
-        bg={'gray.100'}
-        mb={1}
-      >
-        {icon}
-      </Flex>
-      <Text fontWeight={600}>{title}</Text>
-      <Text color={'gray.600'}>{text}</Text>
-    </Stack>
-  )
-}
+import { useNavigate } from 'react-router-dom'
 
 export default function SimpleThreeColumns() {
   const petInteractions = useAppSelector((state) => state.petInteractions)
   const dispatch = useAppDispatch()
   const { accessToken } = useAppSelector((state) => state.token)
+  const navigate = useNavigate()
   useEffect(() => {
     if (accessToken) {
       dispatch(fetchPetData(accessToken))
     }
   }, [dispatch, accessToken])
-
   return (
     <Box p={4}>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
@@ -64,12 +37,16 @@ export default function SimpleThreeColumns() {
             maxW="500px"
           >
             <Box w="100%" h="60%">
+              <Text align={'center'} fontWeight={600} fontSize="2xl">
+                {petInteractions.data[0].petName}
+              </Text>
               <Image
                 src={petInteractions.data[0].image}
                 alt="gif"
                 w="100%"
                 h="100%"
-                objectFit="cover"
+                p={4}
+                objectFit="contain"
                 borderRadius="md"
               />
             </Box>
@@ -121,25 +98,74 @@ export default function SimpleThreeColumns() {
                     colorScheme="orange"
                   />
                 </Box>
+                <Button
+                  colorScheme="blue"
+                  mr={3}
+                  onClick={() =>
+                    navigate(`/petinteraction/${petInteractions.data[0].id}`)
+                  }
+                >
+                  {`Play with ${petInteractions.data[0].petName}`}
+                </Button>
               </Flex>
             </Box>
           </Stack>
         )}
 
-        <Feature
-          icon={<Icon as={FcDonate} w={10} h={10} />}
-          title={'Unlimited Donations'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
-        />
-        <Feature
-          icon={<Icon as={FcInTransit} w={10} h={10} />}
-          title={'Instant Delivery'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
-        />
+        <Stack
+          w="100%"
+          h="100%"
+          bg="white"
+          // boxShadow="lg"
+          borderRadius="md"
+          p={4}
+          spacing={4}
+          maxW="500px"
+        >
+          <Stack
+            w="100%"
+            h="100%"
+            bg="white"
+            boxShadow="lg"
+            borderRadius="md"
+            p={4}
+            spacing={4}
+            maxW="500px"
+          >
+            <Text fontWeight={600}>{`Magickland News`}</Text>
+            <Text color={'gray.600'}>{`It's a sunny day!`}</Text>
+            <Text color={'gray.600'}>
+              Strange sounds from the Secret Cave...
+            </Text>
+          </Stack>
+
+          <Stack
+            w="100%"
+            h="100%"
+            bg="white"
+            boxShadow="lg"
+            borderRadius="md"
+            p={4}
+            spacing={4}
+            maxW="500px"
+          >
+            <Text fontWeight={600}>{`Latest Activity`}</Text>
+            <Text color={'gray.600'}>Billy joined Magick Menagerie!</Text>
+            <Text
+              color={'gray.600'}
+            >{`Tom's Pet, Carrie, died tragically.`}</Text>
+          </Stack>
+        </Stack>
+        <Stack
+          w="100%"
+          h="100%"
+          bg="white"
+          boxShadow="lg"
+          borderRadius="md"
+          p={4}
+          spacing={4}
+          maxW="500px"
+        ></Stack>
       </SimpleGrid>
     </Box>
   )

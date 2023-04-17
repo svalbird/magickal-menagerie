@@ -30,7 +30,7 @@ function TwoColumnComponent() {
   useEffect(() => {
     if (accessToken) {
       dispatch(fetchInventory(accessToken))
-      dispatch(fetchPetData(accessToken))
+      dispatch(fetchPetData(accessToken))      
     }
   }, [dispatch, accessToken])
 
@@ -57,7 +57,6 @@ function TwoColumnComponent() {
       dispatch(spendInventoryItem(itemId, accessToken))
     }
   }
-
   function handleSubmit2() {
     if (petInteractions.data && accessToken) {
       const newItem = {
@@ -97,7 +96,8 @@ function TwoColumnComponent() {
                   alt="gif"
                   w="100%"
                   h="100%"
-                  objectFit="cover"
+                  p={4}
+                  objectFit="contain"
                   borderRadius="md"
                 />
               </Box>
