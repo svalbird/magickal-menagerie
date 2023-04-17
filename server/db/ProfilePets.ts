@@ -6,11 +6,11 @@ const connection = require('knex')(config)
 
 export function getAllPetsInfo(db = connection): Promise<AllPets[]> {
   return db('pets')
-    .join('user', 'pets.user_id', 'user.id') // TODO: change this to 'user.auth0Id'
+    .join('user', 'pets.auth0_id', 'user.auth0_id') // TODO: change this to 'user.auth0Id'
     .join('species', 'pets.species_id', 'species.id')
     .select(
       'pets.id as id',
-      'user_id as userId',
+      'pets.auth0_id as auth0Id',
       'user.display_name as userDisplayName',
       'species_id as speciesId',
       'pets.name as petName',

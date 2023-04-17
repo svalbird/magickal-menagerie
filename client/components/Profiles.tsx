@@ -22,7 +22,6 @@ function Profiles() {
   const allPets = useAppSelector((state) => state.allPets)
   const dispatch = useAppDispatch()
   const [selectedPet, setSelectedPet] = useState<AllPets | null>(null)
-  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     dispatch(fetchAllPets())
@@ -30,12 +29,10 @@ function Profiles() {
 
   const handleBoxClick = (pet: AllPets) => {
     setSelectedPet(pet)
-    setShowModal(true)
   }
 
   const handleCloseModal = () => {
     setSelectedPet(null)
-    setShowModal(false)
   }
 
   if (allPets.loading) {
@@ -48,8 +45,6 @@ function Profiles() {
   if (allPets.error) {
     return <></>
   }
-  // allpets: Allpets[]
-  // pet : Allpets
 
   return (
     <>
@@ -78,7 +73,7 @@ function Profiles() {
         })}
       </SimpleGrid>
       {selectedPet && (
-        <Modal isOpen={showModal} onClose={handleCloseModal}>
+        <Modal isOpen={Boolean(selectedPet)} onClose={handleCloseModal}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>{selectedPet.petName}</ModalHeader>

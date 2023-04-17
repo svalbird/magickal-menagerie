@@ -5,10 +5,13 @@ const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
 export function getUserByID(
-  user_id: string,
+  auth0Id: string,
   db = connection
 ): Promise<AddUser> {
-  return db('user').where({ auth0_id: user_id }).select().first()
+  return db('user')
+    .where({ auth0_id: auth0Id })
+    .select('user.auth0_id as auth0Id', 'user.*')
+    .first()
 }
 
 export function addUser(
