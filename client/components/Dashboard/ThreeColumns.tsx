@@ -1,4 +1,3 @@
-
 import { ReactElement, useEffect } from 'react'
 import {
   Box,
@@ -13,7 +12,6 @@ import {
 import { FcDonate, FcInTransit } from 'react-icons/fc'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchPetData } from '../../actions/petInteractions'
-
 
 interface FeatureProps {
   title: string
@@ -43,12 +41,15 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
 }
 
 export default function SimpleThreeColumns() {
-
   const petInteractions = useAppSelector((state) => state.petInteractions)
   const dispatch = useAppDispatch()
+  const { accessToken } = useAppSelector((state) => state.token)
   useEffect(() => {
-    dispatch(fetchPetData())
-  }, [dispatch])
+    if (accessToken) {
+      dispatch(fetchPetData(accessToken))
+    }
+  }, [dispatch, accessToken])
+
   return (
     <Box p={4}>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>

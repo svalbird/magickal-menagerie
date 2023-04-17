@@ -37,14 +37,12 @@ export function setError(errMessage: string): InventoryAction {
 }
 
 // Fetch inventory data
-export function fetchInventory(): ThunkAction {
+export function fetchInventory(token: string): ThunkAction {
   return async (dispatch) => {
     try {
       dispatch(setInventoryPending())
-      const inventory = await getInventoryData()
+      const inventory = await getInventoryData(token)
       dispatch(setInventorySuccess(inventory))
-      // Handle success case
-      console.log('Inventory data retrieved successfully!')
     } catch (error) {
       if (error instanceof Error) {
         dispatch(setError(error.message))
@@ -56,14 +54,13 @@ export function fetchInventory(): ThunkAction {
 }
 
 // Add new item
-export function addNewItem(item: NewInventoryItem): ThunkAction {
+export function addNewItem(item: NewInventoryItem, token: string): ThunkAction {
   return async (dispatch) => {
     try {
       await addInventoryItem(item)
-      const inventory = await getInventoryData()
+      const inventory = await getInventoryData(token)
       dispatch(setInventorySuccess(inventory))
       // Handle success case
-      console.log('New inventory item added successfully!')
     } catch (error) {
       if (error instanceof Error) {
         dispatch(setError(error.message))
@@ -75,15 +72,14 @@ export function addNewItem(item: NewInventoryItem): ThunkAction {
 }
 
 // Update pet interaction data and delete inventory item
-export function spendInventoryItem(itemId: number): ThunkAction {
+export function spendInventoryItem(itemId: number, token: string): ThunkAction {
   return async (dispatch) => {
     try {
       await deleteInventoryItem(itemId)
-      const inventory = await getInventoryData()
+      const inventory = await getInventoryData(token)
       // only fetch pet data
       dispatch(setInventorySuccess(inventory))
       // Handle success case
-      console.log('Inventory item deleted successfully!')
     } catch (error) {
       if (error instanceof Error) {
         dispatch(setError(error.message))

@@ -6,11 +6,11 @@ const connection = require('knex')(config)
 
 export function addPetDB(
   newPet: NewPet,
-  userId: number | string,
+  auth0Id: number | string,
   db = connection
 ) {
   return db('pets').insert({
-    user_id: userId,
+    auth0_id: auth0Id,
     species_id: newPet.speciesId,
     name: newPet.name,
     xp_current: 0,

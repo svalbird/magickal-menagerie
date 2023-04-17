@@ -1,6 +1,6 @@
 export interface Inventory {
   id: number
-  userId: number | string
+  auth0Id: string
   itemId: number
   name: string
   type: string
@@ -11,6 +11,6 @@ export interface Inventory {
 }
 
 export interface NewInventoryItem {
-  userId: number | string
+  auth0Id: string
   itemId: number
 }

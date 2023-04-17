@@ -6,7 +6,7 @@ exports.up = function (knex) {
   return knex.schema.createTable('pets', (table) => {
     table.increments('id').primary()
     table.string('name')
-    table.integer('user_id')
+    table.string('auth0_id')
     table.integer('species_id')
     table.integer('xp_current')
     table.integer('hp_current')

@@ -1,13 +1,14 @@
-// how do i create api routes to match the actions in petInteractions.ts in the database folder?
 import request from 'superagent'
 import { PetIntData } from '../../Model/petInt'
 import { Inventory, NewInventoryItem } from '../../Model/inventory'
 
 const rootUrl = '/api/v1'
 
-export async function getPetData(): Promise<PetIntData[]> {
+export async function getPetData(token: string): Promise<PetIntData[]> {
   try {
-    const res = await request.get(`${rootUrl}/petInteraction/pet`)
+    const res = await request
+      .get(`${rootUrl}/petInteraction/pet`)
+      .set('Authorization', `Bearer ${token}`)
     return res.body
   } catch (err) {
     console.error(err)
@@ -20,13 +21,15 @@ export async function addInventoryItem(
 ): Promise<Inventory[]> {
   const res = await request
     .post(`${rootUrl}/petInteraction/addInventoryItem`)
-    .send({ item })
+    .send(item)
   return res.body.inventory
 }
 
-export async function getInventoryData(): Promise<Inventory[]> {
+export async function getInventoryData(token: string): Promise<Inventory[]> {
   try {
-    const res = await request.get(`${rootUrl}/petInteraction/inv`)
+    const res = await request
+      .get(`${rootUrl}/petInteraction/inv`)
+      .set('Authorization', `Bearer ${token}`)
     return res.body
   } catch (err) {
     console.error(err)

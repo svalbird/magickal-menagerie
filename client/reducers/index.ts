@@ -6,7 +6,7 @@ import tokenReducer from './tokenReducer'
 import petInteraction from './petInteractions'
 import userReducer from './userReducer'
 import inventory from './inventory'
-
+import otherPetReducer from './otherPetReducer'
 
 export default combineReducers({
   inventory: inventory,
@@ -15,4 +15,5 @@ export default combineReducers({
   token: tokenReducer,
   petInteractions: petInteraction,
   user: userReducer,
+  otherPet: otherPetReducer,
 })

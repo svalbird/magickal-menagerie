@@ -35,14 +35,13 @@ export function setError(errMessage: string): PetInteractionAction {
 }
 
 // Fetch pet interaction data
-export function fetchPetData(): ThunkAction {
+export function fetchPetData(token: string): ThunkAction {
   return async (dispatch) => {
     try {
       dispatch(setPetInteractionsPending())
-      const pets = await getPetData()
+      const pets = await getPetData(token)
       dispatch(setPetInteractionSuccess(pets))
       // Handle success case
-      console.log('Pet interaction data retrieved successfully!')
     } catch (error) {
       if (error instanceof Error) {
         dispatch(setError(error.message))
@@ -54,16 +53,17 @@ export function fetchPetData(): ThunkAction {
 }
 
 // Update pet interaction data and delete inventory item
-export function updatePetInteraction(pet: PetIntData): ThunkAction {
+export function updatePetInteraction(
+  pet: PetIntData,
+  token: string
+): ThunkAction {
   return async (dispatch) => {
     try {
-      console.log('pet', pet)
       await updatePet(pet)
-      const pets = await getPetData()
+      const pets = await getPetData(token)
       // only fetch pet data
       dispatch(setPetInteractionSuccess(pets))
       // Handle success case
-      console.log('Pet interaction data updated successfully!')
     } catch (error) {
       if (error instanceof Error) {
         dispatch(setError(error.message))

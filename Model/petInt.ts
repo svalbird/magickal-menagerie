@@ -1,6 +1,6 @@
 export interface PetIntData {
   id: number
-  userId: number | string
+  auth0Id: string
   speciesId: number
   name: string
   xpCurrent: number
