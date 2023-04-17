@@ -14,8 +14,8 @@ const router = Router()
 router.get('/pet', async (req, res) => {
   try {
     const userId = 1
-    const resultPet = await getPetInfo(userId)
-    res.json({ pets: resultPet })
+    const pets = await getPetInfo(userId)
+    res.json(pets)
   } catch (err) {
     console.error(err)
     res.sendStatus(500)
@@ -26,8 +26,8 @@ router.get('/pet', async (req, res) => {
 router.get('/inv', async (req, res) => {
   try {
     const userId = 1
-    const resultInventory = await getUserInventory(userId)
-    res.json({ inventory: resultInventory })
+    const inventory = await getUserInventory(userId)
+    res.json(inventory)
   } catch (err) {
     console.error(err)
     res.sendStatus(500)
