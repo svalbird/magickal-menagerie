@@ -8,6 +8,9 @@ interface Outcome {
   changeMoney: number
   changeHP: number
   changeXP: number
+  addItem: number | false
+  checkItem: number | false
+  removeItem: number | false
 }
 
 export interface Event {
