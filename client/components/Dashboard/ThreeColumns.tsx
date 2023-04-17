@@ -12,6 +12,7 @@ import {
 import { FcDonate, FcInTransit } from 'react-icons/fc'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchPetData } from '../../actions/petInteractions'
+import Playground from '../Playground'
 
 interface FeatureProps {
   title: string
@@ -133,13 +134,8 @@ export default function SimpleThreeColumns() {
             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
           }
         />
-        <Feature
-          icon={<Icon as={FcInTransit} w={10} h={10} />}
-          title={'Instant Delivery'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
-        />
+
+        <Playground />
       </SimpleGrid>
     </Box>
   )
