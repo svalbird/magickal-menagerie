@@ -12,7 +12,11 @@ import {
   fetchPetData,
   updatePetInteraction,
 } from '../../actions/petInteractions'
-import { fetchInventory, spendInventoryItem } from '../../actions/inventory'
+import {
+  addNewItem,
+  fetchInventory,
+  spendInventoryItem,
+} from '../../actions/inventory'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { useEffect, useState } from 'react'
 import WaitIndicator from '../WaitIndicator'
@@ -20,19 +24,26 @@ import WaitIndicator from '../WaitIndicator'
 function TwoColumnComponent() {
   const inventory = useAppSelector((state) => state.inventory)
   const petInteractions = useAppSelector((state) => state.petInteractions)
+  const { accessToken } = useAppSelector((state) => state.token)
   const [selectItem, setSelectItem] = useState<number>(1)
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(fetchInventory())
-    dispatch(fetchPetData())
-  }, [dispatch])
+    if (accessToken) {
+      dispatch(fetchInventory(accessToken))
+      dispatch(fetchPetData(accessToken))
+    }
+  }, [dispatch, accessToken])
   console.log(petInteractions.data)
   console.log(inventory.data)
 
   function handleSubmit() {
     const itemId = selectItem
-    console.log('item', itemId)
-    if (petInteractions.data && inventory.data && inventory.data.length > 0) {
+    if (
+      petInteractions.data &&
+      inventory.data &&
+      inventory.data.length > 0 &&
+      accessToken
+    ) {
       const item = inventory.data.find((item) => item.id === itemId)
       const hungerFill = item ? item.hungerFill : 0
       const updatedHunger =
@@ -44,15 +55,21 @@ function TwoColumnComponent() {
         hungerCurrent: updatedHunger,
       }
       console.log(updatedPet)
-      dispatch(updatePetInteraction(updatedPet))
-      dispatch(spendInventoryItem(itemId))
+      dispatch(updatePetInteraction(updatedPet, accessToken))
+      dispatch(spendInventoryItem(itemId, accessToken))
     }
   }
 
-  // I need to select an item, on pushing the button,
-  //the hungerFill value should be added to the hungerCurrent
-  //value on the PetIntData, then the item gets deleted and the
-  //pet gets updated with the new hungerCurrent
+  function handleSubmit2() {
+    if (petInteractions.data && accessToken) {
+      const newItem = {
+        auth0Id: petInteractions.data[0].auth0Id,
+        itemId: 1,
+      }
+      console.log('new item', newItem)
+      dispatch(addNewItem(newItem, accessToken))
+    }
+  }
 
   return (
     <div>
@@ -170,6 +187,13 @@ function TwoColumnComponent() {
               <Box textAlign="center" mt={4}>
                 <Button colorScheme="blue" type="submit" onClick={handleSubmit}>
                   Feed your pet
+                </Button>
+                <Button
+                  colorScheme="blue"
+                  type="submit"
+                  onClick={handleSubmit2}
+                >
+                  Add inventory
                 </Button>
               </Box>
             </Stack>

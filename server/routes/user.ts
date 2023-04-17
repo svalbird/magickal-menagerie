@@ -6,12 +6,12 @@ const router = express.Router()
 
 router.get('/', checkJwt, async (req: JwtRequest, res) => {
   try {
-    const userId = req.auth?.sub
-    if (!userId) {
+    const auth0Id = req.auth?.sub
+    if (!auth0Id) {
       console.error('No userId')
       return res.status(401).send('Unauthorized')
     }
-    const user = await getUserByID(userId)
+    const user = await getUserByID(auth0Id)
 
     const exists = Boolean(user)
 

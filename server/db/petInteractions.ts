@@ -2,14 +2,14 @@ import { PetIntData } from '../../Model/petInt'
 import connection from './connection'
 import { NewInventoryItem } from '../../Model/inventory'
 
-export function getPetInfo(userId: number | string, db = connection) {
+export function getPetInfo(auth0Id: string, db = connection) {
   return db('pets')
-    .join('user', 'pets.user_id', 'user.id')
+    .join('user', 'pets.auth0_id', 'user.auth0_id')
     .join('species', 'pets.species_id', 'species.id')
-    .where('user_id', userId)
+    .where('pets.auth0_id', auth0Id)
     .select(
       'pets.id as id',
-      'user_id as userId',
+      'pets.auth0_id as auth0Id',
       'species_id as speciesId',
       'pets.name as petName',
       'species.name as speciesName',
@@ -25,14 +25,14 @@ export function getPetInfo(userId: number | string, db = connection) {
     .orderBy('pets.id')
 }
 
-export function getUserInventory(userId: number | string, db = connection) {
+export function getUserInventory(auth0Id: string, db = connection) {
   return db('inventory')
-    .join('user', 'inventory.user_id', 'user.id')
+    .join('user', 'inventory.auth0_id', 'user.auth0_id')
     .join('items', 'inventory.item_id', 'items.id')
-    .where('user_id', userId)
+    .where('inventory.auth0_id', auth0Id)
     .select(
       'inventory.id',
-      'user_id as userId',
+      'inventory.auth0_id as auth0Id',
       'item_id as itemId',
       'name',
       'type',
@@ -53,7 +53,7 @@ export function updatePetInfo(newPet: PetIntData, db = connection) {
 
 export function addANewItem(addItem: NewInventoryItem, db = connection) {
   return db('inventory').insert({
-    user_id: addItem.userId,
+    auth0_id: addItem.auth0Id,
     item_id: addItem.itemId,
   })
 }

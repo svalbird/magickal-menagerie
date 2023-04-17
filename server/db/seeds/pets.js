@@ -8,7 +8,7 @@ exports.seed = async function (knex) {
   await knex('pets').insert([
     {
       id: 1,
-      user_id: 1,
+      auth0_id: '123|a',
       species_id: 1,
       name: 'Flit',
       xp_current: 0,
@@ -18,7 +18,7 @@ exports.seed = async function (knex) {
     },
     {
       id: 2,
-      user_id: 2,
+      auth0_id: '234|b',
       species_id: 2,
       name: 'Grump',
       xp_current: 0,
@@ -28,7 +28,7 @@ exports.seed = async function (knex) {
     },
     {
       id: 3,
-      user_id: 3,
+      auth0_id: '345|c',
       species_id: 3,
       name: 'Rollo',
       xp_current: 0,
