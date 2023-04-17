@@ -5,9 +5,10 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 
 interface Outcome {
   outcomeText: string
-  changeMoney: number
-  changeHP: number
-  changeXP: number
+  changeMoney?: number
+  changeHP?: number
+  changeXP?: number
+  changeHunger?: number
   addItem?: number
   checkItem?: number
   removeItem?: number
@@ -51,6 +52,32 @@ function Location(props: Props) {
         if (index === dialogOption) {
           if (eventSet.outcomes.length > 1) {
             if (user.data && rollChance(eventSet.chance)) {
+              if (eventSet.outcomes[0].changeMoney) {
+                const updatedUser = {
+                  id: user.data.id,
+                  auth0_id: user.data.auth0_id,
+                  display_name: user.data.display_name,
+                  money: user.data.money + eventSet.outcomes[0].changeMoney,
+                }
+                dispatch(updateUser(updatedUser))
+              }
+              setOption([index, 0])
+            } else if (user.data) {
+              if (eventSet.outcomes[1].changeMoney) {
+                const updatedUser = {
+                  id: user.data.id,
+                  auth0_id: user.data.auth0_id,
+                  display_name: user.data.display_name,
+                  money: user.data.money + eventSet.outcomes[1].changeMoney,
+                }
+                dispatch(updateUser(updatedUser))
+              }
+              setOption([index, 1])
+            }
+          } else if (user.data && user.data.money <= 0) {
+            setOption([-2, 0])
+          } else if (user.data) {
+            if (eventSet.outcomes[0].changeMoney) {
               const updatedUser = {
                 id: user.data.id,
                 auth0_id: user.data.auth0_id,
@@ -58,30 +85,89 @@ function Location(props: Props) {
                 money: user.data.money + eventSet.outcomes[0].changeMoney,
               }
               dispatch(updateUser(updatedUser))
-              setOption([index, 0])
-            } else if (user.data) {
-              const updatedUser = {
-                id: user.data.id,
-                auth0_id: user.data.auth0_id,
-                display_name: user.data.display_name,
-                money: user.data.money + eventSet.outcomes[1].changeMoney,
-              }
-              dispatch(updateUser(updatedUser))
-              setOption([index, 1])
             }
-          } else if (user.data) {
-            const updatedUser = {
-              id: user.data.id,
-              auth0_id: user.data.auth0_id,
-              display_name: user.data.display_name,
-              money: user.data.money + eventSet.outcomes[0].changeMoney,
-            }
-            dispatch(updateUser(updatedUser))
             setOption([index, 0])
           }
         }
       })
     }
+  }
+
+  if (option[0] === -2) {
+    return (
+      <div
+        style={{
+          backgroundImage: `url(/Images/${props.bgImage})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'bottom',
+          backgroundSize: 'cover',
+          width: '100%',
+          height: '80vh',
+        }}
+      >
+        <Box
+          border="1px solid #E2E8F0"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+          p="4"
+          borderRadius="md"
+          width={200}
+          style={{
+            textAlign: 'center',
+            fontSize: 'large',
+            backgroundColor: 'rgba(255,255,255, 0.6)',
+          }}
+        >
+          <strong>{`${props.locationName}`}</strong>
+        </Box>
+        <Center>
+          <Flex direction="column" align="center">
+            <Box
+              border="1px solid #E2E8F0"
+              boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+              p="4"
+              borderRadius="md"
+              width={800}
+              style={{
+                textAlign: 'center',
+                fontSize: 'medium',
+                backgroundColor: 'rgba(255,255,255, 0.6)',
+              }}
+            >
+              {`You don't have enough money...`}
+            </Box>
+            <Box
+              border="1px solid #E2E8F0"
+              boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+              p="4"
+              borderRadius="md"
+              width={800}
+              style={{
+                textAlign: 'center',
+                fontSize: 'medium',
+                backgroundColor: 'rgba(255,255,255, 0.6)',
+                marginTop: '10px',
+                fontStyle: 'italic',
+                fontWeight: 'bold',
+              }}
+              onClick={() => handleClick(-1)}
+            >
+              {`Back`}
+            </Box>
+          </Flex>
+        </Center>
+
+        <Image
+          src={'Images/creature.gif'}
+          alt={''}
+          style={{
+            position: 'absolute',
+            left: '10%',
+            bottom: '40px',
+            width: '200px',
+          }}
+        />
+      </div>
+    )
   }
 
   if (option[0] === -1) {
