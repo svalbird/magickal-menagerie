@@ -78,22 +78,24 @@ function PetCreation() {
     >
       <Center>
         <Box
-          border="1px solid #E2E8F0"
+          border="1px solid #F7A380"
           boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
           p="4"
           borderRadius="md"
           width={1000}
           minHeight={800}
-          backgroundColor="white"
+          backgroundColor="#0D53AC"
           mt={16}
         >
           <Center mt={24} mb={24}>
             <Flex direction="column" align="center">
-              <Heading as="h1" my={4}>
+              <Heading as="h1" my={4} color="white">
                 Add a new pet
               </Heading>{' '}
               <Flex wrap="wrap" justify="center" align="center" mt={10} mb={10}>
                 {species.data.map((singleSpecies) => (
+
+
                   <Popover key={singleSpecies.id} placement="right">
                     <PopoverTrigger>
                       <Box
@@ -135,28 +137,34 @@ function PetCreation() {
                       </Center>
                     </PopoverContent>
                   </Popover>
+
                 ))}
               </Flex>
               <form onSubmit={(e) => handleSubmit(e)}>
                 <FormControl>
-                  <FormLabel htmlFor="display-name">
+                  <FormLabel htmlFor="display-name" color="white">
                     Enter your Nickname
                   </FormLabel>
                   <Input
                     required
                     type="text"
+                    bg="white"
+                    borderColor="#F7A380"
                     id="display-name"
                     value={name.displayName}
                     onChange={(e) => {
                       setName({ displayName: e.target.value })
                     }}
+                    
                   />
                 </FormControl>
                 <FormControl>
-                  <FormLabel htmlFor="pet-name">Enter your pet name</FormLabel>
+                  <FormLabel htmlFor="pet-name" color="white">Enter your pet name</FormLabel>
                   <Input
                     required
+                    bg="white"
                     type="text"
+                    borderColor="#F7A380"
                     id="pet-name"
                     value={pet.name}
                     onChange={(e) => {
@@ -167,9 +175,10 @@ function PetCreation() {
                 <Center>
                   <Button
                     mt={10}
-                    colorScheme="blue"
                     type="submit"
                     isDisabled={!selectedSpeciesId}
+                    bg="#F7A380"
+                    colorScheme="orange"
                   >
                     Add Pet
                   </Button>
