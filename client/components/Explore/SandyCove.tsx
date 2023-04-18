@@ -40,7 +40,7 @@ function SandyCove() {
         outcomes: [
           {
             outcomeText: `You clamber through the old ruins that skirt the edges of the beach. It looks like an ancient civilisation that worshipped the sun once lived here. As you venture deeper into the ruins, you stumble, almost falling... and your pet catches you from a spike pit. Phew! You keep walking, and you find some sort of ceremonial chamber. In the center is an altar, and a perfectly ripe fruit sits in the center. You warily take the fruit... but no traps or tricks are set off. Was it safe all along - or are you just lucky? You quickly walk away before you can find out. You gain a Rare Temple Fruit!`,
-            addItem: 5,
+            addItem: 21,
             changeHunger: -10,
           },
           {

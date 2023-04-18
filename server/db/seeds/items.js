@@ -11,8 +11,7 @@ exports.seed = async function (knex) {
       name: 'Beer',
       type: 'food',
       description: 'A nice cold brew.',
-      image:
-        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Beer.png',
+      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Beer.png',
       hunger_fill: 40,
     },
     {
@@ -44,35 +43,31 @@ exports.seed = async function (knex) {
     },
     {
       id: 5,
-      name: 'wine',
-      type: 'food',    
+      name: 'Wine',
+      type: 'food',
       description: 'A green yummy wasabi-pea-like wine.',
       image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Wine.png',
       hunger_fill: 15,
     },
     {
       id: 6,
-      name: 'steak',
+      name: 'Steak',
       type: 'food',
-      description:
-        'A yummy piece of cow.',
-      image:
-        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Steak.png',
+      description: 'A yummy piece of cow.',
+      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Steak.png',
       hunger_fill: 25,
     },
     {
       id: 7,
-      name: 'pizza',
+      name: 'Pizza',
       type: 'food',
-      description:
-        'A yummy slice of heaven.',
-      image:
-        '/Images/pizza.png',
+      description: 'A yummy slice of heaven.',
+      image: '/Images/pizza.png',
       hunger_fill: 15,
     },
     {
       id: 8,
-      name: 'whiskey',
+      name: 'Whiskey',
       type: 'medicine',
       description:
         'A concoction that makes creatures feel warm and fuzzy - and a bit uncoordinated.',
@@ -82,17 +77,15 @@ exports.seed = async function (knex) {
     },
     {
       id: 9,
-      name: 'jerky',
+      name: 'Jerky',
       type: 'food',
-      description:
-        'A dried up piece of meat.',
-      image:
-        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Jerky.png',
+      description: 'A dried up piece of meat.',
+      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Jerky.png',
       hunger_fill: 25,
     },
     {
       id: 10,
-      name: 'avocado',
+      name: 'Avocado',
       type: 'food',
       description:
         'A perfectly-green and delicious avocado - though it looks a little squished.',
@@ -129,7 +122,8 @@ exports.seed = async function (knex) {
       id: 14,
       name: 'Pig Head with Wormed Apple ',
       type: 'Poisoned food',
-      description:'Looks good to eat, but has been poisoned by the nasty witch of the south',
+      description:
+        'Looks good to eat, but has been poisoned by the nasty witch of the south',
       image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Boar.png',
       hunger_fill: -30,
     },
@@ -153,7 +147,7 @@ exports.seed = async function (knex) {
     },
     {
       id: 17,
-      name: 'sardines',
+      name: 'Sardines',
       type: 'food',
       description: 'Stinky, smelly little fish',
       image:
@@ -170,7 +164,7 @@ exports.seed = async function (knex) {
     },
     {
       id: 19,
-      name: 'dragonfruit',
+      name: 'Dragonfruit',
       type: 'food',
       description: `These spiky treats actually sprout from dragon's blood - hence the name.`,
       image:
@@ -179,11 +173,10 @@ exports.seed = async function (knex) {
     },
     {
       id: 20,
-      name: 'olive',
+      name: 'Olive',
       type: 'food',
-      description: 'A perfectly ripe cherry. It has an odd floral scent to it.',
-      image:
-        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Olive.png',
+      description: 'A perfectly ripe olive. It has an odd floral scent to it.',
+      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Olive.png',
       hunger_fill: 10,
     },
     {
