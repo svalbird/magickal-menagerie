@@ -74,7 +74,7 @@ function Profiles() {
                   <Image
                     src={pet.petImage}
                     alt={pet.petName}
-                    boxSize="120px"
+                    boxSize="20%"
                     borderRadius="full"
                     boxShadow="md"
                   />

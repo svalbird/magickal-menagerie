@@ -45,6 +45,8 @@ function OtherPetInteraction() {
       const updatedHunger =
         otherPet.data.hungerCurrent + hungerFill > 100
           ? 100
+          : otherPet.data.hungerCurrent + hungerFill < 0
+          ? 0
           : otherPet.data.hungerCurrent + hungerFill
       const updatedPet = {
         ...otherPet.data,
