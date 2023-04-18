@@ -48,7 +48,7 @@ function Profiles() {
     )
   }
   if (allPets.error) {
-    return <></>
+    return <>error</>
   }
 
   if (allPets.data)

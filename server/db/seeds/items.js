@@ -11,7 +11,8 @@ exports.seed = async function (knex) {
       name: 'Beer',
       type: 'food',
       description: 'A nice cold brew.',
-      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Beer.png',
+      image:
+        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Beer.png',
       hunger_fill: 40,
     },
     {
@@ -38,54 +39,60 @@ exports.seed = async function (knex) {
       type: 'Food',
       description: 'Sausage! What more do I need to say?',
       image:
-        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/sausages.png',
+        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Sausages.png',
       hunger_fill: 5,
     },
     {
       id: 5,
-      name: 'Wine',
-      type: 'food',
+      name: 'wine',
+      type: 'food',    
       description: 'A green yummy wasabi-pea-like wine.',
       image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Wine.png',
       hunger_fill: 15,
     },
     {
       id: 6,
-      name: 'Steak',
+      name: 'steak',
       type: 'food',
-      description: 'A yummy piece of cow.',
-      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/steak.png',
+      description:
+        'A yummy piece of cow.',
+      image:
+        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Steak.png',
       hunger_fill: 25,
     },
     {
       id: 7,
-      name: 'Pizza',
+      name: 'pizza',
       type: 'food',
-      description: 'A yummy slice of heaven.',
-      image: '/Images/pizza.png',
+      description:
+        'A yummy slice of heaven.',
+      image:
+        '/Images/pizza.png',
       hunger_fill: 15,
     },
     {
       id: 8,
-      name: 'Whiskey',
+      name: 'whiskey',
       type: 'medicine',
       description:
         'A concoction that makes creatures feel warm and fuzzy - and a bit uncoordinated.',
       image:
-        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Avocado.png',
+        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Whiskey.png',
       hunger_fill: 25,
     },
     {
       id: 9,
-      name: 'Jerky',
+      name: 'jerky',
       type: 'food',
-      description: 'A dried up piece of meat.',
-      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Jerky.png',
+      description:
+        'A dried up piece of meat.',
+      image:
+        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Jerky.png',
       hunger_fill: 25,
     },
     {
       id: 10,
-      name: 'Avocado',
+      name: 'avocado',
       type: 'food',
       description:
         'A perfectly-green and delicious avocado - though it looks a little squished.',
@@ -122,8 +129,7 @@ exports.seed = async function (knex) {
       id: 14,
       name: 'Pig Head with Wormed Apple ',
       type: 'Poisoned food',
-      description:
-        'Looks good to eat, but has been poisoned by the nasty witch of the south',
+      description:'Looks good to eat, but has been poisoned by the nasty witch of the south',
       image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Boar.png',
       hunger_fill: -30,
     },
@@ -147,7 +153,7 @@ exports.seed = async function (knex) {
     },
     {
       id: 17,
-      name: 'Sardines',
+      name: 'sardines',
       type: 'food',
       description: 'Stinky, smelly little fish',
       image:
@@ -156,7 +162,7 @@ exports.seed = async function (knex) {
     },
     {
       id: 18,
-      name: 'Bug',
+      name: 'bug',
       type: 'misc',
       description: 'A still-writhing insect - perhaps not the most ideal food.',
       image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Bug.png',
@@ -164,7 +170,7 @@ exports.seed = async function (knex) {
     },
     {
       id: 19,
-      name: 'Dragonfruit',
+      name: 'dragonfruit',
       type: 'food',
       description: `These spiky treats actually sprout from dragon's blood - hence the name.`,
       image:
@@ -173,11 +179,11 @@ exports.seed = async function (knex) {
     },
     {
       id: 20,
-      name: 'Cherry',
+      name: 'olive',
       type: 'food',
       description: 'A perfectly ripe cherry. It has an odd floral scent to it.',
       image:
-        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Cherry.png',
+        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Olive.png',
       hunger_fill: 10,
     },
     {
