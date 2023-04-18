@@ -23,9 +23,11 @@ This will start the development server and open the application in your default 
 Magickal Menagerie is built using the following technologies:
 
 - React - A popular front-end JavaScript library for building user interfaces.
+- Redux - A predictable state container for JavaScript apps.
 - Node.js - A JavaScript runtime for building server-side applications.
-- SQLite - A SQL database for storing and retrieving data.
+- SQLite - A lightweight, file-based relational database.
 - Express - A minimalist web framework for Node.js.
+- Auth0 - An authentication and authorization platform for securing applications.
 
 ## Contributing
 
