@@ -15,7 +15,7 @@ export function addPetDB(
     name: newPet.name,
     xp_current: 0,
     hp_current: 100,
-    hunger_current: 100,
+    hunger_current: 50,
     level: 1,
   })
 }

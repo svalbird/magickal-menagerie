@@ -68,7 +68,7 @@ function Playground() {
               <Flex
                 style={{
                   position: 'absolute',
-                  bottom: '40px',
+                  bottom: '69px',
                 }}
               >
                 <Button
