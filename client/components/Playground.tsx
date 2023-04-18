@@ -1,74 +1,113 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { Box, Center, Flex, Image, Button, Stack } from '@chakra-ui/react'
+import { useAppSelector } from '../hooks/hooks'
 
 function Playground() {
-  const [jumping, setJumping] = useState(false)
-  const [wobble, setWobble] = useState(false)
-  const [bounce, setBounce] = useState(false)
-  const [jumpShake, setJumpShake] = useState(false)
-
-  useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.code === 'Space') {
-        setJumping(true)
-      }
-      if (event.code === 'ArrowRight') {
-        setWobble(true)
-      }
-      if (event.code === 'ArrowLeft') {
-        setBounce(true)
-      }
-      if (event.code === 'ArrowUp') {
-        setJumpShake(true)
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [])
+  const pet = useAppSelector((state) => state.petInteractions)
+  const [animationState, setAnimationState] = useState({
+    jumping: false,
+    wobble: false,
+    bounce: false,
+    jumpShake: false,
+  })
 
   function handleAnimationEnd() {
-    setJumping(false)
-    setWobble(false)
-    setBounce(false)
-    setJumpShake(false)
+    setAnimationState({
+      jumping: false,
+      wobble: false,
+      bounce: false,
+      jumpShake: false,
+    })
   }
 
-  return (
-    <div style={{ position: 'relative' }}>
-      <img
-        src="/Images/1369.jpg"
-        alt="Playground"
-        style={{ position: 'absolute', width: 1000 }}
-      />
-      <img
-        className="creature"
-        src="/Images/creature.gif"
-        alt="my-pet"
-        onAnimationEnd={handleAnimationEnd}
-        style={{
-          zIndex: 1,
-          width: '150px',
-          position: 'relative',
-          top: jumping || jumpShake ? '170px' : '220px',
-          left: jumping || jumpShake ? '350px' : '300px',
-          animation: jumping
-            ? 'jump-spin 1.2s ease'
-            : wobble
-            ? 'wobble 2s ease'
-            : bounce
-            ? 'bounce 2s ease'
-            : jumpShake
-            ? 'jump-shake 1.2s ease'
-            : '',
-          animationFillMode: 'forwards',
-          animationDirection: 'normal',
-          animationPlayState: 'running',
-        }}
-      />
-    </div>
-  )
+  if (pet.loading) {
+    return <></>
+  }
+
+  if (pet.error) {
+    return <></>
+  }
+
+  if (pet.data)
+    return (
+      <>
+        <Center>
+          <Box
+            border="1px solid #E2E8F0"
+            boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+            p="4"
+            borderRadius="md"
+            width="100%"
+            backgroundImage="url(/Images/playground.jpg)"
+            backgroundRepeat="no-repeat"
+            backgroundPosition="bottom"
+            height="75lvh"
+            position="relative"
+          >
+            <Flex direction="column" align="center">
+              <Image
+                src={pet.data[0].image}
+                alt={''}
+                onAnimationEnd={handleAnimationEnd}
+                style={{
+                  position: 'absolute',
+                  bottom: '40%',
+                  width: '35%',
+                  animation: animationState.jumping
+                    ? 'jump-spin 1.2s ease'
+                    : animationState.wobble
+                    ? 'wobble 2s ease'
+                    : animationState.bounce
+                    ? 'bounce 2s ease'
+                    : animationState.jumpShake
+                    ? 'jump-shake 1.2s ease'
+                    : '',
+                }}
+              />
+
+              <Stack
+                direction="row"
+                spacing={4}
+                mt={4}
+                maxWidth="95%"
+                position="absolute"
+                bottom="10%"
+              >
+                <Button
+                  onClick={() =>
+                    setAnimationState({ ...animationState, jumpShake: true })
+                  }
+                >
+                  Jump
+                </Button>
+                <Button
+                  onClick={() =>
+                    setAnimationState({ ...animationState, bounce: true })
+                  }
+                >
+                  Bounce
+                </Button>
+                <Button
+                  onClick={() =>
+                    setAnimationState({ ...animationState, jumping: true })
+                  }
+                >
+                  Flip
+                </Button>
+                <Button
+                  onClick={() =>
+                    setAnimationState({ ...animationState, wobble: true })
+                  }
+                >
+                  Wobble
+                </Button>
+              </Stack>
+            </Flex>
+          </Box>
+        </Center>
+      </>
+    )
+  return null
 }
 
 export default Playground

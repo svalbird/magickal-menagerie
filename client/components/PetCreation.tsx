@@ -21,6 +21,7 @@ import { addDisplayname } from '../apis/displayName'
 function PetCreation() {
   const navigate = useNavigate()
   const species = useAppSelector((state) => state.species)
+  const { accessToken } = useAppSelector((state) => state.token)
   const dispatch = useAppDispatch()
   const [pet, setPet] = useState<NewPet>({
     speciesId: 0,
@@ -38,13 +39,15 @@ function PetCreation() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (accessToken) {
+      addDisplayname(name, accessToken)
+      setName({ displayName: '' })
+      addPet({ ...pet, speciesId: selectedSpeciesId }, accessToken)
+      setPet({ speciesId: 0, name: '' })
 
-    addPet({ ...pet, speciesId: selectedSpeciesId })
-    setPet({ speciesId: 0, name: '' })
-    addDisplayname(name)
-    setName({ displayName: '' })
-    setSelectedSpeciesId(1)
-    navigate('/')
+      setSelectedSpeciesId(1)
+      navigate('/')
+    }
   }
 
   if (species.loading) {
@@ -59,82 +62,94 @@ function PetCreation() {
   }
 
   return (
-    <Center mt={16} mb={16}>
-      <Box
-        border="1px solid #E2E8F0"
-        boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
-        p="4"
-        borderRadius="md"
-        width={1000}
-        minHeight={800}
-      >
-        <Center mt={24} mb={24}>
-          <Flex direction="column" align="center">
-            <Heading as="h1" my={4}>
-              Add a new pet
-            </Heading>{' '}
-            <Flex wrap="wrap" justify="center" align="center" mt={10} mb={10}>
-              {species.data.map((singleSpecies) => (
-                <Box
-                  key={singleSpecies.id}
-                  p={2}
-                  borderRadius="md"
-                  borderWidth={selectedSpeciesId === singleSpecies.id ? 2 : 0}
-                  borderColor="blue.500"
-                  onClick={() => setSelectedSpeciesId(singleSpecies.id)}
-                  cursor="pointer"
-                  ml={10}
-                >
-                  <Image
-                    src={singleSpecies.image}
-                    alt={singleSpecies.nam}
-                    boxSize="120px"
+    <Box
+      width="100%"
+      backgroundImage="url(/Images/login-page.jpg)"
+      backgroundRepeat="no-repeat"
+      backgroundPosition="bottom"
+      backgroundSize="cover"
+      height="90lvh"
+      overflow="auto"
+    >
+      <Center>
+        <Box
+          border="1px solid #E2E8F0"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+          p="4"
+          borderRadius="md"
+          width={1000}
+          minHeight={800}
+          backgroundColor="white"
+          mt={16}
+        >
+          <Center mt={24} mb={24}>
+            <Flex direction="column" align="center">
+              <Heading as="h1" my={4}>
+                Add a new pet
+              </Heading>{' '}
+              <Flex wrap="wrap" justify="center" align="center" mt={10} mb={10}>
+                {species.data.map((singleSpecies) => (
+                  <Box
+                    key={singleSpecies.id}
+                    p={2}
+                    borderRadius="md"
+                    borderWidth={selectedSpeciesId === singleSpecies.id ? 2 : 0}
+                    borderColor="blue.500"
+                    onClick={() => setSelectedSpeciesId(singleSpecies.id)}
+                    cursor="pointer"
+                    ml={10}
+                  >
+                    <Image
+                      src={singleSpecies.image}
+                      alt={singleSpecies.name}
+                      boxSize="120px"
+                    />
+                  </Box>
+                ))}
+              </Flex>
+              <form onSubmit={(e) => handleSubmit(e)}>
+                <FormControl>
+                  <FormLabel htmlFor="display-name">
+                    Enter your Nickname
+                  </FormLabel>
+                  <Input
+                    required
+                    type="text"
+                    id="display-name"
+                    value={name.displayName}
+                    onChange={(e) => {
+                      setName({ displayName: e.target.value })
+                    }}
                   />
-                </Box>
-              ))}
+                </FormControl>
+                <FormControl>
+                  <FormLabel htmlFor="pet-name">Enter your pet name</FormLabel>
+                  <Input
+                    required
+                    type="text"
+                    id="pet-name"
+                    value={pet.name}
+                    onChange={(e) => {
+                      setPet({ ...pet, name: e.target.value })
+                    }}
+                  />
+                </FormControl>
+                <Center>
+                  <Button
+                    mt={10}
+                    colorScheme="blue"
+                    type="submit"
+                    isDisabled={!selectedSpeciesId}
+                  >
+                    Add Pet
+                  </Button>
+                </Center>
+              </form>
             </Flex>
-            <form onSubmit={(e) => handleSubmit(e)}>
-              <FormControl>
-                <FormLabel htmlFor="display-name">
-                  Enter your Nickname
-                </FormLabel>
-                <Input
-                  required
-                  type="text"
-                  id="display-name"
-                  value={name.displayName}
-                  onChange={(e) => {
-                    setName({ displayName: e.target.value })
-                  }}
-                />
-              </FormControl>
-              <FormControl>
-                <FormLabel htmlFor="pet-name">Enter your pet name</FormLabel>
-                <Input
-                  required
-                  type="text"
-                  id="pet-name"
-                  value={pet.name}
-                  onChange={(e) => {
-                    setPet({ ...pet, name: e.target.value })
-                  }}
-                />
-              </FormControl>
-              <Center>
-                <Button
-                  mt={10}
-                  colorScheme="blue"
-                  type="submit"
-                  isDisabled={!selectedSpeciesId}
-                >
-                  Add Pet
-                </Button>
-              </Center>
-            </form>
-          </Flex>
-        </Center>
-      </Box>
-    </Center>
+          </Center>
+        </Box>
+      </Center>
+    </Box>
   )
 }
 
