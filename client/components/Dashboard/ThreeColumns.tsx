@@ -135,6 +135,7 @@ export default function SimpleThreeColumns() {
             p={4}
             spacing={4}
             maxW="750px"
+            align="center"
           >
             <Text fontWeight={600}>{`Latest Activity`}</Text>
             <Text color={'gray.600'}>Billy joined Magick Menagerie!</Text>
