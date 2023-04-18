@@ -8,13 +8,13 @@ import {
   useBreakpointValue,
   useDisclosure,
   Link,
-  Img,
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
-
+  const { logout } = useAuth0()
   return (
     <Box>
       <Flex
@@ -90,7 +90,10 @@ export default function WithSubnavigation() {
         fontSize={'sm'}
         fontWeight={400}
         variant={'link'}
-        href={'/'}
+        onClick={(e) => {
+          e.preventDefault()
+          logout()
+        }}
       >
         Logout
       </Link>
