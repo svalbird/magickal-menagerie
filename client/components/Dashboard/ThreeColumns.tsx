@@ -170,4 +170,5 @@ export default function SimpleThreeColumns() {
         </SimpleGrid>
       </Box>
     )
+  return null
 }
