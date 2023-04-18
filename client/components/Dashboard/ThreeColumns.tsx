@@ -125,7 +125,7 @@ export default function SimpleThreeColumns() {
               </Box>
             </Stack>
           )}
-          <NewsWidget />
+
           <Stack
             w="100%"
             h="100%"
@@ -135,8 +135,36 @@ export default function SimpleThreeColumns() {
             p={4}
             spacing={4}
             maxW="750px"
-            align="center"
-          >            
+          >
+            <NewsWidget />
+            <Stack
+              w="100%"
+              h="100%"
+              bg="white"
+              boxShadow="lg"
+              borderRadius="md"
+              p={4}
+              spacing={4}
+              maxW="750px"
+              align="center"
+            >
+              <Text fontWeight={600}>{`Latest Activity`}</Text>
+              <Text color={'gray.600'}>Billy joined Magick Menagerie!</Text>
+              <Text
+                color={'gray.600'}
+              >{`Tom's Pet, Carrie, died tragically.`}</Text>
+            </Stack>
+          </Stack>
+          <Stack
+            w="100%"
+            h="100%"
+            bg="white"
+            boxShadow="lg"
+            borderRadius="md"
+            p={4}
+            spacing={4}
+            maxW="750px"
+          >
             <Playground />
           </Stack>
         </SimpleGrid>
