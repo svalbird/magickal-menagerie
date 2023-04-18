@@ -25,7 +25,7 @@ export default function WithSubnavigation() {
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
+        borderColor={'none'}
         align={'center'}
       >
         <Flex
@@ -48,7 +48,7 @@ export default function WithSubnavigation() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            <img src="../../Images/logo_final.png" alt="logo" style={{height: 80, width: 400}}/>
+            <img src="../../Images/logo_final.png" alt="logo" style={{height: 100, width:'100%'}}/>
           </Text>
         </Flex>
         <Stack
