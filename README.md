@@ -24,7 +24,7 @@ Magickal Menagerie is built using the following technologies:
 
 - React - A popular front-end JavaScript library for building user interfaces.
 - Node.js - A JavaScript runtime for building server-side applications.
-- MongoDB - A NoSQL database for storing and retrieving data.
+- SQLite - A SQL database for storing and retrieving data.
 - Express - A minimalist web framework for Node.js.
 
 ## Contributing
