@@ -36,7 +36,7 @@ exports.seed = async function (knex) {
       id: 4,
       name: 'Sausage',
       type: 'Food',
-      description: 'Sausage what more do i need to say',
+      description: 'Sausage! What more do I need to say?',
       image:
         '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/sausages.png',
       hunger_fill: 5,
@@ -45,7 +45,7 @@ exports.seed = async function (knex) {
       id: 5,
       name: 'Wine',
       type: 'food',
-      description: 'A green yummy wasibi pea like wine.',
+      description: 'A green yummy wasabi-pea-like wine.',
       image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Wine.png',
       hunger_fill: 15,
     },
@@ -69,7 +69,8 @@ exports.seed = async function (knex) {
       id: 8,
       name: 'Whiskey',
       type: 'medicine',
-      description: 'A concoction that makes creature feel good.',
+      description:
+        'A concoction that makes creatures feel warm and fuzzy - and a bit uncoordinated.',
       image:
         '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Avocado.png',
       hunger_fill: 25,
@@ -86,7 +87,8 @@ exports.seed = async function (knex) {
       id: 10,
       name: 'Avocado',
       type: 'food',
-      description: 'A green yummy thing used by many.',
+      description:
+        'A perfectly-green and delicious avocado - though it looks a little squished.',
       image:
         '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Avocado.png',
       hunger_fill: 25,
@@ -95,8 +97,7 @@ exports.seed = async function (knex) {
       id: 11,
       name: 'Wormed Apple',
       type: 'poison',
-      description:
-        'Looks like a normal apple but little do you know it has the wormMon which is not good for ones health',
+      description: 'Looks like a normal apple... with a WormMon in it. Gross.',
       image:
         '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/AppleWorm.png',
       hunger_fill: -10,
@@ -105,8 +106,7 @@ exports.seed = async function (knex) {
       id: 12,
       name: 'Apple',
       type: 'food',
-      description:
-        'Now this is a Apple which will conter that of the Wormed Apple',
+      description: 'A simple, crunchy apple. Delicious.',
       image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Apple.png',
       hunger_fill: 10,
     },
@@ -114,7 +114,7 @@ exports.seed = async function (knex) {
       id: 13,
       name: 'Bacon',
       type: 'food',
-      description: 'Nice crispy Bacon ready to please!.',
+      description: 'Nice crispy bacon, ready to please!.',
       image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Bacon.png',
       hunger_fill: 25,
     },
@@ -123,7 +123,7 @@ exports.seed = async function (knex) {
       name: 'Pig Head with Wormed Apple ',
       type: 'Poisoned food',
       description:
-        'Looks Good to eat but has been Poisoned by the Nasty witch of the south',
+        'Looks good to eat, but has been poisoned by the nasty witch of the south',
       image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Boar.png',
       hunger_fill: -30,
     },
@@ -131,7 +131,7 @@ exports.seed = async function (knex) {
       id: 15,
       name: 'Cookie',
       type: 'food',
-      description: 'The best in the east look no futher its cookie time!.',
+      description: `The best in the east - look no further, it's cookie time!.`,
       image:
         '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Cookie.png',
       hunger_fill: 25,
@@ -140,7 +140,7 @@ exports.seed = async function (knex) {
       id: 16,
       name: 'MelonWater',
       type: 'drink',
-      description: 'A freshing drink that tastes like watermelon',
+      description: 'A refreshing drink that tastes like watermelon',
       image:
         '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/MelonWater.png',
       hunger_fill: 20,
@@ -149,7 +149,7 @@ exports.seed = async function (knex) {
       id: 17,
       name: 'Sardines',
       type: 'food',
-      description: 'Stink smelly little fish',
+      description: 'Stinky, smelly little fish',
       image:
         '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Sardines.png',
       hunger_fill: -25,
@@ -158,7 +158,7 @@ exports.seed = async function (knex) {
       id: 18,
       name: 'Bug',
       type: 'misc',
-      description: 'Dont eat me I am gross',
+      description: 'A still-writhing insect - perhaps not the most ideal food.',
       image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Bug.png',
       hunger_fill: -25,
     },
@@ -166,7 +166,7 @@ exports.seed = async function (knex) {
       id: 19,
       name: 'Dragonfruit',
       type: 'food',
-      description: 'The blood of my enemies',
+      description: `These spiky treats actually sprout from dragon's blood - hence the name.`,
       image:
         '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/DragonFruit.png',
       hunger_fill: 80,
@@ -175,7 +175,7 @@ exports.seed = async function (knex) {
       id: 20,
       name: 'Cherry',
       type: 'food',
-      description: 'A delicious piece of fruit',
+      description: 'A perfectly ripe cherry. It has an odd floral scent to it.',
       image:
         '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Cherry.png',
       hunger_fill: 10,
@@ -185,9 +185,8 @@ exports.seed = async function (knex) {
       name: 'Temple Fruit',
       type: 'food',
       description:
-        'A delicious a mysterious fruit you found in some ruins on Sandy Cove.',
-      image:
-        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Cherry.png',
+        'A delicious and mysterious fruit you found in some ruins on Sandy Cove.',
+      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Apple.png',
       hunger_fill: 69,
     },
     {
@@ -196,8 +195,7 @@ exports.seed = async function (knex) {
       type: 'food',
       description:
         'A warm and sweet-smelling bun, freshly baked from Honeybun Bakery in Bellston',
-      image:
-        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Cherry.png',
+      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Roll.png',
       hunger_fill: 40,
     },
   ])

@@ -14,9 +14,11 @@ function SandyCove() {
           {
             outcomeText: `You search the sand for treasure when PETNAME spots something glinting in the sand! Gain 100 money!`,
             changeMoney: 100,
+            changeHunger: -10,
           },
           {
             outcomeText: `You spend hours combing the sand, but end up with nothing to show for it but a nasty sunburn.`,
+            changeHunger: -10,
           },
         ],
       },
@@ -33,14 +35,17 @@ function SandyCove() {
       },
       {
         choiceText: `Explore the strange ruins`,
-        chance: 100,
+        chance: 10,
+        isHungerCheck: true,
         outcomes: [
           {
             outcomeText: `You clamber through the old ruins that skirt the edges of the beach. It looks like an ancient civilisation that worshipped the sun once lived here. As you venture deeper into the ruins, you stumble, almost falling... and PETNAME catches you from a spike pit. Phew! You keep walking, and you find some sort of ceremonial chamber. In the center is an altar, and a perfectly ripe fruit sits in the center. You warily take the fruit... but no traps or tricks are set off. Was it safe all along - or are you just lucky? You quickly walk away before you can find out. You gain a Rare Temple Fruit!`,
             addItem: 5,
+            changeHunger: -10,
           },
           {
             outcomeText: `You step into the mysterious temple, and you see carved images around you. Although they've been worn away by time and the sand swirling in the air, you can faintly interpret the pictures... You see a figure, loowing over a great temple, one that looks suspiciously like the one you're in... You hear a faint growl behind you, and see an ominous shadow creep out from the door. PETNAME growls, and you grab your pet, scrabbling away. Whatever that was, you don't want to meet it.`,
+            changeHunger: -10,
           },
         ],
       },
