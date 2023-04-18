@@ -53,7 +53,7 @@ function Profiles() {
 
   if (allPets.data)
     return (
-      <>
+      <div style={{ minHeight: '80lvh' }}>
         <SimpleGrid columns={[1, 2, 3, 4]} spacing="40px" p="40px">
           {allPets.data.map((pet) => {
             return (
@@ -190,7 +190,7 @@ function Profiles() {
             </ModalContent>
           </Modal>
         )}
-      </>
+      </div>
     )
   return null
 }
