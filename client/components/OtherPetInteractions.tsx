@@ -7,10 +7,15 @@ import {
   Text,
   Image,
   Flex,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
   Progress,
   Button,
 } from '@chakra-ui/react'
-import { addNewItem, fetchInventory, spendInventoryItem } from '../actions/inventory'
+import { fetchInventory, spendInventoryItem } from '../actions/inventory'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
 import { useEffect, useState } from 'react'
 import WaitIndicator from './WaitIndicator'
@@ -46,7 +51,7 @@ function OtherPetInteraction() {
         otherPet.data.hungerCurrent + hungerFill > 100
           ? 100
           : otherPet.data.hungerCurrent + hungerFill < 0
-          ? 0 
+          ? 0
           : otherPet.data.hungerCurrent + hungerFill
       const updatedPet = {
         ...otherPet.data,
@@ -151,23 +156,41 @@ function OtherPetInteraction() {
             >
               <SimpleGrid columns={3} spacing={4} w="100%" h="100%">
                 {inventory.data.map((elem) => (
-                  <Box
-                    key={elem.id}
-                    w="125px"
-                    h="125px"
-                    borderRadius="md"
-                    onClick={() => setSelectItem(elem.id)}
-                    borderWidth={selectItem === elem.id ? 2 : 0}
-                    borderColor="blue.500"
-                  >
-                    <Image
-                      src={elem.image}
-                      alt="image"
-                      w="100%"
-                      h="100%"
-                      objectFit="cover"
-                    />
-                  </Box>
+                  <Popover key={elem.id} placement="right">
+                    <PopoverTrigger>
+                      <Box
+                        key={elem.id}
+                        w="125px"
+                        h="125px"
+                        borderRadius="md"
+                        onClick={() => setSelectItem(elem.id)}
+                        borderWidth={selectItem === elem.id ? 2 : 0}
+                        borderColor="blue.500"
+                      >
+                        <Image
+                          src={elem.image}
+                          alt="image"
+                          w="100%"
+                          h="100%"
+                          objectFit="cover"
+                        />
+                      </Box>
+                    </PopoverTrigger>
+                    <PopoverContent maxW="sm">
+                      <PopoverHeader
+                        fontWeight="bold"
+                        border="0"
+                        textAlign="center"
+                      >
+                        {elem.name}
+                      </PopoverHeader>
+                      <Text mb={2}>{elem.description}</Text>
+                      <Text fontWeight="bold">Type:</Text>
+                      <Text mb={2}>{elem.type}</Text>
+                      <Text fontWeight="bold">Hunger Fill:</Text>
+                      <Text mb={2}>{elem.hungerFill}</Text>
+                    </PopoverContent>
+                  </Popover>
                 ))}
               </SimpleGrid>
               <Box textAlign="center" mt={4}>
