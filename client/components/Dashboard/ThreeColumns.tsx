@@ -119,7 +119,6 @@ export default function SimpleThreeColumns() {
           w="100%"
           h="100%"
           bg="white"
-          // boxShadow="lg"
           borderRadius="md"
           p={4}
           spacing={4}
