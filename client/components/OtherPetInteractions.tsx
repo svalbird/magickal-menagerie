@@ -13,6 +13,7 @@ import {
   PopoverHeader,
   Progress,
   Button,
+  Center,
 } from '@chakra-ui/react'
 import { fetchInventory, spendInventoryItem } from '../actions/inventory'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
@@ -183,7 +184,7 @@ function OtherPetInteraction() {
                           />
                         </Box>
                       </PopoverTrigger>
-                      <PopoverContent maxW="sm">
+                      <PopoverContent maxW="200px">
                         <PopoverHeader
                           fontWeight="bold"
                           border="0"
@@ -191,11 +192,22 @@ function OtherPetInteraction() {
                         >
                           {elem.name}
                         </PopoverHeader>
-                        <Text mb={2}>{elem.description}</Text>
-                        <Text fontWeight="bold">Type:</Text>
-                        <Text mb={2}>{elem.type}</Text>
-                        <Text fontWeight="bold">Hunger Fill:</Text>
-                        <Text mb={2}>{elem.hungerFill}</Text>
+                        <Center>
+                          <Text mb={2}>{elem.description}</Text>
+                        </Center>
+                        {elem.hungerFill < 0 && (
+                          <Center>
+                            <Text>
+                              {' '}
+                              Lowers {Math.abs(elem.hungerFill)} hunger
+                            </Text>
+                          </Center>
+                        )}
+                        {elem.hungerFill > 0 && (
+                          <Center>
+                            <Text> Restores {elem.hungerFill} hunger</Text>
+                          </Center>
+                        )}
                       </PopoverContent>
                     </Popover>
                   ))}
