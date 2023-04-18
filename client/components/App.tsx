@@ -21,7 +21,6 @@ import Bellston from './Explore/Bellston'
 
 import OtherPetInteraction from './OtherPetInteractions'
 
-
 function App() {
   const {
     isAuthenticated,
@@ -43,8 +42,6 @@ function App() {
         if (!exists && !location.pathname.includes('/creation')) {
           return navigate('/creation')
         }
-      } catch (error) {
-        console.error(error)
       } finally {
         setIsLoading(false)
       }
