@@ -99,7 +99,7 @@ function Profiles() {
                   {pet.petName}
                 </Heading>
                 <Text my={4} textAlign="center" fontSize="lg" color="grey.300">
-                  Owner:{pet.userDisplayName}
+                  Owner: {pet.userDisplayName}
                 </Text>
               </Box>
             )
