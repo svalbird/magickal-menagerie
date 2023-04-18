@@ -24,16 +24,24 @@ const locationKey: LocationKey = {
 const locationDesc: LocationKey = {
   'Sandy Cove':
     'On the eastern shores of Magickland lies this beautiful, sunny beach. Enjoy a fun day in the sun with your pet, and perhaps investigate the ancient ruins that are scattered along the shore...',
-  'Everdew Woods': 'everdew-forest',
-  'Umbral Marshes': 'umbral-marshes',
-  Bellston: 'bellston',
-  'Echoing Caves': 'echoing-caves',
-  'Port Wunder': 'port-wunder',
-  'The Fair Mistral': 'the-fair-mistral',
-  'Freefolk Foothills': 'freefolk-foothills',
-  'Lavender Oasis': 'lavender-oasis',
-  'Isle of Crimson': 'isle-of-crimson',
-  'Boreal Peaks': 'boreal-peaks',
+  'Everdew Woods':
+    'An ancient forest lies here, with denizens strange and charming. A beautiful place to explore, but beware, for looks can be deceiving, and there are certainly those who would trick you lurking here...',
+  'Umbral Marshes':
+    'This dark, desolate swamp was once the heart of a powerful empire. Now it stands decaying and derelict, and its denizens are never too happy to see visitors.',
+  Bellston:
+    'A large trading village, Bellston is the hub of north-eastern Magickland. Here is a great place to shop, mingle, and enjoy the hustle-and-bustle of town life.',
+  'Echoing Caves':
+    'These caves are named for the sonorous echoes that can be heard from them late at night. Some people say they are cries of lost pets calling for their owners. Perhaps you can help them?',
+  'Port Wunder':
+    'This island city is the key port of Magickland - but underneath lurks a sinister criminal underworld. Enjoy the shops and sights, but keep a firm hand on your coinpurse',
+  'The Fair Mistral': `Captain Rynn's famous explorer ship has returned after his ten-year journey, and he's hosting a perpertual party for all! Enjoy food, wine and dancing, and perhaps the secretive captain will spill secrets about lands far away...`,
+  'Freefolk Foothills': `The freefolk pets live here, ownerless and happy. They love to play games and pamper other pets, but their mischief certainly can go too far if you're aren't careful!`,
+  'Lavender Oasis':
+    'Deep in the Southern Sands lies a gorgeous oasis. This is a perfect place to set off on an exciting desert expedition or enjoy a delicious delicacy.',
+  'Isle of Crimson':
+    'While eastern Magickland is now at peace with the Crimlings, they are still getting used to tourists and explorers in their lands. Getting to know the locals seems like a good idea, here.',
+  'Boreal Peaks':
+    'In the north of eastern Magickland, the frozen Boreal Peaks loom. The people here are hardy and the weather is cold. There are some beautiful views - if you can stand the cold.',
 }
 
 function WorldMap() {
