@@ -18,8 +18,8 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        bg={useColorModeValue('lavender', 'gray.300')}
+        color={useColorModeValue('black.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -48,10 +48,9 @@ export default function WithSubnavigation() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-          <img src="../../Images/logo_final.png" alt="logo" style={{height: 80, width: 400}}/>
+            <img src="../../Images/logo_final.png" alt="logo" style={{height: 80, width: 400}}/>
           </Text>
         </Flex>
-
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
@@ -61,18 +60,20 @@ export default function WithSubnavigation() {
           <Link
             as={'a'}
             fontSize={'sm'}
-            fontWeight={400}
+            fontWeight={600}
             variant={'link'}
             href={'/'}
+            _hover={{ textDecoration: 'none', color: useColorModeValue('green.300', 'white') }}
           >
             Home
           </Link>
           <Link
             as={'a'}
             fontSize={'sm'}
-            fontWeight={400}
+            fontWeight={600}
             variant={'link'}
             href={'/explore'}
+            _hover={{ textDecoration: 'none', color: useColorModeValue('green.300', 'white') }}
           >
             Explore
           </Link>
@@ -82,21 +83,23 @@ export default function WithSubnavigation() {
             fontSize={'sm'}
             fontWeight={600}
             href={'/profiles'}
+            _hover={{ textDecoration: 'none', color: useColorModeValue('green.300', 'white') }}
           >
             Profiles
           </Link>
           <Link
-        as={'a'}
-        fontSize={'sm'}
-        fontWeight={400}
-        variant={'link'}
-        onClick={(e) => {
-          e.preventDefault()
-          logout()
-        }}
-      >
-        Logout
-      </Link>
+            as={'a'}
+            fontSize={'sm'}
+            fontWeight={600}
+            variant={'link'}
+            onClick={(e) => {
+              e.preventDefault()
+              logout()
+            }}
+            _hover={{ textDecoration: 'none', color: useColorModeValue('green.300', 'white') }}
+          >
+            Logout
+          </Link>
         </Stack>
       </Flex>
     </Box>
