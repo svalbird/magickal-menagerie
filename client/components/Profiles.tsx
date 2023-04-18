@@ -53,23 +53,31 @@ function Profiles() {
 
   if (allPets.data)
     return (
-      <div style={{ minHeight: '80lvh' }}>
-        <SimpleGrid columns={[1, 2, 3, 4]} spacing="40px" p="40px">
-          {allPets.data.map((pet) => {
-            return (
-              <Box
-                key={pet.id}
-                p="4"
-                borderRadius="lg"
-                boxShadow="md"
-                cursor="pointer"
-                onClick={() => handleBoxClick(pet)}
-                transition="all 0.2s ease-in-out"
-                _hover={{
-                  boxShadow: 'lg',
-                  transform: 'scale(1.05)',
-                }}
-              >
+<div style={{ 
+  minHeight: '80vh', 
+  backgroundImage: 'url(/Images/login-page.jpg)', 
+  backgroundSize: 'cover', 
+  backgroundRepeat: 'no-repeat',
+  color: 'whitesmoke'
+}}>
+  <SimpleGrid columns={[1, 2, 3, 4]} spacing="40px" p="40px">
+    {allPets.data.map((pet) => {
+              return (
+                <Box
+                  key={pet.id}
+                  p="4"
+                  borderRadius="lg"
+                  boxShadow="md"
+                  cursor="pointer"
+                  onClick={() => handleBoxClick(pet)}
+                  transition="all 0.2s ease-in-out"
+                  _hover={{
+                    boxShadow: 'lg',
+                    transform: 'scale(1.05)',
+                    borderColor: '#F7DF80', // Added border color on hover
+                  }}
+                  bg="#0D53AC" // Set box background color
+                >
                 <Center>
                   <Image
                     src={pet.petImage}
@@ -77,6 +85,8 @@ function Profiles() {
                     boxSize="20%"
                     borderRadius="full"
                     boxShadow="md"
+                    border='black'
+                    background= 'white'
                   />
                 </Center>
                 <Heading
@@ -86,10 +96,10 @@ function Profiles() {
                   fontSize="2xl"
                   fontWeight="bold"
                 >
-                  Pet Name:{pet.petName}
+                  {pet.petName}
                 </Heading>
-                <Text my={4} textAlign="center" fontSize="lg" color="gray.500">
-                  Owner Name:{pet.userDisplayName}
+                <Text my={4} textAlign="center" fontSize="lg" color="grey.300">
+                  Owner: {pet.userDisplayName}
                 </Text>
               </Box>
             )
@@ -106,6 +116,7 @@ function Profiles() {
               borderRadius="md"
               p={4}
               maxW="500px"
+              background={'white'}
             >
               <Center>
                 <ModalHeader fontSize="2xl" fontWeight="bold">
@@ -123,12 +134,13 @@ function Profiles() {
                       objectFit="cover"
                       boxShadow="lg"
                       borderRadius="full"
+                      border={'2px solid #F7DF80'}
                     />
                   </Box>
                 </Center>
                 <Center>
                   <Heading as="h2" my={4}>
-                    Pet Name:{selectedPet.petName}
+                   {selectedPet.petName}
                   </Heading>
                 </Center>
                 <Flex
@@ -177,7 +189,9 @@ function Profiles() {
               </ModalBody>
               <ModalFooter>
                 <Button
-                  colorScheme="blue"
+                  border='none'
+                  bg="orange"
+                  colorScheme="orange"
                   mr={3}
                   onClick={() => navigate(`/petinteraction/${selectedPet.id}`)}
                 >
