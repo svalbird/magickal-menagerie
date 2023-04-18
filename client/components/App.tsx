@@ -20,6 +20,7 @@ import SandyCove from './Explore/SandyCove'
 import Bellston from './Explore/Bellston'
 
 import OtherPetInteraction from './OtherPetInteractions'
+import BorealPeaks from './Explore/BorealPeaks'
 
 function App() {
   const {
@@ -75,6 +76,7 @@ function App() {
 
           <Route path="/sandy-cove" element={<SandyCove />} />
           <Route path="/bellston" element={<Bellston />} />
+          <Route path="/boreal-peaks" element={<BorealPeaks />} />
 
           <Route path="/creation" element={<PetCreation />} />
           <Route path="/profiles" element={<Profiles />} />

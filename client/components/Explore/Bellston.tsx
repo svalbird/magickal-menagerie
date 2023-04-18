@@ -13,32 +13,35 @@ function Bellston() {
           {
             outcomeText: `You wander into Honeybun Bakery, and the waft of fresh bread is overwhelming and delicious. There's quite a queue to the register, but despite the number of customers, the baker takes your order earnestly, and hands you a still-warm honey bun. You gain a honeybun!`,
             changeMoney: -50,
-            addItem: 6,
+            addItem: 22,
           },
         ],
       },
       {
         choiceText: `Feed the local birds`,
         chance: 90,
+        isHungerCheck: true,
         outcomes: [
           {
-            outcomeText: `You tear up some food into bits, and sitting at a park bench, you feed the local birds. One lands on PETNAME, and your pet is delighted! What a wonderful experience!`,
+            outcomeText: `You tear up some food into bits, and sitting at a park bench, you feed the local birds. One lands on your pet, and your pet is delighted! What a wonderful experience!`,
           },
           {
-            outcomeText: `You tear up some food into bits, and suddenly, a large hawk swoops down, eating all the food! PETNAME fights it off, but it's hurt in the process. Ow!`,
+            outcomeText: `You tear up some food into bits, and suddenly, a large hawk swoops down, eating all the food! Your pet fights it off, but it's hurt in the process. Ow!`,
           },
         ],
       },
       {
-        choiceText: `Busk with PETNAME`,
+        choiceText: `Busk with your pet`,
         chance: 20,
         outcomes: [
           {
             outcomeText: `You and PETNAME decide that now is a great time to earn a bit of money. You put a cup down in front of you, and start dancing with your pet. Your moves are inspired, and you're totally in sync - amazing! Onlookers clap to the beat as you spin and jig with PETNAME, and after a while, you have a healthy amount of money in the cup.`,
             changeMoney: 60,
+            changeHunger: -10,
           },
           {
             outcomeText: `You and PETNAME decide that now is a great time to earn a bit of money. You put a cup down in front of you, and start dancing with your pet. Your moves leave a lot to be desired, and the passerbys give naught more than odd looks.`,
+            changeHunger: -10,
           },
         ],
       },
