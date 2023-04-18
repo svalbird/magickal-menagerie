@@ -192,6 +192,7 @@ function Profiles() {
         )}
       </>
     )
+  return null
 }
 
 export default Profiles

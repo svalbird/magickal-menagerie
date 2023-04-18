@@ -61,9 +61,6 @@ function Playground() {
                     : animationState.jumpShake
                     ? 'jump-shake 1.2s ease'
                     : '',
-                  animationFillMode: 'forwards',
-                  animationDirection: 'normal',
-                  animationPlayState: 'running',
                 }}
               />
             </Center>
@@ -108,6 +105,7 @@ function Playground() {
         </Center>
       </>
     )
+  return null
 }
 
 export default Playground
