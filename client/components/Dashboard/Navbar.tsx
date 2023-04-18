@@ -8,6 +8,7 @@ import {
   useBreakpointValue,
   useDisclosure,
   Link,
+  Img,
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 
@@ -47,7 +48,7 @@ export default function WithSubnavigation() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            Logo
+          <img src="../../Images/logo_final.png" alt="logo" style={{height: 80, width: 400}}/>
           </Text>
         </Flex>
 
@@ -84,6 +85,15 @@ export default function WithSubnavigation() {
           >
             Profiles
           </Link>
+          <Link
+        as={'a'}
+        fontSize={'sm'}
+        fontWeight={400}
+        variant={'link'}
+        href={'/'}
+      >
+        Logout
+      </Link>
         </Stack>
       </Flex>
     </Box>
