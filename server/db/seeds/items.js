@@ -195,8 +195,7 @@ exports.seed = async function (knex) {
       type: 'food',
       description:
         'A warm and sweet-smelling bun, freshly baked from Honeybun Bakery in Bellston',
-      image:
-        '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Cookie.png',
+      image: '/Images/FreePixelFood/Assets/FreePixelFood/Sprite/Food/Roll.png',
       hunger_fill: 40,
     },
   ])

@@ -21,6 +21,21 @@ const locationKey: LocationKey = {
   'Boreal Peaks': 'boreal-peaks',
 }
 
+const locationDesc: LocationKey = {
+  'Sandy Cove':
+    'On the eastern shores of Magickland lies this beautiful, sunny beach. Enjoy a fun day in the sun with your pet, and perhaps investigate the ancient ruins that are scattered along the shore...',
+  'Everdew Woods': 'everdew-forest',
+  'Umbral Marshes': 'umbral-marshes',
+  Bellston: 'bellston',
+  'Echoing Caves': 'echoing-caves',
+  'Port Wunder': 'port-wunder',
+  'The Fair Mistral': 'the-fair-mistral',
+  'Freefolk Foothills': 'freefolk-foothills',
+  'Lavender Oasis': 'lavender-oasis',
+  'Isle of Crimson': 'isle-of-crimson',
+  'Boreal Peaks': 'boreal-peaks',
+}
+
 function WorldMap() {
   const [hoveredLocation, setHoveredLocation] = useState('Select an area!')
 
@@ -44,8 +59,25 @@ function WorldMap() {
 
   return (
     <div className="world-display">
-      <div className="location-desc">
-        <h1>{hoveredLocation}</h1>
+      <div
+        className="location-desc"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+          textAlign: 'center',
+          marginTop: '40px',
+        }}
+      >
+        <div style={{ fontSize: '3em' }}>
+          <strong>{hoveredLocation}</strong>
+        </div>
+
+        <div style={{ marginTop: `10px`, fontSize: '1em' }}>
+          <p>
+            {locationDesc[hoveredLocation] ? locationDesc[hoveredLocation] : ``}
+          </p>
+        </div>
       </div>
       <div className="world-map">
         <WorldMapper
