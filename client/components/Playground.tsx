@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Box, Center, Flex, Image, Button } from '@chakra-ui/react'
+import { Box, Center, Flex, Image, Button, Stack } from '@chakra-ui/react'
 import { useAppSelector } from '../hooks/hooks'
 
 function Playground() {
@@ -41,17 +41,18 @@ function Playground() {
             backgroundImage="url(/Images/playground.jpg)"
             backgroundRepeat="no-repeat"
             backgroundPosition="bottom"
-            height="80lvh"
+            height="75lvh"
+            position="relative"
           >
-            <Center>
+            <Flex direction="column" align="center">
               <Image
                 src={pet.data[0].image}
                 alt={''}
                 onAnimationEnd={handleAnimationEnd}
                 style={{
                   position: 'absolute',
-                  bottom: '250px',
-                  width: '200px',
+                  bottom: '40%',
+                  width: '35%',
                   animation: animationState.jumping
                     ? 'jump-spin 1.2s ease'
                     : animationState.wobble
@@ -63,13 +64,14 @@ function Playground() {
                     : '',
                 }}
               />
-            </Center>
-            <Center>
-              <Flex
-                style={{
-                  position: 'absolute',
-                  bottom: '69px',
-                }}
+
+              <Stack
+                direction="row"
+                spacing={4}
+                mt={4}
+                maxWidth="95%"
+                position="absolute"
+                bottom="10%"
               >
                 <Button
                   onClick={() =>
@@ -90,7 +92,7 @@ function Playground() {
                     setAnimationState({ ...animationState, jumping: true })
                   }
                 >
-                  BackFlip
+                  Flip
                 </Button>
                 <Button
                   onClick={() =>
@@ -99,8 +101,8 @@ function Playground() {
                 >
                   Wobble
                 </Button>
-              </Flex>
-            </Center>
+              </Stack>
+            </Flex>
           </Box>
         </Center>
       </>

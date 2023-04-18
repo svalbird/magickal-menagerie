@@ -69,6 +69,7 @@ function PetCreation() {
       backgroundPosition="bottom"
       backgroundSize="cover"
       height="90lvh"
+      overflow="auto"
     >
       <Center>
         <Box

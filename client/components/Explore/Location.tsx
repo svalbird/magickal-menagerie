@@ -227,6 +227,7 @@ function Location(props: Props) {
           backgroundSize: 'cover',
           width: '100%',
           height: '80vh',
+          position: 'relative',
         }}
       >
         <Box
@@ -286,8 +287,8 @@ function Location(props: Props) {
           style={{
             position: 'absolute',
             left: '10%',
-            bottom: '40px',
-            width: '200px',
+            bottom: '1%',
+            width: '12%',
           }}
         />
       </div>
@@ -304,6 +305,7 @@ function Location(props: Props) {
           backgroundSize: 'cover',
           width: '100%',
           height: '80vh',
+          position: 'relative',
         }}
       >
         <Box
@@ -363,8 +365,8 @@ function Location(props: Props) {
           style={{
             position: 'absolute',
             left: '10%',
-            bottom: '40px',
-            width: '200px',
+            bottom: '1%',
+            width: '12%',
           }}
         />
       </div>
@@ -381,6 +383,7 @@ function Location(props: Props) {
           backgroundSize: 'cover',
           width: '100%',
           height: '80vh',
+          position: 'relative',
         }}
       >
         <Flex direction="row" justify-content="space-between" align="center">
@@ -480,8 +483,8 @@ function Location(props: Props) {
           style={{
             position: 'absolute',
             left: '10%',
-            bottom: '40px',
-            width: '200px',
+            bottom: '1%',
+            width: '12%',
           }}
         />
       </div>
@@ -496,6 +499,7 @@ function Location(props: Props) {
           backgroundSize: 'cover',
           width: '100%',
           height: '80vh',
+          position: 'relative',
         }}
       >
         <Box
@@ -555,8 +559,8 @@ function Location(props: Props) {
           style={{
             position: 'absolute',
             left: '10%',
-            bottom: '40px',
-            width: '200px',
+            bottom: '1%',
+            width: '12%',
           }}
         />
       </div>
