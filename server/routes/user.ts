@@ -32,7 +32,7 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
       return res.status(401).send('Unauthorized')
     }
     await addUser(auth0Id, displayName)
-    res.status(200)
+    res.sendStatus(200)
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Internal Server Error' })

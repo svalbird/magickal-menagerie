@@ -8,12 +8,17 @@ import {
   Box,
   Button,
   Center,
+  Text,
   Flex,
   FormControl,
   FormLabel,
   Heading,
   Image,
   Input,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  PopoverHeader,
   Spinner,
 } from '@chakra-ui/react'
 import { addDisplayname } from '../apis/displayName'
@@ -37,12 +42,12 @@ function PetCreation() {
     dispatch(fetchSpecies())
   }, [dispatch])
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (accessToken) {
-      addDisplayname(name, accessToken)
+      await addDisplayname(name, accessToken)
       setName({ displayName: '' })
-      addPet({ ...pet, speciesId: selectedSpeciesId }, accessToken)
+      await addPet({ ...pet, speciesId: selectedSpeciesId }, accessToken)
       setPet({ speciesId: 0, name: '' })
 
       setSelectedSpeciesId(1)
@@ -89,22 +94,50 @@ function PetCreation() {
               </Heading>{' '}
               <Flex wrap="wrap" justify="center" align="center" mt={10} mb={10}>
                 {species.data.map((singleSpecies) => (
-                  <Box
-                    key={singleSpecies.id}
-                    p={2}
-                    borderRadius="md"
-                    borderWidth={selectedSpeciesId === singleSpecies.id ? 2 : 0}
-                    borderColor="#F7A380"
-                    onClick={() => setSelectedSpeciesId(singleSpecies.id)}
-                    cursor="pointer"
-                    ml={10}
-                  >
-                    <Image
-                      src={singleSpecies.image}
-                      alt={singleSpecies.name}
-                      boxSize="130px"
-                    />
-                  </Box>
+
+
+                  <Popover key={singleSpecies.id} placement="right">
+                    <PopoverTrigger>
+                      <Box
+                        p={2}
+                        borderRadius="md"
+                        borderWidth={
+                          selectedSpeciesId === singleSpecies.id ? 2 : 0
+                        }
+                        borderColor="blue.500"
+                        onClick={() => setSelectedSpeciesId(singleSpecies.id)}
+                        cursor="pointer"
+                        ml={10}
+                      >
+                        <Image
+                          src={singleSpecies.image}
+                          alt={singleSpecies.name}
+                          boxSize="120px"
+                        />
+                      </Box>
+                    </PopoverTrigger>
+                    <PopoverContent maxW="200px">
+                      <PopoverHeader
+                        fontWeight="bold"
+                        border="0"
+                        textAlign="center"
+                      >
+                        {singleSpecies.name}
+                      </PopoverHeader>
+                      <Center>
+                        <Text textAlign="center" justifyContent="center" mb={2}>
+                          {singleSpecies.description}
+                        </Text>
+                      </Center>
+                      <Center>
+                        <Text textAlign="center" justifyContent="center">
+                          {' '}
+                          Loves {singleSpecies.fave_food}
+                        </Text>
+                      </Center>
+                    </PopoverContent>
+                  </Popover>
+
                 ))}
               </Flex>
               <form onSubmit={(e) => handleSubmit(e)}>
