@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchPetData } from '../../actions/petInteractions'
 import { useNavigate } from 'react-router-dom'
 import Playground from '../Playground'
+import NewsWidget from './NewsWidget'
 
 export default function SimpleThreeColumns() {
   const petInteractions = useAppSelector((state) => state.petInteractions)
@@ -124,7 +125,7 @@ export default function SimpleThreeColumns() {
               </Box>
             </Stack>
           )}
-
+          <NewsWidget />
           <Stack
             w="100%"
             h="100%"
@@ -134,51 +135,8 @@ export default function SimpleThreeColumns() {
             p={4}
             spacing={4}
             maxW="750px"
-          >
-            <Stack
-              w="100%"
-              h="100%"
-              bg="white"
-              boxShadow="lg"
-              borderRadius="md"
-              p={4}
-              spacing={4}
-              maxW="750px"
-            >
-              <Text fontWeight={600}>{`Magickland News`}</Text>
-              <Text color={'gray.600'}>{`It's a sunny day!`}</Text>
-              <Text color={'gray.600'}>
-                Strange sounds from the Secret Cave...
-              </Text>
-            </Stack>
-
-            <Stack
-              w="100%"
-              h="100%"
-              bg="white"
-              boxShadow="lg"
-              borderRadius="md"
-              p={4}
-              spacing={4}
-              maxW="750px"
-            >
-              <Text fontWeight={600}>{`Latest Activity`}</Text>
-              <Text color={'gray.600'}>Billy joined Magick Menagerie!</Text>
-              <Text
-                color={'gray.600'}
-              >{`Tom's Pet, Carrie, died tragically.`}</Text>
-            </Stack>
-          </Stack>
-          <Stack
-            w="100%"
-            h="100%"
-            bg="white"
-            boxShadow="lg"
-            borderRadius="md"
-            p={4}
-            spacing={4}
-            maxW="750px"
-          >
+            align="center"
+          >            
             <Playground />
           </Stack>
         </SimpleGrid>
