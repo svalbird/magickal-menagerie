@@ -61,7 +61,7 @@ function TwoColumnComponent() {
     if (petInteractions.data && accessToken) {
       const newItem = {
         auth0Id: petInteractions.data[0].auth0Id,
-        itemId: 1,
+        itemId: 17,
       }
 
       dispatch(addNewItem(newItem, accessToken))

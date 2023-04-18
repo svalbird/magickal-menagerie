@@ -10,7 +10,7 @@ import {
   Progress,
   Button,
 } from '@chakra-ui/react'
-import { fetchInventory, spendInventoryItem } from '../actions/inventory'
+import { addNewItem, fetchInventory, spendInventoryItem } from '../actions/inventory'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
 import { useEffect, useState } from 'react'
 import WaitIndicator from './WaitIndicator'
@@ -45,6 +45,8 @@ function OtherPetInteraction() {
       const updatedHunger =
         otherPet.data.hungerCurrent + hungerFill > 100
           ? 100
+          : otherPet.data.hungerCurrent + hungerFill < 0
+          ? 0 
           : otherPet.data.hungerCurrent + hungerFill
       const updatedPet = {
         ...otherPet.data,
