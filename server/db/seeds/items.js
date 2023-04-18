@@ -204,7 +204,7 @@ exports.seed = async function (knex) {
       hunger_fill: 10,
     },
     {
-      id: 5,
+      id: 21,
       name: 'Temple Fruit',
       type: 'food',
       description:
@@ -214,7 +214,7 @@ exports.seed = async function (knex) {
       hunger_fill: 69,
     },
     {
-      id: 6,
+      id: 22,
       name: 'Honey Bun',
       type: 'food',
       description:
