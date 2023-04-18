@@ -3,7 +3,10 @@ import { useState, useEffect } from 'react'
 import { fetchUser, updateUser } from '../../actions/walletActions'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { addNewItem } from '../../actions/inventory'
-import { updatePetInteraction } from '../../actions/petInteractions'
+import {
+  fetchPetData,
+  updatePetInteraction,
+} from '../../actions/petInteractions'
 import { useNavigate } from 'react-router-dom'
 
 interface Outcome {
@@ -17,6 +20,7 @@ export interface Event {
   choiceText: string
   outcomes: Outcome[]
   chance: number
+  isHungerCheck?: boolean
 }
 
 interface Props {
@@ -35,7 +39,10 @@ function Location(props: Props) {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (accessToken) dispatch(fetchUser(accessToken))
+    if (accessToken) {
+      dispatch(fetchUser(accessToken))
+      dispatch(fetchPetData(accessToken))
+    }
   }, [dispatch, accessToken])
 
   function rollChance(successChance: number) {
@@ -44,6 +51,17 @@ function Location(props: Props) {
     }
     return false
   }
+  console.log(pet)
+  if (pet.loading) {
+    return <></>
+  }
+  if (pet.error) {
+    return <></>
+  }
+  let petImage = 'Images/creature.gif'
+  if (pet.data) {
+    petImage = pet.data[0].image
+  }
 
   function handleClick(dialogOption: number) {
     if (dialogOption === -1) {
@@ -51,7 +69,13 @@ function Location(props: Props) {
     } else {
       props.events.forEach((eventSet, index) => {
         if (index === dialogOption) {
-          if (eventSet.outcomes.length > 1) {
+          if (
+            pet.data &&
+            pet.data[0].hungerCurrent <= 0 &&
+            eventSet.isHungerCheck
+          ) {
+            setOption([-3, 0])
+          } else if (eventSet.outcomes.length > 1) {
             if (user.data && rollChance(eventSet.chance)) {
               if (eventSet.outcomes[0].changeMoney) {
                 const updatedUser = {
@@ -74,13 +98,19 @@ function Location(props: Props) {
                 pet.data &&
                 eventSet.outcomes[0].changeHunger
               ) {
-                const updatedHunger =
-                  pet.data[0].hungerCurrent +
-                    eventSet.outcomes[0].changeHunger >
-                  100
-                    ? 100
-                    : pet.data[0].hungerCurrent +
-                      eventSet.outcomes[0].changeHunger
+                console.log(eventSet.outcomes[0].changeHunger)
+                let updatedHunger = pet.data[0].hungerCurrent
+                if (updatedHunger + eventSet.outcomes[0].changeHunger > 100) {
+                  updatedHunger = 100
+                } else if (
+                  updatedHunger + eventSet.outcomes[0].changeHunger <
+                  0
+                ) {
+                  updatedHunger = 0
+                } else {
+                  updatedHunger =
+                    updatedHunger + eventSet.outcomes[0].changeHunger
+                }
                 const newPetData = {
                   ...pet.data[0],
                   hungerCurrent: updatedHunger,
@@ -111,13 +141,18 @@ function Location(props: Props) {
                 pet.data &&
                 eventSet.outcomes[0].changeHunger
               ) {
-                const updatedHunger =
-                  pet.data[0].hungerCurrent +
-                    eventSet.outcomes[0].changeHunger >
-                  100
-                    ? 100
-                    : pet.data[0].hungerCurrent +
-                      eventSet.outcomes[0].changeHunger
+                let updatedHunger = pet.data[0].hungerCurrent
+                if (updatedHunger + eventSet.outcomes[0].changeHunger > 100) {
+                  updatedHunger = 100
+                } else if (
+                  updatedHunger + eventSet.outcomes[0].changeHunger <
+                  0
+                ) {
+                  updatedHunger = 0
+                } else {
+                  updatedHunger =
+                    updatedHunger + eventSet.outcomes[0].changeHunger
+                }
                 const newPetData = {
                   ...pet.data[0],
                   hungerCurrent: updatedHunger,
@@ -153,13 +188,18 @@ function Location(props: Props) {
                   pet.data &&
                   eventSet.outcomes[0].changeHunger
                 ) {
-                  const updatedHunger =
-                    pet.data[0].hungerCurrent +
-                      eventSet.outcomes[0].changeHunger >
-                    100
-                      ? 100
-                      : pet.data[0].hungerCurrent +
-                        eventSet.outcomes[0].changeHunger
+                  let updatedHunger = pet.data[0].hungerCurrent
+                  if (updatedHunger + eventSet.outcomes[0].changeHunger > 100) {
+                    updatedHunger = 100
+                  } else if (
+                    updatedHunger + eventSet.outcomes[0].changeHunger <
+                    0
+                  ) {
+                    updatedHunger = 0
+                  } else {
+                    updatedHunger =
+                      updatedHunger + eventSet.outcomes[0].changeHunger
+                  }
                   const newPetData = {
                     ...pet.data[0],
                     hungerCurrent: updatedHunger,
@@ -175,6 +215,83 @@ function Location(props: Props) {
         }
       })
     }
+  }
+
+  if (option[0] === -3) {
+    return (
+      <div
+        style={{
+          backgroundImage: `url(/Images/${props.bgImage})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'bottom',
+          backgroundSize: 'cover',
+          width: '100%',
+          height: '80vh',
+        }}
+      >
+        <Box
+          border="1px solid #E2E8F0"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+          p="4"
+          borderRadius="md"
+          width={200}
+          style={{
+            textAlign: 'center',
+            fontSize: 'large',
+            backgroundColor: 'rgba(255,255,255, 0.6)',
+          }}
+        >
+          <strong>{`${props.locationName}`}</strong>
+        </Box>
+        <Center>
+          <Flex direction="column" align="center">
+            <Box
+              border="1px solid #E2E8F0"
+              boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+              p="4"
+              borderRadius="md"
+              width={800}
+              style={{
+                textAlign: 'center',
+                fontSize: 'medium',
+                backgroundColor: 'rgba(255,255,255, 0.6)',
+              }}
+            >
+              {`Your pet is desperately hungry... perhaps they need some food first.`}
+            </Box>
+            <Box
+              border="1px solid #E2E8F0"
+              boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
+              p="4"
+              borderRadius="md"
+              width={800}
+              style={{
+                textAlign: 'center',
+                fontSize: 'medium',
+                backgroundColor: 'rgba(255,255,255, 0.6)',
+                marginTop: '10px',
+                fontStyle: 'italic',
+                fontWeight: 'bold',
+              }}
+              onClick={() => handleClick(-1)}
+            >
+              {`Back`}
+            </Box>
+          </Flex>
+        </Center>
+
+        <Image
+          src={petImage}
+          alt={''}
+          style={{
+            position: 'absolute',
+            left: '10%',
+            bottom: '40px',
+            width: '200px',
+          }}
+        />
+      </div>
+    )
   }
 
   if (option[0] === -2) {
@@ -241,7 +358,7 @@ function Location(props: Props) {
         </Center>
 
         <Image
-          src={'Images/creature.gif'}
+          src={petImage}
           alt={''}
           style={{
             position: 'absolute',
@@ -358,7 +475,7 @@ function Location(props: Props) {
         </Center>
 
         <Image
-          src={'Images/creature.gif'}
+          src={petImage}
           alt={''}
           style={{
             position: 'absolute',
@@ -433,7 +550,7 @@ function Location(props: Props) {
         </Center>
 
         <Image
-          src={'Images/creature.gif'}
+          src={petImage}
           alt={''}
           style={{
             position: 'absolute',
