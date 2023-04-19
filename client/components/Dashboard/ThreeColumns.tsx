@@ -8,6 +8,7 @@ import {
   Image,
   Progress,
   Button,
+  Center,
 } from '@chakra-ui/react'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchPetData } from '../../actions/petInteractions'
@@ -34,7 +35,12 @@ export default function SimpleThreeColumns() {
   }
   if (petInteractions.data)
     return (
-      <Box p={4}>
+      <Box
+        p={4}
+        backgroundImage="url(/Images/login-page.jpg)"
+        backgroundSize="cover"
+        backgroundRepeat="no-repeat"
+      >
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
           {petInteractions.data && (
             <Stack
@@ -45,22 +51,29 @@ export default function SimpleThreeColumns() {
               borderRadius="md"
               p={4}
               maxW="750px"
+              justify="center"
+              minH="500px"
             >
-              <Box w="100%" h="60%">
+              <Box>
                 <Text align={'center'} fontWeight={600} fontSize="2xl">
                   {petInteractions.data[0].petName}
                 </Text>
-                <Image
-                  src={petInteractions.data[0].image}
-                  alt="gif"
-                  w="100%"
-                  h="100%"
-                  p={4}
-                  objectFit="contain"
-                  borderRadius="md"
-                />
+                <Center>
+                  <Image
+                    width="30%"
+                    src={petInteractions.data[0].image}
+                    alt="gif"
+                    p={4}
+                    objectFit="contain"
+                    borderRadius="md"
+                    boxShadow="md"
+                    borderWidth="2px"
+                    borderColor="black"
+                    borderStyle="solid"
+                  />
+                </Center>
               </Box>
-              <Box h="40%" mb={4}>
+              <Box h="50%" mb={4}>
                 <Flex
                   direction="column"
                   alignItems="center"
@@ -68,7 +81,7 @@ export default function SimpleThreeColumns() {
                   h="100%"
                 >
                   <Box>
-                    <Text fontWeight={600}>
+                    <Text fontWeight={600} fontSize="2xl">
                       Level: {petInteractions.data[0].level}
                     </Text>
                     <Progress
@@ -78,7 +91,7 @@ export default function SimpleThreeColumns() {
                     />
                   </Box>
                   <Box>
-                    <Text color={'gray.600'}>
+                    <Text color={'gray.600'} fontSize="2xl">
                       Exp: {`${petInteractions.data[0].xpCurrent} / 100`}
                     </Text>
                     <Progress
@@ -87,7 +100,7 @@ export default function SimpleThreeColumns() {
                     />
                   </Box>
                   <Box>
-                    <Text fontWeight={600}>
+                    <Text fontWeight={600} fontSize="2xl">
                       Health:
                       {`${petInteractions.data[0].hpCurrent} / ${petInteractions.data[0].hpMax}`}
                     </Text>
@@ -98,7 +111,7 @@ export default function SimpleThreeColumns() {
                     />
                   </Box>
                   <Box>
-                    <Text color={'gray.600'}>
+                    <Text color={'gray.600'} fontSize="2xl">
                       Hunger:
                       {`${petInteractions.data[0].hungerCurrent} / ${petInteractions.data[0].hungerMax}`}
                     </Text>
@@ -111,6 +124,7 @@ export default function SimpleThreeColumns() {
                   <Button
                     colorScheme="blue"
                     mr={3}
+                    fontSize="2xl"
                     onClick={() => {
                       if (petInteractions.data) {
                         navigate(
@@ -126,16 +140,7 @@ export default function SimpleThreeColumns() {
             </Stack>
           )}
 
-          <Stack
-            w="100%"
-            h="100%"
-            bg="white"
-            // boxShadow="lg"
-            borderRadius="md"
-            p={4}
-            spacing={4}
-            maxW="750px"
-          >
+          <Stack w="100%" h="100%" bg="white" borderRadius="md" maxW="750px">
             <NewsWidget />
             <Stack
               w="100%"
@@ -161,7 +166,6 @@ export default function SimpleThreeColumns() {
             bg="white"
             boxShadow="lg"
             borderRadius="md"
-            p={4}
             spacing={4}
             maxW="750px"
           >

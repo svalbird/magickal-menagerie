@@ -76,6 +76,9 @@ function OtherPetInteraction() {
             alignItems: 'center',
             justifyContent: 'center',
             minHeight: '80lvh',
+            backgroundImage: 'url(/Images/login-page.jpg)',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
           }}
         >
           <Box p={4} maxW="1200px" mx="auto" minHeight="50lvh" minWidth="50lvw">
@@ -91,23 +94,30 @@ function OtherPetInteraction() {
                 boxShadow="lg"
                 borderRadius="md"
                 p={4}
-                maxW="500px"
+                maxW="750px"
+                justify="center"
+                minH="650px"
               >
-                <Box w="100%" h="60%">
+                <Box w="100%">
                   <Text align={'center'} fontWeight={600} fontSize="2xl">
                     {otherPet.data.petName}
                   </Text>
-                  <Image
-                    src={otherPet.data.image}
-                    alt="gif"
-                    w="100%"
-                    h="100%"
-                    objectFit="contain"
-                    borderRadius="md"
-                    p={6}
-                  />
+                  <Center>
+                    <Image
+                      p={4}
+                      src={otherPet.data.image}
+                      alt="gif"
+                      w="30%"
+                      objectFit="contain"
+                      borderRadius="md"
+                      boxShadow="md"
+                      borderWidth="2px"
+                      borderColor="black"
+                      borderStyle="solid"
+                    />
+                  </Center>
                 </Box>
-                <Box h="40%" mb={4} position="relative">
+                <Box h="50%" mb={4}>
                   <Flex
                     direction="column"
                     alignItems="center"
@@ -115,7 +125,9 @@ function OtherPetInteraction() {
                     h="100%"
                   >
                     <Box>
-                      <Text fontWeight={600}>Level: {otherPet.data.level}</Text>
+                      <Text fontWeight={600} fontSize="2xl">
+                        Level: {otherPet.data.level}
+                      </Text>
                       <Progress
                         value={otherPet.data.level}
                         size="xs"
@@ -123,13 +135,13 @@ function OtherPetInteraction() {
                       />
                     </Box>
                     <Box>
-                      <Text color={'gray.600'}>
+                      <Text color={'gray.600'} fontSize="2xl">
                         Exp: {`${otherPet.data.xpCurrent} / 100`}
                       </Text>
                       <Progress value={otherPet.data.xpCurrent} size="xs" />
                     </Box>
                     <Box>
-                      <Text fontWeight={600}>
+                      <Text fontWeight={600} fontSize="2xl">
                         Health:
                         {`${otherPet.data.hpCurrent} / ${otherPet.data.hpMax}`}
                       </Text>
@@ -140,7 +152,7 @@ function OtherPetInteraction() {
                       />
                     </Box>
                     <Box>
-                      <Text color={'gray.600'}>
+                      <Text color={'gray.600'} fontSize="2xl">
                         Hunger:
                         {`${otherPet.data.hungerCurrent} / ${otherPet.data.hungerMax}`}
                       </Text>
@@ -160,7 +172,7 @@ function OtherPetInteraction() {
                 boxShadow="lg"
                 borderRadius="md"
                 p={4}
-                maxW="500px"
+                maxW="750px"
               >
                 <SimpleGrid columns={3} spacing={4} w="100%" h="100%">
                   {inventory.data.map((elem) => (
@@ -214,6 +226,7 @@ function OtherPetInteraction() {
                 </SimpleGrid>
                 <Box textAlign="center" mt={4}>
                   <Button
+                    fontSize="2xl"
                     colorScheme="blue"
                     type="submit"
                     onClick={handleSubmit}
