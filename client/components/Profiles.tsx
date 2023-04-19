@@ -112,7 +112,6 @@ function Profiles() {
             <ModalOverlay />
             <ModalContent
               w="100%"
-              h="80%"
               bg="white"
               boxShadow="lg"
               borderRadius="md"
