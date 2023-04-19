@@ -5,14 +5,14 @@ function SandyCove() {
     bgImage: 'sandycove.jpg',
     locationName: 'Sandy Cove',
     locationText: `As you arrive in Sandy Cove, you can smell the sea and feel the hot
-  sun on your skin. You look down at PETNAME and they're playing in the sand. How cute!`,
+  sun on your skin. You look down at your pet and they're playing in the sand. How cute!`,
     events: [
       {
         choiceText: `Search the sand for treasure`,
         chance: 40,
         outcomes: [
           {
-            outcomeText: `You search the sand for treasure when PETNAME spots something glinting in the sand! Gain 100 money!`,
+            outcomeText: `You search the sand for treasure when your pet spots something glinting in the sand! Gain 100 money!`,
             changeMoney: 100,
             changeHunger: -10,
           },
@@ -29,7 +29,7 @@ function SandyCove() {
           {
             outcomeText: `Wandering up to a ramshackle hut on the edge of the sand, you hear a loud voice. "MELON WATER? WANNA MELON WATER?". There seems to be no-one there, but when you peer over the edge of the shop window, a tiny Fluttery with comically oversized spectacles grins up at you. "MELON WATER?" he yells, not changing his volume despite being right in front of you. You nod, handing over the money. Almost too fast to see, he flits around the hut, and you hear the whirring of machines and the clinking of cookware, until you're handed a very pink looking liquid in a bottle. You get a MelonWater!`,
             changeMoney: -10,
-            addItem: 1,
+            addItem: 16,
           },
         ],
       },

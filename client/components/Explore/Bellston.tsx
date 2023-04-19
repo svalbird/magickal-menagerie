@@ -35,12 +35,12 @@ function Bellston() {
         chance: 20,
         outcomes: [
           {
-            outcomeText: `You and PETNAME decide that now is a great time to earn a bit of money. You put a cup down in front of you, and start dancing with your pet. Your moves are inspired, and you're totally in sync - amazing! Onlookers clap to the beat as you spin and jig with PETNAME, and after a while, you have a healthy amount of money in the cup.`,
+            outcomeText: `You and your pet decide that now is a great time to earn a bit of money. You put a cup down in front of you, and start dancing with your pet. Your moves are inspired, and you're totally in sync - amazing! Onlookers clap to the beat as you spin and jig with your pet, and after a while, you have a healthy amount of money in the cup.`,
             changeMoney: 60,
             changeHunger: -10,
           },
           {
-            outcomeText: `You and PETNAME decide that now is a great time to earn a bit of money. You put a cup down in front of you, and start dancing with your pet. Your moves leave a lot to be desired, and the passerbys give naught more than odd looks.`,
+            outcomeText: `You and your pet decide that now is a great time to earn a bit of money. You put a cup down in front of you, and start dancing with your pet. Your moves leave a lot to be desired, and the passerbys give naught more than odd looks.`,
             changeHunger: -10,
           },
         ],

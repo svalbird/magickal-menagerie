@@ -125,24 +125,25 @@ function OtherPetInteraction() {
                     justifyContent="space-around"
                     h="100%"
                   >
-                    <Box>
-                      <Text fontWeight={600} fontSize="l">
+                    <Box minWidth="40%">
+                      <Text fontWeight={600} fontSize="xl" mb="2">
                         Level: {otherPet.data.level}
                       </Text>
                       <Progress
                         value={otherPet.data.level}
                         size="xs"
                         colorScheme="green"
+                        mb="2"
                       />
-                    </Box>
-                    <Box>
-                      <Text color={'gray.600'} fontSize="l">
+                      <Text color={'gray.600'} fontSize="xl">
                         Exp: {`${otherPet.data.xpCurrent} / 100`}
                       </Text>
-                      <Progress value={otherPet.data.xpCurrent} size="xs" />
-                    </Box>
-                    <Box>
-                      <Text fontWeight={600} fontSize="l">
+                      <Progress
+                        value={otherPet.data.xpCurrent}
+                        size="xs"
+                        mb="2"
+                      />
+                      <Text fontWeight={600} fontSize="xl">
                         Health:
                         {`${otherPet.data.hpCurrent} / ${otherPet.data.hpMax}`}
                       </Text>
@@ -150,10 +151,9 @@ function OtherPetInteraction() {
                         value={otherPet.data.hpCurrent}
                         size="xs"
                         colorScheme="red"
+                        mb="2"
                       />
-                    </Box>
-                    <Box>
-                      <Text color={'gray.600'} fontSize="l">
+                      <Text color={'gray.600'} fontSize="xl">
                         Hunger:
                         {`${otherPet.data.hungerCurrent} / ${otherPet.data.hungerMax}`}
                       </Text>
@@ -161,6 +161,7 @@ function OtherPetInteraction() {
                         value={otherPet.data.hungerCurrent}
                         size="xs"
                         colorScheme="orange"
+                        mb="2"
                       />
                     </Box>
                   </Flex>
