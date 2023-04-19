@@ -90,12 +90,10 @@ function PetCreation() {
           <Center mt={24} mb={24}>
             <Flex direction="column" align="center">
               <Heading as="h1" my={4} color="white">
-                Add a new pet
-              </Heading>{' '}
+                Choose your pet
+              </Heading>
               <Flex wrap="wrap" justify="center" align="center" mt={10} mb={10}>
                 {species.data.map((singleSpecies) => (
-
-
                   <Popover key={singleSpecies.id} placement="right">
                     <PopoverTrigger>
                       <Box
@@ -137,13 +135,12 @@ function PetCreation() {
                       </Center>
                     </PopoverContent>
                   </Popover>
-
                 ))}
               </Flex>
               <form onSubmit={(e) => handleSubmit(e)}>
                 <FormControl>
                   <FormLabel htmlFor="display-name" color="white">
-                    Enter your Nickname
+                    Choose your Nickname
                   </FormLabel>
                   <Input
                     required
@@ -155,11 +152,12 @@ function PetCreation() {
                     onChange={(e) => {
                       setName({ displayName: e.target.value })
                     }}
-                    
                   />
                 </FormControl>
                 <FormControl>
-                  <FormLabel htmlFor="pet-name" color="white">Enter your pet name</FormLabel>
+                  <FormLabel htmlFor="pet-name" color="white">
+                    Name your Pet
+                  </FormLabel>
                   <Input
                     required
                     bg="white"
@@ -180,7 +178,7 @@ function PetCreation() {
                     bg="#F7A380"
                     colorScheme="orange"
                   >
-                    Add Pet
+                    Start Your Magickal Journey
                   </Button>
                 </Center>
               </form>
