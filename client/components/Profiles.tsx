@@ -55,14 +55,14 @@ function Profiles() {
     return (
       <div
         style={{
-          minHeight: '80vh',
+          minHeight: '83vh',
           backgroundImage: 'url(/Images/login-page.jpg)',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           color: 'whitesmoke',
         }}
       >
-        <SimpleGrid columns={[1, 2, 3, 4]} spacing="40px">
+        <SimpleGrid columns={[1, 2, 3, 4]} spacing="40px" p="40px">
           {allPets.data.map((pet) => {
             return (
               <Box
@@ -78,7 +78,7 @@ function Profiles() {
                   transform: 'scale(1.05)',
                   borderColor: '#F7DF80', // Added border color on hover
                 }}
-                bg="#0D53AC" // Set box background color
+                bg="#547FDE" // Set box background color
               >
                 <Center>
                   <Image

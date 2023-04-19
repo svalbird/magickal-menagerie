@@ -73,7 +73,7 @@ function PetCreation() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom"
       backgroundSize="cover"
-      height="90lvh"
+      height="83lvh"
       overflow="auto"
     >
       <Center>

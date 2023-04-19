@@ -36,17 +36,21 @@ export default function SimpleThreeColumns() {
   if (petInteractions.data)
     return (
       <Box
+        style={{
+          minHeight: '83vh',
+          backgroundImage: 'url(/Images/login-page.jpg)',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          color: 'whitesmoke',
+        }}
         p={4}
-        backgroundImage="url(/Images/login-page.jpg)"
-        backgroundSize="cover"
-        backgroundRepeat="no-repeat"
       >
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
           {petInteractions.data && (
             <Stack
               w="100%"
               h="100%"
-              bg="white"
+              bg="#547FDE"
               boxShadow="lg"
               borderRadius="md"
               p={4}
@@ -122,7 +126,8 @@ export default function SimpleThreeColumns() {
                     />
                   </Box>
                   <Button
-                    colorScheme="blue"
+                    bg="orange"
+                    colorScheme="orange"
                     mr={3}
                     fontSize="l"
                     onClick={() => {
@@ -140,12 +145,20 @@ export default function SimpleThreeColumns() {
             </Stack>
           )}
 
-          <Stack w="100%" h="100%" bg="white" borderRadius="md" maxW="750px">
+          <Stack
+            w="100%"
+            h="100%"
+            bg="transparent"
+            borderRadius="md"
+            p={4}
+            spacing={4}
+            maxW="750px"
+          >
             <NewsWidget />
             <Stack
               w="100%"
               h="100%"
-              bg="white"
+              bg="#F7A380"
               boxShadow="lg"
               borderRadius="md"
               p={4}
@@ -154,17 +167,16 @@ export default function SimpleThreeColumns() {
               align="center"
             >
               <Text fontWeight={600}>{`Latest Activity`}</Text>
-              <Text color={'gray.600'}>Billy joined Magick Menagerie!</Text>
+              <Text fontWeight={450}>Billy joined Magick Menagerie!</Text>
               <Text
-                color={'gray.600'}
+                fontWeight={450}
               >{`Tom's Pet, Carrie, died tragically.`}</Text>
             </Stack>
           </Stack>
           <Stack
             w="100%"
             h="100%"
-            bg="white"
-            boxShadow="lg"
+            bg="transparent"
             borderRadius="md"
             spacing={4}
             maxW="750px"

@@ -75,10 +75,11 @@ function OtherPetInteraction() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            minHeight: '80lvh',
+            minHeight: '83vh',
             backgroundImage: 'url(/Images/login-page.jpg)',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
+            color: 'whitesmoke',
           }}
         >
           <Box p={4} maxW="1200px" mx="auto" minHeight="50lvh" minWidth="50lvw">
@@ -90,7 +91,7 @@ function OtherPetInteraction() {
               <Stack
                 w="100%"
                 h="100%"
-                bg="white"
+                bg="#547FDE"
                 boxShadow="lg"
                 borderRadius="md"
                 p={4}
@@ -168,7 +169,7 @@ function OtherPetInteraction() {
               <Stack
                 w="100%"
                 h="100%"
-                bg="white"
+                bg="#F7A380"
                 boxShadow="lg"
                 borderRadius="md"
                 p={4}
@@ -196,7 +197,7 @@ function OtherPetInteraction() {
                           />
                         </Box>
                       </PopoverTrigger>
-                      <PopoverContent maxW="200px">
+                      <PopoverContent bg="#54C4DE" color="black" maxW="200px">
                         <PopoverHeader
                           fontWeight="bold"
                           border="0"
@@ -236,14 +237,6 @@ function OtherPetInteraction() {
                 </Box>
               </Stack>
             </SimpleGrid>
-            <Box
-              w="50%"
-              mx="auto"
-              my={4}
-              h="4px"
-              bg="gray.300"
-              borderRadius="full"
-            />
           </Box>
         </div>
       ) : (
