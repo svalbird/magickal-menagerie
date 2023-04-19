@@ -75,7 +75,7 @@ function OtherPetInteraction() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            minHeight: '80lvh',
+            minHeight: '83vh',
             backgroundImage: 'url(/Images/login-page.jpg)',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
@@ -188,7 +188,7 @@ function OtherPetInteraction() {
                           />
                         </Box>
                       </PopoverTrigger>
-                      <PopoverContent bg='#54C4DE' color='black' maxW="200px">
+                      <PopoverContent bg="#54C4DE" color="black" maxW="200px">
                         <PopoverHeader
                           fontWeight="bold"
                           border="0"

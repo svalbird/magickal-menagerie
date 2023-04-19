@@ -36,7 +36,7 @@ export default function SimpleThreeColumns() {
     return (
       <Box
         style={{
-          minHeight: '80vh',
+          minHeight: '83vh',
           backgroundImage: 'url(/Images/login-page.jpg)',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
