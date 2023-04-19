@@ -1,6 +1,7 @@
 import ImageMapper from 'react-img-mapper'
 import mapData from '../../../server/db/json/map.json'
 import { useEffect, useState } from 'react'
+import { Center } from '@chakra-ui/react'
 
 interface Props {
   onLocHover: any

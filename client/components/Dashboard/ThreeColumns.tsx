@@ -16,7 +16,6 @@ import { useNavigate } from 'react-router-dom'
 import Playground from '../Playground'
 import NewsWidget from './NewsWidget'
 
-
 export default function SimpleThreeColumns() {
   const petInteractions = useAppSelector((state) => state.petInteractions)
   const dispatch = useAppDispatch()
@@ -154,6 +153,7 @@ export default function SimpleThreeColumns() {
             p={4}
             spacing={4}
             maxW="750px"
+            fontFamily="Macondo"
           >
             <NewsWidget />
             <Stack
@@ -166,6 +166,7 @@ export default function SimpleThreeColumns() {
               spacing={4}
               maxW="750px"
               align="center"
+              fontFamily="Macondo"
             >
               <Text fontWeight={600}>{`Latest Activity`}</Text>
               <Text fontWeight={450}>Billy joined Magick Menagerie!</Text>
