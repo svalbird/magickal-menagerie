@@ -11,7 +11,7 @@ import {
 export default function Footer() {
   return (
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
+      bgGradient="linear-gradient(180deg, #547FDE 0%, #F7A380 100% )"
       color={useColorModeValue('gray.700', 'gray.200')}
       bottom={0}
       left={0}

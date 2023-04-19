@@ -226,7 +226,7 @@ function Location(props: Props) {
           backgroundPosition: 'bottom',
           backgroundSize: 'cover',
           width: '100%',
-          height: '80vh',
+          minHeight: '83vh',
           position: 'relative',
         }}
       >
@@ -304,7 +304,7 @@ function Location(props: Props) {
           backgroundPosition: 'bottom',
           backgroundSize: 'cover',
           width: '100%',
-          height: '80vh',
+          minHeight: '83vh',
           position: 'relative',
         }}
       >
@@ -382,7 +382,7 @@ function Location(props: Props) {
           backgroundPosition: 'bottom',
           backgroundSize: 'cover',
           width: '100%',
-          height: '80vh',
+          minHeight: '83vh',
           position: 'relative',
         }}
       >
@@ -498,7 +498,7 @@ function Location(props: Props) {
           backgroundPosition: 'bottom',
           backgroundSize: 'cover',
           width: '100%',
-          height: '80vh',
+          minHeight: '83vh',
           position: 'relative',
         }}
       >

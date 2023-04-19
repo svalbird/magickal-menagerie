@@ -34,13 +34,22 @@ export default function SimpleThreeColumns() {
   }
   if (petInteractions.data)
     return (
-      <Box p={4}>
+      <Box
+        style={{
+          minHeight: '83vh',
+          backgroundImage: 'url(/Images/login-page.jpg)',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          color: 'whitesmoke',
+        }}
+        p={4}
+      >
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
           {petInteractions.data && (
             <Stack
               w="100%"
               h="100%"
-              bg="white"
+              bg="#547FDE"
               boxShadow="lg"
               borderRadius="md"
               p={4}
@@ -78,7 +87,7 @@ export default function SimpleThreeColumns() {
                     />
                   </Box>
                   <Box>
-                    <Text color={'gray.600'}>
+                    <Text fontWeight={600}>
                       Exp: {`${petInteractions.data[0].xpCurrent} / 100`}
                     </Text>
                     <Progress
@@ -98,7 +107,7 @@ export default function SimpleThreeColumns() {
                     />
                   </Box>
                   <Box>
-                    <Text color={'gray.600'}>
+                    <Text fontWeight={600}>
                       Hunger:
                       {`${petInteractions.data[0].hungerCurrent} / ${petInteractions.data[0].hungerMax}`}
                     </Text>
@@ -109,7 +118,8 @@ export default function SimpleThreeColumns() {
                     />
                   </Box>
                   <Button
-                    colorScheme="blue"
+                    bg="orange"
+                    colorScheme="orange"
                     mr={3}
                     onClick={() => {
                       if (petInteractions.data) {
@@ -129,8 +139,7 @@ export default function SimpleThreeColumns() {
           <Stack
             w="100%"
             h="100%"
-            bg="white"
-            // boxShadow="lg"
+            bg="transparent"
             borderRadius="md"
             p={4}
             spacing={4}
@@ -140,7 +149,7 @@ export default function SimpleThreeColumns() {
             <Stack
               w="100%"
               h="100%"
-              bg="white"
+              bg="#F7A380"
               boxShadow="lg"
               borderRadius="md"
               p={4}
@@ -149,17 +158,16 @@ export default function SimpleThreeColumns() {
               align="center"
             >
               <Text fontWeight={600}>{`Latest Activity`}</Text>
-              <Text color={'gray.600'}>Billy joined Magick Menagerie!</Text>
+              <Text fontWeight={450}>Billy joined Magick Menagerie!</Text>
               <Text
-                color={'gray.600'}
+                fontWeight={450}
               >{`Tom's Pet, Carrie, died tragically.`}</Text>
             </Stack>
           </Stack>
           <Stack
             w="100%"
             h="100%"
-            bg="white"
-            boxShadow="lg"
+            bg="transparent"
             borderRadius="md"
             p={4}
             spacing={4}

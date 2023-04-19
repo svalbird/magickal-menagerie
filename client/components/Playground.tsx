@@ -33,7 +33,6 @@ function Playground() {
       <>
         <Center>
           <Box
-            border="1px solid #E2E8F0"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.2)"
             p="4"
             borderRadius="md"
@@ -74,6 +73,8 @@ function Playground() {
                 bottom="10%"
               >
                 <Button
+                  bg="#54C4DE"
+                  colorScheme="teal"
                   onClick={() =>
                     setAnimationState({ ...animationState, jumpShake: true })
                   }
@@ -81,6 +82,8 @@ function Playground() {
                   Jump
                 </Button>
                 <Button
+                  bg="#54C4DE"
+                  colorScheme="teal"
                   onClick={() =>
                     setAnimationState({ ...animationState, bounce: true })
                   }
@@ -88,6 +91,8 @@ function Playground() {
                   Bounce
                 </Button>
                 <Button
+                  bg="#54C4DE"
+                  colorScheme="teal"
                   onClick={() =>
                     setAnimationState({ ...animationState, jumping: true })
                   }
@@ -95,6 +100,8 @@ function Playground() {
                   Flip
                 </Button>
                 <Button
+                  bg="#54C4DE"
+                  colorScheme="teal"
                   onClick={() =>
                     setAnimationState({ ...animationState, wobble: true })
                   }
