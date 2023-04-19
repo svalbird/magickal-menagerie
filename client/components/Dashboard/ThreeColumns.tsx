@@ -81,7 +81,7 @@ export default function SimpleThreeColumns() {
                   h="100%"
                 >
                   <Box>
-                    <Text fontWeight={600} fontSize="2xl">
+                    <Text fontWeight={600} fontSize="l">
                       Level: {petInteractions.data[0].level}
                     </Text>
                     <Progress
@@ -91,7 +91,7 @@ export default function SimpleThreeColumns() {
                     />
                   </Box>
                   <Box>
-                    <Text color={'gray.600'} fontSize="2xl">
+                    <Text color={'gray.600'} fontSize="l">
                       Exp: {`${petInteractions.data[0].xpCurrent} / 100`}
                     </Text>
                     <Progress
@@ -100,7 +100,7 @@ export default function SimpleThreeColumns() {
                     />
                   </Box>
                   <Box>
-                    <Text fontWeight={600} fontSize="2xl">
+                    <Text fontWeight={600} fontSize="l">
                       Health:
                       {`${petInteractions.data[0].hpCurrent} / ${petInteractions.data[0].hpMax}`}
                     </Text>
@@ -111,7 +111,7 @@ export default function SimpleThreeColumns() {
                     />
                   </Box>
                   <Box>
-                    <Text color={'gray.600'} fontSize="2xl">
+                    <Text color={'gray.600'} fontSize="l">
                       Hunger:
                       {`${petInteractions.data[0].hungerCurrent} / ${petInteractions.data[0].hungerMax}`}
                     </Text>
@@ -124,7 +124,7 @@ export default function SimpleThreeColumns() {
                   <Button
                     colorScheme="blue"
                     mr={3}
-                    fontSize="2xl"
+                    fontSize="l"
                     onClick={() => {
                       if (petInteractions.data) {
                         navigate(

@@ -125,7 +125,7 @@ function OtherPetInteraction() {
                     h="100%"
                   >
                     <Box>
-                      <Text fontWeight={600} fontSize="2xl">
+                      <Text fontWeight={600} fontSize="l">
                         Level: {otherPet.data.level}
                       </Text>
                       <Progress
@@ -135,13 +135,13 @@ function OtherPetInteraction() {
                       />
                     </Box>
                     <Box>
-                      <Text color={'gray.600'} fontSize="2xl">
+                      <Text color={'gray.600'} fontSize="l">
                         Exp: {`${otherPet.data.xpCurrent} / 100`}
                       </Text>
                       <Progress value={otherPet.data.xpCurrent} size="xs" />
                     </Box>
                     <Box>
-                      <Text fontWeight={600} fontSize="2xl">
+                      <Text fontWeight={600} fontSize="l">
                         Health:
                         {`${otherPet.data.hpCurrent} / ${otherPet.data.hpMax}`}
                       </Text>
@@ -152,7 +152,7 @@ function OtherPetInteraction() {
                       />
                     </Box>
                     <Box>
-                      <Text color={'gray.600'} fontSize="2xl">
+                      <Text color={'gray.600'} fontSize="l">
                         Hunger:
                         {`${otherPet.data.hungerCurrent} / ${otherPet.data.hungerMax}`}
                       </Text>

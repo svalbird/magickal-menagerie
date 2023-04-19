@@ -53,31 +53,33 @@ function Profiles() {
 
   if (allPets.data)
     return (
-<div style={{ 
-  minHeight: '80vh', 
-  backgroundImage: 'url(/Images/login-page.jpg)', 
-  backgroundSize: 'cover', 
-  backgroundRepeat: 'no-repeat',
-  color: 'whitesmoke'
-}}>
-  <SimpleGrid columns={[1, 2, 3, 4]} spacing="40px" p="40px">
-    {allPets.data.map((pet) => {
-              return (
-                <Box
-                  key={pet.id}
-                  p="4"
-                  borderRadius="lg"
-                  boxShadow="md"
-                  cursor="pointer"
-                  onClick={() => handleBoxClick(pet)}
-                  transition="all 0.2s ease-in-out"
-                  _hover={{
-                    boxShadow: 'lg',
-                    transform: 'scale(1.05)',
-                    borderColor: '#F7DF80', // Added border color on hover
-                  }}
-                  bg="#0D53AC" // Set box background color
-                >
+      <div
+        style={{
+          minHeight: '80vh',
+          backgroundImage: 'url(/Images/login-page.jpg)',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          color: 'whitesmoke',
+        }}
+      >
+        <SimpleGrid columns={[1, 2, 3, 4]} spacing="40px">
+          {allPets.data.map((pet) => {
+            return (
+              <Box
+                key={pet.id}
+                p="4"
+                borderRadius="lg"
+                boxShadow="md"
+                cursor="pointer"
+                onClick={() => handleBoxClick(pet)}
+                transition="all 0.2s ease-in-out"
+                _hover={{
+                  boxShadow: 'lg',
+                  transform: 'scale(1.05)',
+                  borderColor: '#F7DF80', // Added border color on hover
+                }}
+                bg="#0D53AC" // Set box background color
+              >
                 <Center>
                   <Image
                     src={pet.petImage}
@@ -85,8 +87,8 @@ function Profiles() {
                     boxSize="20%"
                     borderRadius="full"
                     boxShadow="md"
-                    border='black'
-                    background= 'white'
+                    border="black"
+                    background="white"
                   />
                 </Center>
                 <Heading
@@ -110,7 +112,6 @@ function Profiles() {
             <ModalOverlay />
             <ModalContent
               w="100%"
-              h="80%"
               bg="white"
               boxShadow="lg"
               borderRadius="md"
@@ -140,7 +141,7 @@ function Profiles() {
                 </Center>
                 <Center>
                   <Heading as="h2" my={4}>
-                   {selectedPet.petName}
+                    {selectedPet.petName}
                   </Heading>
                 </Center>
                 <Flex
@@ -189,7 +190,7 @@ function Profiles() {
               </ModalBody>
               <ModalFooter>
                 <Button
-                  border='none'
+                  border="none"
                   bg="orange"
                   colorScheme="orange"
                   mr={3}
