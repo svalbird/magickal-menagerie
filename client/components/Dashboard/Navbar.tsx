@@ -18,7 +18,7 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('lavender', 'gray.300')}
+        bgGradient="linear-gradient(180deg, #54C4DE 0%, #DB58AB 100% )"
         color={useColorModeValue('black.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
@@ -48,7 +48,11 @@ export default function WithSubnavigation() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            <img src="../../Images/logo_final.png" alt="logo" style={{height: 100, width:'100%'}}/>
+            <img
+              src="../../Images/logo_final.png"
+              alt="logo"
+              style={{ height: '100%', maxWidth: '225px' }}
+            />
           </Text>
         </Flex>
         <Stack
