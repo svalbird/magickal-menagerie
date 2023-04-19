@@ -37,7 +37,7 @@ function NewsWidget() {
     <Stack
       w="100%"
       h="100%"
-      bg="white"
+      bg="#DB58AB"
       boxShadow="lg"
       borderRadius="md"
       p={4}
@@ -46,8 +46,8 @@ function NewsWidget() {
       align="center"
     >
       <Text fontWeight={600}>{`Magickland News`}</Text>
-      <Text color={'gray.600'}>{news}</Text>
-      <Text color={'gray.600'}>{event}</Text>
+      <Text fontWeight={450}>{news}</Text>
+      <Text fontWeight={450}>{event}</Text>
     </Stack>
   )
 }

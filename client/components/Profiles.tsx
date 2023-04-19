@@ -76,7 +76,7 @@ function Profiles() {
                     transform: 'scale(1.05)',
                     borderColor: '#F7DF80', // Added border color on hover
                   }}
-                  bg="#0D53AC" // Set box background color
+                  bg="#547FDE" // Set box background color
                 >
                 <Center>
                   <Image

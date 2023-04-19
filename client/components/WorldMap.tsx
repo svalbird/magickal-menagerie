@@ -66,7 +66,16 @@ function WorldMap() {
   }
 
   return (
-    <div className="world-display">
+    <div
+      className="world-display"
+      style={{
+        minHeight: '80vh',
+        backgroundImage: 'url(/Images/login-page.jpg)',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        color: 'whitesmoke',
+      }}
+    >
       <div
         className="location-desc"
         style={{
