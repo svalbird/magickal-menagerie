@@ -18,7 +18,7 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('lavender', 'gray.300')}
+        bgGradient="linear-gradient(180deg, #54C4DE 0%, #DB58AB 100% )"
         color={useColorModeValue('black.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
