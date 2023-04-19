@@ -48,7 +48,11 @@ export default function WithSubnavigation() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            <img src="../../Images/logo_final.png" alt="logo" style={{height: 100, width:'100%'}}/>
+            <img
+              src="../../Images/logo_final.png"
+              alt="logo"
+              style={{ height: '100%', maxWidth: '225px' }}
+            />
           </Text>
         </Flex>
         <Stack
