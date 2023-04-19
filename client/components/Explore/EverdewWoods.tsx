@@ -24,8 +24,8 @@ const info = {
       isHungerCheck: true,
       outcomes: [
         {
-          outcomeText: `You wander deep into the woods and come across a group of friendly forest creatures. They invite you and your pet to a feast and you gladly accept. The food is delicious and the company is pleasant. You gain a pizza!`,
-          addItem: 7,
+          outcomeText: `You wander deep into the woods and come across a group of friendly forest creatures. They invite you and your pet to a feast and you gladly accept. The food is delicious and the company is pleasant. You gain a steak!`,
+          addItem: 6,
           changeHunger: 20,
         },
         {

@@ -33,11 +33,19 @@ function Login() {
                   alt={''}
                   style={{
                     width: '100px',
+                    animation: 'bounce2 2s ease infinite',
+                  }}
+                />
+                <Image
+                  src={'Images/benHsaurus.gif'}
+                  alt={''}
+                  style={{
+                    width: '100px',
                     animation: 'bounce 2s ease infinite',
                   }}
                 />
                 <Image
-                  src={'Images/creature.gif'}
+                  src={'Images/Geranadon.gif'}
                   alt={''}
                   style={{
                     width: '100px',
@@ -45,11 +53,19 @@ function Login() {
                   }}
                 />
                 <Image
-                  src={'Images/creature.gif'}
+                  src={'Images/lani.gif'}
                   alt={''}
                   style={{
                     width: '100px',
                     animation: 'bounce 2s ease infinite',
+                  }}
+                />
+                <Image
+                  src={'Images/perepecmon.gif'}
+                  alt={''}
+                  style={{
+                    width: '100px',
+                    animation: 'bounce2  2s ease infinite',
                   }}
                 />
               </Flex>
