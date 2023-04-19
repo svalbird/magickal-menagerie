@@ -51,7 +51,7 @@ function Location(props: Props) {
     }
     return false
   }
-  console.log(pet)
+
   if (pet.loading) {
     return <></>
   }
@@ -98,7 +98,6 @@ function Location(props: Props) {
                 pet.data &&
                 eventSet.outcomes[0].changeHunger
               ) {
-                console.log(eventSet.outcomes[0].changeHunger)
                 let updatedHunger = pet.data[0].hungerCurrent
                 if (updatedHunger + eventSet.outcomes[0].changeHunger > 100) {
                   updatedHunger = 100
