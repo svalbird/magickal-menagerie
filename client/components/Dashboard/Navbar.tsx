@@ -18,7 +18,7 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        bgGradient="linear-gradient(180deg, #54C4DE 0%, #DB58AB 100% )"
+        bgGradient="linear-gradient(to-l, #54C4DE 20%, #547FDE 40%,  #DB58AB 80%)"
         color={useColorModeValue('black.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
@@ -67,7 +67,10 @@ export default function WithSubnavigation() {
             fontWeight={600}
             variant={'link'}
             href={'/'}
-            _hover={{ textDecoration: 'none', color: useColorModeValue('green.300', 'white') }}
+            _hover={{
+              textDecoration: 'none',
+              color: useColorModeValue('green.300', 'white'),
+            }}
           >
             Home
           </Link>
@@ -77,7 +80,10 @@ export default function WithSubnavigation() {
             fontWeight={600}
             variant={'link'}
             href={'/explore'}
-            _hover={{ textDecoration: 'none', color: useColorModeValue('green.300', 'white') }}
+            _hover={{
+              textDecoration: 'none',
+              color: useColorModeValue('green.300', 'white'),
+            }}
           >
             Explore
           </Link>
@@ -87,7 +93,10 @@ export default function WithSubnavigation() {
             fontSize={'sm'}
             fontWeight={600}
             href={'/profiles'}
-            _hover={{ textDecoration: 'none', color: useColorModeValue('green.300', 'white') }}
+            _hover={{
+              textDecoration: 'none',
+              color: useColorModeValue('green.300', 'white'),
+            }}
           >
             Profiles
           </Link>
@@ -100,7 +109,10 @@ export default function WithSubnavigation() {
               e.preventDefault()
               logout()
             }}
-            _hover={{ textDecoration: 'none', color: useColorModeValue('green.300', 'white') }}
+            _hover={{
+              textDecoration: 'none',
+              color: useColorModeValue('green.300', 'white'),
+            }}
           >
             Logout
           </Link>

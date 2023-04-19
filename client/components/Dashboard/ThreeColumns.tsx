@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom'
 import Playground from '../Playground'
 import NewsWidget from './NewsWidget'
 
+
 export default function SimpleThreeColumns() {
   const petInteractions = useAppSelector((state) => state.petInteractions)
   const dispatch = useAppDispatch()
