@@ -84,27 +84,25 @@ export default function SimpleThreeColumns() {
                   justifyContent="space-around"
                   h="100%"
                 >
-                  <Box>
-                    <Text fontWeight={600} fontSize="l">
+                  <Box minWidth="40%">
+                    <Text fontWeight={600} fontSize="2xl" mb="2">
                       Level: {petInteractions.data[0].level}
                     </Text>
                     <Progress
                       value={petInteractions.data[0].level}
                       size="xs"
                       colorScheme="green"
+                      mb="2"
                     />
-                  </Box>
-                  <Box>
-                    <Text color={'gray.600'} fontSize="l">
+                    <Text color={'gray.600'} fontSize="2xl">
                       Exp: {`${petInteractions.data[0].xpCurrent} / 100`}
                     </Text>
                     <Progress
                       value={petInteractions.data[0].xpCurrent}
                       size="xs"
+                      mb="2"
                     />
-                  </Box>
-                  <Box>
-                    <Text fontWeight={600} fontSize="l">
+                    <Text fontWeight={600} fontSize="2xl">
                       Health:
                       {`${petInteractions.data[0].hpCurrent} / ${petInteractions.data[0].hpMax}`}
                     </Text>
@@ -112,10 +110,9 @@ export default function SimpleThreeColumns() {
                       value={petInteractions.data[0].hpCurrent}
                       size="xs"
                       colorScheme="red"
+                      mb="2"
                     />
-                  </Box>
-                  <Box>
-                    <Text color={'gray.600'} fontSize="l">
+                    <Text color={'gray.600'} fontSize="2xl">
                       Hunger:
                       {`${petInteractions.data[0].hungerCurrent} / ${petInteractions.data[0].hungerMax}`}
                     </Text>
@@ -123,6 +120,7 @@ export default function SimpleThreeColumns() {
                       value={petInteractions.data[0].hungerCurrent}
                       size="xs"
                       colorScheme="orange"
+                      mb="2"
                     />
                   </Box>
                   <Button
@@ -154,6 +152,7 @@ export default function SimpleThreeColumns() {
             spacing={4}
             maxW="750px"
             fontFamily="Macondo"
+            fontSize="2xl"
           >
             <NewsWidget />
             <Stack
@@ -167,12 +166,13 @@ export default function SimpleThreeColumns() {
               maxW="750px"
               align="center"
               fontFamily="Macondo"
+              fontSize="2xl"
             >
               <Text fontWeight={600}>{`Latest Activity`}</Text>
-              <Text fontWeight={450}>Billy joined Magick Menagerie!</Text>
-              <Text
-                fontWeight={450}
-              >{`Tom's Pet, Carrie, died tragically.`}</Text>
+              <Text fontWeight={450}>Gerard joined Magick Menagerie!</Text>
+              <Text fontWeight={450}>Lani joined Magick Menagerie!</Text>
+              <Text fontWeight={450}>Rohan joined Magick Menagerie!</Text>
+              <Text fontWeight={450}>Tom joined Magick Menagerie!</Text>
             </Stack>
           </Stack>
           <Stack

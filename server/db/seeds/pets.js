@@ -9,8 +9,8 @@ exports.seed = async function (knex) {
     {
       id: 1,
       auth0_id: '123|a',
-      species_id: 1,
-      name: 'Flit',
+      species_id: 5,
+      name: 'Lani',
       xp_current: 0,
       hp_current: 100,
       hunger_current: 80,
@@ -19,8 +19,8 @@ exports.seed = async function (knex) {
     {
       id: 2,
       auth0_id: '234|b',
-      species_id: 2,
-      name: 'Grump',
+      species_id: 4,
+      name: 'Gerard',
       xp_current: 0,
       hp_current: 100,
       hunger_current: 80,
@@ -29,8 +29,8 @@ exports.seed = async function (knex) {
     {
       id: 3,
       auth0_id: '345|c',
-      species_id: 3,
-      name: 'Rollo',
+      species_id: 7,
+      name: 'BenH',
       xp_current: 0,
       hp_current: 100,
       hunger_current: 100,

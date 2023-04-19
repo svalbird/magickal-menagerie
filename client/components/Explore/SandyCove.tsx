@@ -5,15 +5,15 @@ function SandyCove() {
     bgImage: 'sandycove.jpg',
     locationName: 'Sandy Cove',
     locationText: `As you arrive in Sandy Cove, you can smell the sea and feel the hot
-  sun on your skin. You look down at PETNAME and they're playing in the sand. How cute!`,
+  sun on your skin. You look down at your pet and they're playing in the sand. How cute!`,
     events: [
       {
         choiceText: `Search the sand for treasure`,
         chance: 40,
         outcomes: [
           {
-            outcomeText: `You search the sand for treasure when PETNAME spots something glinting in the sand! Gain $50!`,
-            changeMoney: 50,
+            outcomeText: `You search the sand for treasure when your pet spots something glinting in the sand! Gain 100 money!`,
+            changeMoney: 100,
             changeHunger: -10,
           },
           {

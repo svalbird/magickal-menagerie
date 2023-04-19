@@ -74,6 +74,7 @@ function WorldMap() {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         color: 'whitesmoke',
+        fontFamily: 'Macondo',
       }}
     >
       <div
