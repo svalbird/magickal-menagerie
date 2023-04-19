@@ -21,6 +21,8 @@ import Bellston from './Explore/Bellston'
 
 import OtherPetInteraction from './OtherPetInteractions'
 import BorealPeaks from './Explore/BorealPeaks'
+import EverdewWoods from './Explore/EverdewWoods'
+import EchoingCaves from './Explore/EchoingCaves'
 
 function App() {
   const {
@@ -77,6 +79,8 @@ function App() {
           <Route path="/sandy-cove" element={<SandyCove />} />
           <Route path="/bellston" element={<Bellston />} />
           <Route path="/boreal-peaks" element={<BorealPeaks />} />
+          <Route path="/everdew-woods" element={<EverdewWoods />} />
+          <Route path="/echoing-caves" element={<EchoingCaves />} />
 
           <Route path="/creation" element={<PetCreation />} />
           <Route path="/profiles" element={<Profiles />} />

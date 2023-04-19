@@ -9,7 +9,7 @@ type LocationKey = {
 
 const locationKey: LocationKey = {
   'Sandy Cove': 'sandy-cove',
-  'Everdew Woods': 'everdew-forest',
+  'Everdew Woods': 'everdew-woods',
   'Umbral Marshes': 'umbral-marshes',
   Bellston: 'bellston',
   'Echoing Caves': 'echoing-caves',
