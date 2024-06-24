@@ -2,6 +2,9 @@
 
 Welcome to Magickal Menagerie, the virtual pet-raising game where you can adopt your own magical creature and take care of it by feeding it, training it, and playing with it.
 
+# Context
+This React-driven pet game was created during Dev Academy in 2023, with Tom Han, David Gutiérrez Roldán, Keanu Pere, and Matiu Emery.
+
 ## Getting Started
 
 To get started with Magickal Menagerie, simply clone this repository to your local machine and run the following commands:
