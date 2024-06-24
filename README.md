@@ -9,8 +9,9 @@ This React-driven pet game was created during Dev Academy in 2023, by me (Matthe
 
 To get started with Magickal Menagerie, simply clone this repository to your local machine and run the following commands:
 
-npm install
-npm start
+```npm install```
+
+```npm start```
 
 
 This will start the development server and open the application in your default browser.
